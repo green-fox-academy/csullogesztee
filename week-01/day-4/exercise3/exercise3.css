@@ -29,8 +29,18 @@ p {
 
 #N {
     background-color: #E67676;
+    margin-bottom: 2.5px;
 }
 
 #S {
     background-color: #A9E6E6;
+    margin-top: 2.5px;
+}
+
+span {
+    display: block;
+}
+
+span:nth-child(2) {
+    padding-top: 100px;
 }
