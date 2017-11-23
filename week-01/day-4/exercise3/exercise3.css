@@ -1,0 +1,36 @@
+/*
+width:380px
+height:290px
+
+border:15px
+border color: #4285F4
+
+margin:5px
+
+color N: #E67676
+color S: #A9E6E6
+*/
+
+p {
+    font-size: 36px;
+    color: white;
+    
+    width: 380px;
+    height: 290px;
+
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: #4285F4;
+    border-width: 15px;
+
+    padding-left: 125px;
+    padding-top: 40px;
+}
+
+#N {
+    background-color: #E67676;
+}
+
+#S {
+    background-color: #A9E6E6;
+}
