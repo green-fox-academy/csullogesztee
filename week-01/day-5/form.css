@@ -88,6 +88,11 @@ padding-bottom: 35px
     margin: 0px;
 }
 
+#l > h2, #r > h2 {
+color: white;
+background-color: #938C97;
+}
+
 #bottom {
     height: 185px;
     width: 630px;
