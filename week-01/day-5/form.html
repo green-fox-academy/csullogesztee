@@ -20,13 +20,14 @@
           <div id="b2">
                 <p>Nemed</p>  
                 <input type="radio" id= "male" name="gender" />
-                <label for="male">Male</label>
+                <label for="male">Férfi</label>
                 <input type="radio" id="female" name="gender" />
-                <label for="female">Female</label>
+                <label for="female">Nő</label>
                 
           </div>
           <div id="b3">
                 <p>Milyen márkákat szeretsz?</p>
+                <div id="checkbox">
                 <input type="checkbox" id="adidas" />
                 <label for="adidas">Adidas</label></br>
                 <input type="checkbox" id="apple" />
@@ -47,10 +48,27 @@
                 <label for="tesla">Tesla</label></br>
                 <input type="checkbox" id="yahoo" />
                 <label for="yahoo">Yahoo</label>
+            </div>
                 <p>Többet is választhatsz!</p>
           </div>
       </div>
-      <div id="r"></div>
+      <div id="r">
+          <p>Telefonszám*</p>
+          <input style="tel" placeholder="+36 -- --- ----" name="tel"></input>
+          <p>E-mail cím*</p>
+          <input style="email" placeholder="nev@domain.com" name="email"></input>
+          <p>Facebook profilod</p>
+          <input style="url" placeholder="http://facebook.com/..." name="facebook"></input>
+          <p>Twitter profilod</p>
+          <input style="url" placeholder="http://twitter.com/..." name="twitter"></input>
+          <p>Milyen házban laksz?</p>
+          <select placeholder="Válassz típust!">
+              <option>Lakóház</option>
+              <option>Családiház</option>
+              <option>Sorház</option>
+              <option>Panel</option>
+          </select>
+      </div>
       <div id="bottom"></div>
     </div>
   </body>

@@ -95,21 +95,25 @@ padding-bottom: 35px
     margin-bottom: 78px,
 }
 
-#l > div {
-    border: 3px solid black;
-}
-
 #b1, #b2 {
     display: inline-block;
     vertical-align: middle;
-    height: 47px;
+    height: 100px;
     width: 133px;
-    margin-top: 145px;
-    margin-bottom: 25px;
+
 }
 
 #b3 {
     height: 155px;
     width: 280px;
     margin-bottom: 35px;
+	
+}
+
+#top > h2 {
+    margin: 0;
+}
+
+#checkbox {
+    column-count: 2;
 }
