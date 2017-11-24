@@ -63,7 +63,8 @@ padding-bottom: 35px
 #main {
     height: 785px;
     width: 630px;
-    background-color: #127731; 
+    background-color: #127731;
+
 }
 
 #main > div {
@@ -100,6 +101,7 @@ padding-bottom: 35px
 
 #b1, #b2 {
     display: inline-block;
+    vertical-align: middle;
     height: 47px;
     width: 133px;
     margin-top: 145px;
