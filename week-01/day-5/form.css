@@ -80,6 +80,7 @@ padding-bottom: 35px
 }
 
 #l, #r {
+    vertical-align: middle;
     display: inline-block;
     height: 435px;
     width: 313px;
@@ -91,4 +92,22 @@ padding-bottom: 35px
     width: 630px;
     margin-top: 17px;
     margin-bottom: 78px,
+}
+
+#l > div {
+    border: 3px solid black;
+}
+
+#b1, #b2 {
+    display: inline-block;
+    height: 47px;
+    width: 133px;
+    margin-top: 145px;
+    margin-bottom: 25px;
+}
+
+#b3 {
+    height: 155px;
+    width: 280px;
+    margin-bottom: 35px;
 }
