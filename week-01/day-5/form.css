@@ -1,0 +1,61 @@
+/*
+first box
+height: 785px
+width: 625px
+color: #127731
+
+1. top
+height: 45px
+width: 625px
+color: #FFE42E
+border: 15px
+border color: #FF1200
+padding-top: 13px
+padding-bottom: 15px
+
+2. left
+height: 5px
+width: 315px
+color: #FFE42E
+border (top,bottom): 15px
+border (left,right): 15px
+border color: #FF1200
+padding: 0px
+
+3. right
+height: 435px
+width: 315px
+color: #FFE42E
+border: 15px
+border color: #FF1200
+padding: 0px
+
+4. bottom
+height: 185px
+width: 620px
+color: #FFE42E
+border: 15px
+border color: #FF1200
+padding-top: 17px
+padding-bottom: 78px
+
+blackbox left:
+height: 47px
+width: 145ps
+border: 3px
+padding-top: 145px
+padding-bottom: 25px
+
+blackbox right:
+heigth: 47px
+width: 145px
+border: 3px
+padding-top: 145px
+padding-bottom: 25px
+
+blackbox bottom:
+height: 155px
+width: 290px
+border: 3px
+padding-bottom: 35px
+*/
