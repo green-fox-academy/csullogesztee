@@ -1,0 +1,20 @@
+div {
+    width: 140px;
+    height: 140px;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background: #0CEBDE;
+    padding-top: 10px;
+    margin: 5px;
+    color: white;
+    font-size: 36;
+}
+div:first-child {
+  background: #B90CEB;
+}
+div:last-child {
+  background: #EBBE0C;
+}
