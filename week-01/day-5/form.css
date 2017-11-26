@@ -61,7 +61,7 @@ padding-bottom: 35px
 */
 
 #main {
-    height: 785px;
+    height: 1000px;
     width: 630px;
     background-color: #127731;
 
@@ -76,8 +76,6 @@ padding-bottom: 35px
 #top {
     height: 45px;
     width: 630px;
-    margin-top: 13px;
-    margin-bottom: 15px;
 }
 
 #l, #r {
@@ -96,8 +94,6 @@ background-color: #938C97;
 #bottom {
     height: 185px;
     width: 630px;
-    margin-top: 17px;
-    margin-bottom: 78px,
 }
 
 #b1, #b2 {
@@ -110,9 +106,7 @@ background-color: #938C97;
 
 #b3 {
     height: 155px;
-    width: 280px;
-    margin-bottom: 35px;
-	
+    width: 280px;	
 }
 
 #top > h2 {

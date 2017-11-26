@@ -27,12 +27,12 @@ p {
     padding-top: 40px;
 }
 
-#N {
+#north-box {
     background-color: #E67676;
     margin-bottom: 2.5px;
 }
 
-#S {
+#south-box {
     background-color: #A9E6E6;
     margin-top: 2.5px;
 }
