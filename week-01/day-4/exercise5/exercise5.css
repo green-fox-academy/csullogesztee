@@ -1,0 +1,21 @@
+h1 {
+color:#FF8D9A;
+}
+
+h2 {
+color:#8A2BE2;
+}
+ul {
+    list-style: square;
+}
+
+ol {
+    list-style: upper-roman;
+    text-decoration: underline;
+    color: #FF0EFF;
+}
+
+ol > li:last-child {
+    color: black;
+    text-decoration-color: black;
+}
