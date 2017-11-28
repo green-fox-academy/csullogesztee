@@ -19,17 +19,8 @@ namespace Colors
             colors[1] = new string[] { "orange red", "red", "tomato" };
             colors[2] = new string[] { "orchid", "violet", "pink", "hot pink" };
 
-            PrintArray(colors);
             Console.ReadLine();
         }
-        static void PrintArray(string[][] arr)
-        {
-            for (int i = 0; i < arr.Length; i++)
-            {
-                for (int j = 0; j < arr[i].Length; j++)
-                Console.Write(arr[i][j] + " ");
-            }
-            Console.WriteLine();
-        }
+      
     }
 }
