@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleReplace", "SimpleReplace\SimpleReplace.csproj", "{B7D0926B-6AEB-460C-85C6-E0D28B71980F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7D0926B-6AEB-460C-85C6-E0D28B71980F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7D0926B-6AEB-460C-85C6-E0D28B71980F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7D0926B-6AEB-460C-85C6-E0D28B71980F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7D0926B-6AEB-460C-85C6-E0D28B71980F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1AE8171-706B-4153-9BAC-63A71BACB78C}
+	EndGlobalSection
+EndGlobal
