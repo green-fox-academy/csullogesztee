@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrawPyramid", "DrawPyramid\DrawPyramid.csproj", "{91298F92-4E9A-40C1-AA74-B60B0BE1052C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91298F92-4E9A-40C1-AA74-B60B0BE1052C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91298F92-4E9A-40C1-AA74-B60B0BE1052C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91298F92-4E9A-40C1-AA74-B60B0BE1052C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91298F92-4E9A-40C1-AA74-B60B0BE1052C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A37878A-598F-486B-9695-AFC4B39F89ED}
+	EndGlobalSection
+EndGlobal
