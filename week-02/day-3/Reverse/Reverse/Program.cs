@@ -22,7 +22,7 @@ namespace Reverse
             string first = reversedstring.Substring(0);
             string last = reversedstring.Substring(lastindex);
 
-            for (int i = 0 ; i < (reversedstring.Length / 2); i++);
+            for (int i = 0 ; i < (reversedstring.Length / 2); i++)
             {
                 for (int j = 1; j < (reversedstring.Length / 2); j++)
                 { 
