@@ -8,13 +8,25 @@ namespace CopyFile
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Add the path of the source file");
-            string mypathfrom = Console.ReadLine();
-            Console.WriteLine("Add the path of the target file");
-            string mypathto = Console.ReadLine();
+            try
+            {
+                Console.WriteLine("Add the path of the source file");
+                string mypathfrom = Console.ReadLine();
+                Console.WriteLine("Add the path of the target file");
+                string mypathto = Console.ReadLine();
 
-            CopyMyFile(mypathfrom, mypathto);
+                CopyMyFile(mypathfrom, mypathto);
+
+                Console.WriteLine(true);
+            }
+            catch
+            {
+                Console.WriteLine(false);
+            }
+            finally
+            {
             Console.ReadLine();
+            }
         }
         static void CopyMyFile(string pathfrom, string pathto)
         {
