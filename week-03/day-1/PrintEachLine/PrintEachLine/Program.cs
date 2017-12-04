@@ -11,7 +11,10 @@ namespace PrintEachLine
             try
             {
                 string[] content = File.ReadAllLines(path);
-                Console.WriteLine(content[0]);
+                foreach (string line in content)
+                {
+                    Console.WriteLine(line);
+                }
             }
             catch
             {
