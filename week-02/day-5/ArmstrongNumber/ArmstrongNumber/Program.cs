@@ -8,37 +8,39 @@ namespace ArmstrongNumber
         static void Main(string[] args)
         {
             Console.WriteLine("Add a number");
-            string candidate = Console.ReadLine();
-            //char[] numbers = candidate.ToCharArray();
+            string input = Console.ReadLine();
 
-            int[] intnumbers = new int[candidate.Length];
-            for (int j = 0; j < candidate.Length; j++)
+            List<int> candidate = new List<int>();
+
+            foreach (var digitStr in input)
             {
-                intnumbers[j] = Convert.ToInt32(candidate[j]);
+                int digit = Int32.Parse(digitStr.ToString());
+
+                candidate.Add(digit);
             }
 
-            int yournumber = int.Parse(candidate);
+            int yournumber = int.Parse(input);
             double doubleyournumber = Convert.ToDouble(yournumber); 
 
-            double exponent = Convert.ToDouble(candidate.Length);
+            double exponent = Convert.ToDouble(candidate.Count);
 
-            double[] doublenumbers = new double[candidate.Length];
+            double[] doublenumbers = new double[candidate.Count];
 
             double sum = 0;
 
-            for (int i = 0; i < candidate.Length; i++)
+            for (int i = 0; i < candidate.Count; i++)
             {
-                //intnumbers[i] = Convert.ToInt32(numbers[i]);
-               // doublenumbers[i] = Convert.ToDouble(intnumbers[i]);
+                intnumbers[i] = Convert.ToInt32(numbers[i]);
+                doublenumbers[i] = Convert.ToDouble(intnumbers[i]);
 
-               // sum = sum + Math.Pow(doublenumbers[i], exponent);
+                sum = sum + Math.Pow(doublenumbers[i], exponent);
             }
 
-           // if (sum == doubleyournumber)
+            if (sum == doubleyournumber)
             {
                 Console.WriteLine("The " + yournumber + " is an Armstrong number");
             }
-            //else
+            else
             {
                 Console.WriteLine("The " + yournumber + " isn't an Armstrong number");
             }
