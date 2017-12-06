@@ -28,8 +28,7 @@ namespace FunctionToCenter
             // fill the canvas with lines from the edges, every 20 px, to the center.
             int myx = 212;
             int myy = 125;
-            for (int i = 0; i < 100; i++)
-            {
+
                 for (int j = 0; j < 100; j++)
                 {
                     DrawLines(foxDraw, myx, myy);
@@ -41,17 +40,16 @@ namespace FunctionToCenter
                     {
                         myy = myy + 10;
                     }
-                    else if (211 < myx && myx < 312 && myy == 225)
+                    else if (212 < myx && myx < 313 && myy == 225)
                     {
                         myx = myx - 10;
                     }
-                    else if (myx == 211 && 125 < myy && myy < 225)
+                    else if (myx == 212 && 124 < myy && myy < 226)
                     {
                         myy = myy - 10;
                     }
 
                 }
-            }
         }
         public static void DrawLines(FoxDraw foxDraw, int x, int y)
         {
