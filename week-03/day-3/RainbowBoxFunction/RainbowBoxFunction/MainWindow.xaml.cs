@@ -27,18 +27,18 @@ namespace RainbowBoxFunction
             // and draws a square of that size and color to the center of the canvas.
             // create a loop that fills the canvas with rainbow colored squares.
 
-            DrawSquares(foxDraw);
-        }
-        public static void DrawSquares(FoxDraw foxDraw)
-        {
-            Color[] color = { Colors.Red,  Colors.Orange, Colors.Yellow, Colors.Green, Colors.Blue,  Colors.Indigo, Colors.Violet};
-            double x = 340;
+            Color[] mycolor = {Colors.Red,  Colors.Orange, Colors.Yellow, Colors.Green, Colors.Blue,  Colors.Indigo, Colors.Violet};
+            double myx = 340;
             for (int i = 0; i < 7; i++)
             {
-                foxDraw.FillColor(color[i]);
-                foxDraw.DrawRectangle(262 - x / 2, 175 - x / 2, x, x);
-                x = x - i * 10;
+                DrawSquares(foxDraw, mycolor[i], myx);
+                myx = myx - (i+1) * 10;
             }
+        }
+        public static void DrawSquares(FoxDraw foxDraw, Color color, double x)
+        {
+                foxDraw.FillColor(color);
+                foxDraw.DrawRectangle(262 - x / 2, 175 - x / 2, x, x);
         }
     }
 }
