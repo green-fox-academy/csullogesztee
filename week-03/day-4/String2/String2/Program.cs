@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace String1
+namespace String2
 {
     class Program
     {
@@ -23,11 +23,10 @@ namespace String1
             }
             if (text[0] == 'x')
             {
-                text = "y" + text.Substring(1);
+                text = "" + text.Substring(1);
             }
 
             return text[0] + Replace(text.Substring(1));
         }
-        
     }
 }
