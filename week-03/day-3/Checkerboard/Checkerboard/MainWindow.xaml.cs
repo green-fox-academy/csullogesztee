@@ -62,12 +62,12 @@ namespace Checkerboard
         }
     public static void DrawWhiteSquares(FoxDraw foxDraw, double wx, double wy, double wz)
     {
-        foxDraw.FillColor(Colors.White);
+        foxDraw.FillColor(Colors.Red);
         foxDraw.DrawRectangle(wx, wy, wz, wz);
     }
     public static void DrawBlackSquares(FoxDraw foxDraw, double bx, double by, double bz)
     {
-        foxDraw.FillColor(Colors.Black);
+        foxDraw.FillColor(Colors.Blue);
         foxDraw.DrawRectangle(bx, by, bz, bz);
     }
     }
