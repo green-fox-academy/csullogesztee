@@ -26,19 +26,40 @@ namespace Triangles
             double myx = 50;
             double myy = 50;
             double mysize = 500;
-            DrawTriangle(foxDraw, myx, myy, mysize);
+            double mycount = 3;
+            DrawTriangle(foxDraw, myx, myy, mysize, mycount);
         }
-        public static void DrawTriangle(FoxDraw foxDraw, double origox, double origoy, double size)
+        public static void DrawTriangle(FoxDraw foxDraw, double origox, double origoy, double size, double count)
         {
-            foxDraw.StrokeColor(Colors.Black);
-            foxDraw.FillColor(Colors.White);
+            if (size > 0)
+            {
+                if (count < 10)
+                {
 
-            var points = new List<Point>();
-            points.Add(new Point(origox, origoy));
-            points.Add(new Point(size, origoy));
-            points.Add(new Point((size / 2), Math.Sqrt(d: (Math.Pow(size, 2) - Math.Pow((size / 2), 2)))));
+                    foxDraw.StrokeColor(Colors.Black);
+                    foxDraw.FillColor(Colors.White);
 
-            foxDraw.DrawPolygon(points);
+                    var points = new List<Point>();
+                    points.Add(new Point(origox, origoy));
+                    points.Add(new Point(origox + size, origoy));
+                    points.Add(new Point(origox + (size / 2), origoy + (Math.Sqrt(3)/2 * size)));
+
+                    foxDraw.DrawPolygon(points);
+                    count++;
+
+                    DrawTriangle(foxDraw, origox, origoy, (size / 2), count);
+                    DrawTriangle(foxDraw, origox +(size / 2), origoy, (size / 2), count);
+                    DrawTriangle(foxDraw, origox + (size / 4), (origoy + (Math.Sqrt(3) / 2 * size) / 2), (size / 2), count);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }
