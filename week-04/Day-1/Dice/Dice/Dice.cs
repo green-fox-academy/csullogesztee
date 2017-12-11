@@ -8,32 +8,22 @@ namespace Dice
 {
     class Dice
     {
-        int[] Dices = new int[6];
-        static Random RandomValue;
+        private int currentNumber;
+        Random random = new Random();
 
-    public int[] Roll()
-    {
-        for (int i = 0; i < Dices.Length; i++)
+        public int GetCurrentNumber()
         {
-                Dices[i] = RandomValue.Next(1, 6);
+            return currentNumber;
         }
-        return Dices;
-    }
-    public int[] ReRoll()
-    {
-        for (int i = 0; i < Dices.Length; i++)
+
+        public void Roll()
         {
-            Dices[i] = RandomValue.Next(1, 6);
+            currentNumber = random.Next(1, 7);
         }
-        return Dices;
-    }
-    public int[] GetCurrent()
+
+        public void ReRoll()
         {
-            return Dices;
+            currentNumber = random.Next(1, 7);
         }
-        public int GetCurrent(int i)
-        {
-            return Dices[i];
-        }
-    }
+    }   
 }
