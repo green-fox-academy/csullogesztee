@@ -17,10 +17,9 @@ namespace GreenFox
             HiredStudents = 0;
         }
 
-        public Sponsor(string name, int age, string gender, string company, int hiredStudents) : base(name, age, gender)
+        public Sponsor(string name, int age, string gender, string company) : base(name, age, gender)
         {
             this.Company = company;
-            this.HiredStudents = hiredStudents;
         }
 
         public override void Introduce()

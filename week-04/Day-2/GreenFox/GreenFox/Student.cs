@@ -20,13 +20,12 @@ namespace GreenFox
             SkippedDays = 0;
         }
 
-        public Student(string name, int age, string gender, string previousOrganization, int skippedDays):base(name,age,gender)
+        public Student(string name, int age, string gender, string previousOrganization):base(name,age,gender)
         {
             //base.Name = name;
             //base.Age = age;
             //base.Gender = gender;
             this.PreviousOrganization = previousOrganization;
-            this.SkippedDays = skippedDays;
         }
 
         public override void Introduce()

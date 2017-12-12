@@ -8,34 +8,35 @@ namespace GreenFox
 {
     class PallidaClass
     {
-        public string ClassName { get; set; }
-        public List<Student> Students { get; set; }
-        public List<Mentor> Mentors { get; set; }
+        private List<Student> students = new List<Student>();
+        private List<Mentor> mentors = new List<Mentor>();
 
-        PallidaClass(string className)
+        public string ClassName { get; set; }
+        //public List<Student> Students
+        //{ get
+        //    { return students }
+        //    set
+        //    { return students = value} };
+        //public List<Mentor> Mentors { get; set; }
+
+        public PallidaClass(string className)
         {
             this.ClassName = className;
         }
 
-        public void AddStudent()
+        public void AddStudent(Student student)
         {
-            foreach (Student student in Students)
-            {
-                Students.Add(student);
-            }
+                students.Add(student);
         }
 
-        public void AddMentor()
+        public void AddMentor(Mentor mentor)
         {
-            foreach (Mentor mentor in Mentors)
-            {
-                Mentors.Add(mentor);
-            }
+                mentors.Add(mentor);
         }
 
         public void Info()
         {
-            Console.WriteLine("Pallida " + ClassName + " class has " + Students.Count + " students and " + Mentors.Count + " mentors.");
+            Console.WriteLine("Pallida " + ClassName + " class has " + students.Count + " students and " + mentors.Count + " mentors.");
         }
     }
 }
