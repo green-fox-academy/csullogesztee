@@ -10,7 +10,7 @@ namespace Sharpie
     {
         static void Main(string[] args)
         {
-            var newsharpie = SharpieA("Black", 5.5);
+            var newsharpie = Sharpie("Black", 5.5);
 
             newsharpie.Use();
             newsharpie.Use();
