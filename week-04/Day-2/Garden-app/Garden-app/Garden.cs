@@ -8,8 +8,8 @@ namespace Garden_app
 {
     class Garden
     {
-        private List<Flower> flowers = new List<Flower>();
-        private List<Tree> trees = new List<Tree>();
+        public List<Flower> flowers = new List<Flower>();
+        public List<Tree> trees = new List<Tree>();
 
         public List<Flower> Flowers
         {
@@ -44,13 +44,17 @@ namespace Garden_app
             Trees.Add(tree);
         }
 
-        public void Watering(int amountofwater, int waterofflower, int wateroftree)
+        public int WateringFlower(int amountofwater, int waterofflower)
         {
             waterofflower = waterofflower + (amountofwater / (Flowers.Count + Trees.Count) * 75 / 100);
-            wateroftree = wateroftree + (amountofwater / (Flowers.Count + Trees.Count) * 40 / 100);
 
-            //return waterofflower;
-            //return wateroftree;
+            return waterofflower;
+        }
+        public int WateringTree (int amountofwater, int wateroftree)
+        {
+            wateroftree = wateroftree + (amountofwater / (Flowers.Count + Trees.Count) * 40 / 100);
+            
+            return wateroftree;
         }
     }
 }

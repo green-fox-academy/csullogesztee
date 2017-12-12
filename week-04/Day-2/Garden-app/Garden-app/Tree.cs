@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Garden_app
 {
-    class Tree
+    class Tree : Garden
     {
-        private int WaterAmountTree;
 
+        public int WaterAmountTree;
         public string ColorOfTree { get; set; }
 
-        public Tree(string colorOfTree)
+        public Tree(string colorOfTree, int waterAmountTree)
         {
             this.ColorOfTree = colorOfTree;
-            WaterAmountTree = 2;
+            this.WaterAmountTree = waterAmountTree;
         }
 
         public void NeedWater()
