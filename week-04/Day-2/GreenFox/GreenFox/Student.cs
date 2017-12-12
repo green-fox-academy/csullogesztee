@@ -13,18 +13,12 @@ namespace GreenFox
 
         public Student():base()
         {
-            //Name = "Jane Doe";
-            //Age = 30;
-            //Gender = "female";
             PreviousOrganization = "The School of Life";
             SkippedDays = 0;
         }
 
         public Student(string name, int age, string gender, string previousOrganization):base(name,age,gender)
         {
-            //base.Name = name;
-            //base.Age = age;
-            //base.Gender = gender;
             this.PreviousOrganization = previousOrganization;
         }
 

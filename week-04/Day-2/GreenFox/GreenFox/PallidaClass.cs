@@ -12,12 +12,28 @@ namespace GreenFox
         private List<Mentor> mentors = new List<Mentor>();
 
         public string ClassName { get; set; }
-        //public List<Student> Students
-        //{ get
-        //    { return students }
-        //    set
-        //    { return students = value} };
-        //public List<Mentor> Mentors { get; set; }
+        public List<Student> Students
+        {
+            get
+            {
+                return students; 
+            }
+            set
+            {
+                students = value;
+            }
+        }
+        public List<Mentor> Mentors
+        {
+            get
+            {
+                return mentors;
+            }
+            set
+            {
+                mentors = value;
+            }
+        }
 
         public PallidaClass(string className)
         {
@@ -26,17 +42,17 @@ namespace GreenFox
 
         public void AddStudent(Student student)
         {
-                students.Add(student);
+                Students.Add(student);
         }
 
         public void AddMentor(Mentor mentor)
         {
-                mentors.Add(mentor);
+                Mentors.Add(mentor);
         }
 
         public void Info()
         {
-            Console.WriteLine("Pallida " + ClassName + " class has " + students.Count + " students and " + mentors.Count + " mentors.");
+            Console.WriteLine("Pallida " + ClassName + " class has " + Students.Count + " students and " + Mentors.Count + " mentors.");
         }
     }
 }
