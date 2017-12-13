@@ -44,17 +44,17 @@ namespace Garden_app
             Trees.Add(tree);
         }
 
-        public int WateringFlower(int amountofwater, int waterofflower)
+        public void WateringFlower(int amountofwater, Flower flower)
         {
-            waterofflower = waterofflower + (amountofwater / (Flowers.Count + Trees.Count) * 75 / 100);
+            flower.WaterAmountFlower = flower.WaterAmountFlower + (amountofwater / (Flowers.Count + Trees.Count) * 75 / 100);
 
-            return waterofflower;
+            //return waterofflower;
         }
-        public int WateringTree (int amountofwater, int wateroftree)
+        public void WateringTree (int amountofwater, Tree tree)
         {
-            wateroftree = wateroftree + (amountofwater / (Flowers.Count + Trees.Count) * 40 / 100);
+            tree.WaterAmountTree = tree.WaterAmountTree + (amountofwater / (Flowers.Count + Trees.Count) * 40 / 100);
             
-            return wateroftree;
+            //return wateroftree;
         }
     }
 }

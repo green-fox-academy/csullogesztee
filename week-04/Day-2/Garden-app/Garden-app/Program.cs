@@ -21,15 +21,18 @@ namespace Garden_app
             Tree tree2 = new Tree("orange", 5);
             plantsofgarden.AddTree(tree2);
 
-            int addsomewater = 500;
+            int addsomewater = 400;
+
+            
 
             for (int i = 0; i < 2; i++)
             {
                 plantsofgarden.Flowers[i].NeedWater();
                 plantsofgarden.Trees[i].NeedWater();
                 Console.WriteLine("flower: " + plantsofgarden.Flowers[i].WaterAmountFlower + " tree: " + plantsofgarden.Trees[i].WaterAmountTree);
-                plantsofgarden.WateringFlower(addsomewater, plantsofgarden.Flowers[i].WaterAmountFlower);
-                plantsofgarden.WateringTree(addsomewater, plantsofgarden.Trees[i].WaterAmountTree);
+                plantsofgarden.WateringFlower(addsomewater, plantsofgarden.Flowers[i]);
+                plantsofgarden.WateringTree(addsomewater, plantsofgarden.Trees[i]);
+                
                 Console.WriteLine("flower: " + plantsofgarden.Flowers[i].WaterAmountFlower + " tree: " + plantsofgarden.Trees[i].WaterAmountTree);
             }
             Console.ReadLine();
