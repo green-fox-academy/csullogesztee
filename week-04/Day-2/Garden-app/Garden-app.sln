@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garden-app", "Garden-app\Garden-app.csproj", "{A4A425A6-DE94-4BD9-8B76-0F0F688DBFC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Garden-app2", "Garden-app2\Garden-app2.csproj", "{5A0D9BB7-4C78-4A3B-BA8D-BF4D055F3220}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A4A425A6-DE94-4BD9-8B76-0F0F688DBFC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4A425A6-DE94-4BD9-8B76-0F0F688DBFC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4A425A6-DE94-4BD9-8B76-0F0F688DBFC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A0D9BB7-4C78-4A3B-BA8D-BF4D055F3220}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A0D9BB7-4C78-4A3B-BA8D-BF4D055F3220}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A0D9BB7-4C78-4A3B-BA8D-BF4D055F3220}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A0D9BB7-4C78-4A3B-BA8D-BF4D055F3220}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
