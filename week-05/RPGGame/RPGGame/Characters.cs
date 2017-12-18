@@ -7,15 +7,20 @@ using GreenFox;
 
 namespace RPGGame
 {
-    class Characters
+    public class Characters
     {
         public FoxDraw myfoxDraw { get; set; }
 
-        protected int MaxHealthPoint { get; set; }
-        protected int CurrentHealthPoint { get; set; }
-        protected int DefendPoint { get; set; }
-        protected int StrikePoint { get; set; }
+        public int MaxHealthPoint { get; set; }
+        public int CurrentHealthPoint { get; set; }
+        public int DefendPoint { get; set; }
+        public int StrikePoint { get; set; }
         public bool Alive { get; set; }
+
+        public Characters()
+        {
+
+        }
 
         public Characters(int HP, int DP, int SP)
         {

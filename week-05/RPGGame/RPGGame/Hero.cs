@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GreenFox;
 
 namespace RPGGame
 {
-    class Hero : Characters
+    public class Hero : Characters
     {
+        public FoxDraw herofoxDraw { get; set; }
+
+        public Hero(FoxDraw foxDraw)
+        {
+            herofoxDraw = foxDraw;
+        }
+
         public Hero(int HP, int DP, int SP) : base(HP, DP, SP)
         {
             

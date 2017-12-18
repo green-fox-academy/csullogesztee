@@ -18,15 +18,48 @@ namespace RPGGame
 {
     public partial class MainWindow : Window
     {
+        public FoxDraw foxDraw;
+        public Hero hero;
+
         public MainWindow()
         {
             InitializeComponent();
-            var foxDraw = new FoxDraw(canvas);
+            foxDraw = new FoxDraw(canvas);
+            hero = new Hero(foxDraw);
             var mymap = new Map(foxDraw);
 
             mymap.MapCreater();
             mymap.WallCreater();
             
+        }
+        private void WindowKeyDown(object sender, KeyEventArgs e)
+        {
+            int xcoordinate = 0;
+            int ycoordinate = 0;
+
+            if (e.Key == Key.Left)
+            {
+                xcoordinate = xcoordinate - 50;
+                hero.DrawLeftHero(xcoordinate, ycoordinate);
+                
+            }
+
+            if (e.Key == Key.Right)
+            {
+                xcoordinate = xcoordinate + 50;
+                hero.DrawRightHero(xcoordinate, ycoordinate);
+            }
+            if (e.Key == Key.Up)
+            {
+                ycoordinate = ycoordinate - 50;
+                hero.DrawUpHero(xcoordinate, ycoordinate);
+            }
+
+            if (e.Key == Key.Down)
+            {
+                ycoordinate = ycoordinate + 50;
+                hero.DrawDownHero(xcoordinate, ycoordinate);
+            }
         }
     }
 }
