@@ -62,12 +62,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="FoxDraw.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Map.cs" />
+    <Compile Include="Moves.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -92,6 +95,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="boss.png" />
+    <Resource Include="floor.png" />
+    <Resource Include="hero-down.png" />
+    <Resource Include="hero-left.png" />
+    <Resource Include="hero-right.png" />
+    <Resource Include="hero-up.png" />
+    <Resource Include="skeleton.png" />
+    <Resource Include="wall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

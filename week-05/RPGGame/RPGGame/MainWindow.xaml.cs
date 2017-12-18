@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using GreenFox;
 
 namespace RPGGame
 {
@@ -20,6 +21,11 @@ namespace RPGGame
         public MainWindow()
         {
             InitializeComponent();
+            var foxDraw = new FoxDraw(canvas);
+            var mymap = new Map(foxDraw);
+
+            mymap.MapCreater();
+            
         }
     }
 }
