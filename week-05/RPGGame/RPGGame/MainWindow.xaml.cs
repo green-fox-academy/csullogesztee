@@ -25,6 +25,7 @@ namespace RPGGame
             var mymap = new Map(foxDraw);
 
             mymap.MapCreater();
+            mymap.WallCreater();
             
         }
     }
