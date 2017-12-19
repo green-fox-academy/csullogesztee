@@ -8,8 +8,8 @@ namespace aircraft_carrier
 {
     class Aircraft
     {
-        public int MaxAmmo { get; set; }
-        public int BaseDamage { get; set; }
+        public int MaxAmmo { get;}
+        public int BaseDamage { get;}
         public int CurrentAmmo { get; set; }
 
         public int HealthPoint { get; set; }

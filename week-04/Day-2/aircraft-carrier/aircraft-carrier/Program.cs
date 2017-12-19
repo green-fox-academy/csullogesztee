@@ -10,27 +10,56 @@ namespace aircraft_carrier
     {
         static void Main(string[] args)
         {
-            Carrier carrier1 = new Carrier();
-            Carrier carrier2 = new Carrier(5000);
+            Carrier mycarrier= new Carrier();
+            Carrier enemy = new Carrier();
 
-            carrier1.GetStatusCarrier();
+            Console.WriteLine(mycarrier.GetStatusCarrier());
 
-            carrier1.AddAirCraft("F35");
-            carrier1.AddAirCraft("F35");
-            carrier1.AddAirCraft("F35");
-            carrier1.AddAirCraft("F16");
-            carrier1.AddAirCraft("F16");
+            mycarrier.AddAirCraft("F35");
+            mycarrier.AddAirCraft("F35");
+            mycarrier.AddAirCraft("F35");
+            mycarrier.AddAirCraft("F16");
+            mycarrier.AddAirCraft("F16");
 
-            carrier1.GetStatusAirCrafts();
+            Console.WriteLine(mycarrier.GetStatusCarrier());
+            foreach (string status in mycarrier.GetStatusAirCrafts())
+            {
+                Console.WriteLine(status);
+            }
 
-            carrier1.Fill();
+            mycarrier.Fill();
 
-            carrier1.GetStatusCarrier();
-            carrier1.GetStatusAirCrafts();
+            Console.WriteLine(mycarrier.GetStatusCarrier());
+            foreach (string status in mycarrier.GetStatusAirCrafts())
+            {
+                Console.WriteLine(status);
+            }
 
-            carrier2.GetFight(carrier1);
+            enemy.GetFight(mycarrier);
 
-            carrier2.GetStatusCarrier();
+            Console.WriteLine(mycarrier.GetStatusCarrier());
+            foreach (string status in mycarrier.GetStatusAirCrafts())
+            {
+                Console.WriteLine(status);
+            }
+            Console.WriteLine(enemy.GetStatusCarrier());
+
+            mycarrier.Fill();
+
+            Console.WriteLine(mycarrier.GetStatusCarrier());
+            foreach (string status in mycarrier.GetStatusAirCrafts())
+            {
+                Console.WriteLine(status);
+            }
+
+            enemy.GetFight(mycarrier);
+
+            Console.WriteLine(mycarrier.GetStatusCarrier());
+            foreach (string status in mycarrier.GetStatusAirCrafts())
+            {
+                Console.WriteLine(status);
+            }
+            Console.WriteLine(enemy.GetStatusCarrier());
 
             Console.ReadKey();
         }

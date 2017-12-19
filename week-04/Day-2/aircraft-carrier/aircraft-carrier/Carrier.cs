@@ -12,17 +12,12 @@ namespace aircraft_carrier
         public List<Aircraft> aircraftsOfCarrier = new List<Aircraft>();
         public int AllAmmo = 2300;
         public int CurrentAmmo;
+        public int TotalDamage = 0;
 
         public Carrier()
         {
             SumHealthPoint = 5000;
-            CurrentAmmo = AllAmmo;
-        }
-
-        public Carrier(int HP)
-        {
-            SumHealthPoint = HP;
-        }
+            CurrentAmmo = AllAmmo;        }
 
         public void AddAirCraft(string Type)
         {
@@ -40,40 +35,51 @@ namespace aircraft_carrier
         {
             foreach (Aircraft aircraft in aircraftsOfCarrier)
             {
-                CurrentAmmo = aircraft.ReFill(CurrentAmmo);
+                if (CurrentAmmo > aircraft.MaxAmmo)
+                {
+                    CurrentAmmo = aircraft.ReFill(CurrentAmmo);
+                }
+                else
+                {
+                    if (aircraft.ToString() == "F35")
+                    {
+                        CurrentAmmo = aircraft.ReFill(CurrentAmmo);
+                    }
+                }
             }
         }
 
         public void GetFight(Carrier othercarrier)
         {
-            int SumDamage = 0;
             foreach (Aircraft aircraft in othercarrier.aircraftsOfCarrier)
             {
-                SumDamage = SumDamage + aircraft.Fight();
+                TotalDamage = TotalDamage + aircraft.Fight();
             }
-            SumHealthPoint = SumHealthPoint - SumDamage;
+            SumHealthPoint = SumHealthPoint - TotalDamage;
         }
 
-        public void GetStatusAirCrafts()
+        public List<string> GetStatusAirCrafts()
         {
-            Console.WriteLine("Aircrafts:");
+            List<string> statusesOfAircrafts = new List<string>();
+
             foreach (Aircraft aircraft in aircraftsOfCarrier)
             {
-                Console.WriteLine("Type " + aircraft.ToString() + ", Ammo: " + aircraft.MaxAmmo + ", Base Damage: "
-                    + aircraft.BaseDamage + ", All Damage: " + aircraft.BaseDamage * aircraft.CurrentAmmo);
+                 statusesOfAircrafts.Add(string.Format("Type {0}, Ammo: {1}, Base Damage: {2}, All Damage: {3}",
+                    aircraft.ToString(), aircraft.CurrentAmmo, aircraft.BaseDamage, (aircraft.BaseDamage * aircraft.CurrentAmmo)));
             }
+            return statusesOfAircrafts;
         }
 
-        public void GetStatusCarrier()
+        public string GetStatusCarrier()
         {
             if (SumHealthPoint > 0)
             {
-                Console.WriteLine("HP: " + SumHealthPoint + ", Aircraft count: " + aircraftsOfCarrier.Count + ", Ammo Storage: "
-                    + CurrentAmmo + ", Total Damage: ");
+                return string.Format("HP: {0}, Aircraft count: {1}, Ammo Storage: {2}, Total Damage: {3}",
+                    SumHealthPoint, aircraftsOfCarrier.Count, CurrentAmmo, TotalDamage );
             }
             else
             {
-                Console.WriteLine("It's dead Jim :(");
+                return string.Format("It's dead Jim :(");
             }
         }
     }
