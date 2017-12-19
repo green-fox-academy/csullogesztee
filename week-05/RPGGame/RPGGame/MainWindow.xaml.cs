@@ -18,24 +18,18 @@ namespace RPGGame
 {
     public partial class MainWindow : Window
     {
-        public FoxDraw foxDraw;
-        public FoxDraw foxDraw1;
-        public Hero hero;
-        public Map mymap;
-
         public MainWindow()
         {
-         
+            //FoxDraw foxDraw = new FoxDraw(canvas);
+            Map mymap = new Map(canvas);
+
+            mymap.CreateMap();
         }
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
-            int xcoordinate = 0;
-            int ycoordinate = 0;
-
             if (e.Key == Key.Left)
             {
 
-                
             }
 
             if (e.Key == Key.Right)
