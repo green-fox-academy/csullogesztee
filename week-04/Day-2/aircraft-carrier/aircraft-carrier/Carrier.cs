@@ -40,8 +40,7 @@ namespace aircraft_carrier
         {
             foreach (Aircraft aircraft in aircraftsOfCarrier)
             {
-                aircraft.ReFill(AllAmmo);
-                CurrentAmmo = CurrentAmmo - aircraft.ReFill(AllAmmo);
+                CurrentAmmo = aircraft.ReFill(CurrentAmmo);
             }
         }
 
@@ -60,7 +59,8 @@ namespace aircraft_carrier
             Console.WriteLine("Aircrafts:");
             foreach (Aircraft aircraft in aircraftsOfCarrier)
             {
-                Console.WriteLine("Type " + aircraft.ToString() + ", Ammo: " + aircraft.MaxAmmo + ", Base Damage: " + aircraft.BaseDamage + ", All Damage: " + aircraft.BaseDamage * aircraft.CurrentAmmo);
+                Console.WriteLine("Type " + aircraft.ToString() + ", Ammo: " + aircraft.MaxAmmo + ", Base Damage: "
+                    + aircraft.BaseDamage + ", All Damage: " + aircraft.BaseDamage * aircraft.CurrentAmmo);
             }
         }
 
@@ -68,7 +68,8 @@ namespace aircraft_carrier
         {
             if (SumHealthPoint > 0)
             {
-                Console.WriteLine("HP: " + SumHealthPoint + ", Aircraft count: " + aircraftsOfCarrier.Count + ", Ammo Storage: " + CurrentAmmo + ", Total Damage: " );
+                Console.WriteLine("HP: " + SumHealthPoint + ", Aircraft count: " + aircraftsOfCarrier.Count + ", Ammo Storage: "
+                    + CurrentAmmo + ", Total Damage: " );
             }
             else
             {
