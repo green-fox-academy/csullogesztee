@@ -14,8 +14,7 @@ namespace GreenFox
         private const int TILEHEIGHT = 50;
 
         private Canvas Canvas { get; set; }
-        private SolidColorBrush LineColor { get; set; } = SystemColors.WindowFrameBrush;
-        private SolidColorBrush ShapeColor { get; set; } = new SolidColorBrush(Colors.DarkGreen);
+
 
         public FoxDraw(Canvas canvas)
         {

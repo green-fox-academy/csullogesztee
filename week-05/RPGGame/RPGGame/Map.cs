@@ -23,56 +23,96 @@ namespace RPGGame
             myfoxDraw = new FoxDraw(canvas);
         }
 
-        int RandomWall()
+        public int[,] GenerateMap()
         {
-            return random.Next(MapWidth * MapHeigth);
-        }
+            int x = 0;
+            int y = 0;
 
-        bool WallChecker(int[] map, int number)
-        {
-            if (map[number] != 1)
+            int[,] map = new int[,]
             {
-                map[number] = 1;
-                return true;
-            }
-
-            return false;
-        }
-
-        int[] GenerateMap()
-        {
-            int[] map = new int[MapWidth * MapHeigth];
-
-            for (int i = 0; i < WallCount;)
-            {
-                if (WallChecker(map, RandomWall()))
-                    i++;
-            }
-
-            return map;
-        }
-
-        public void CreateMap()
-        {
-            int xcoordinate = 0;
-            int ycoordinate = 0;
+                {0, 0, 0, 1, 0, 1, 0, 0, 0, 0 },
+                {0, 0, 0, 1, 0, 1, 0, 1, 1, 0 },
+                {0, 1, 1, 1, 0, 1, 0, 1, 1, 0 },
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0 },
+                {1, 1, 1, 1, 0, 1, 1, 1, 1, 0 },
+                {0, 1, 0, 1, 0, 0, 0, 0, 1, 0 },
+                {0, 1, 0, 1, 0, 1, 1, 0, 1, 0 },
+                {0, 0, 0, 0, 0, 1, 1, 0, 1, 0 },
+                {0, 1, 1, 1, 0, 0, 0, 0, 1, 0 },
+                {0, 0, 0, 1, 0, 1, 1, 0, 1, 0 },
+                {0, 1, 0, 1, 0, 1, 0, 0, 0, 0 }
+            };
 
             for (int i = 0; i < MapHeigth; i++)
             {
                 for (int j = 0; j < MapWidth; j++)
                 {
-                    if (GenerateMap()[i * 10 + j] == 1)
+                    if (map[i, j] == 0)
                     {
-                        myfoxDraw.AddImage("./wall.png", xcoordinate, ycoordinate);
+                        myfoxDraw.AddImage("./floor.png", x, y);
                     }
                     else
                     {
-                        myfoxDraw.AddImage("./floor.png", xcoordinate, ycoordinate);
+                        myfoxDraw.AddImage("./wall.png", x, y);
                     }
-                    xcoordinate += j * 50;
+                    x += 50;
                 }
-                ycoordinate += i * 50;
+                x = 0;
+                y += 50;
             }
+            return map;
         }
     }
+    //int RandomWall()
+    //{
+    //    return random.Next(MapWidth * MapHeigth);
+    //}
+
+    //bool WallChecker(int[] map, int number)
+    //{
+    //    if (map[number] != 1)
+    //    {
+    //        map[number] = 1;
+    //        return true;
+    //    }
+
+    //    return false;
+    //}
+
+    //int[] GenerateMap()
+    //{
+    //    int[] map = new int[MapWidth * MapHeigth];
+
+    //    for (int i = 0; i < WallCount;)
+    //    {
+    //        if (WallChecker(map, RandomWall()))
+    //            i++;
+    //    }
+
+    //    return map;
+    //}
+
+    //public void CreateMap()
+    //{
+    //    int xcoordinate = 0;
+    //    int ycoordinate = 0;
+
+    //    for (int i = 0; i < MapHeigth; i++)
+    //    {
+    //        for (int j = 0; j < MapWidth; j++)
+    //        {
+    //            if (GenerateMap()[i * 10 + j] == 1)
+    //            {
+    //                myfoxDraw.AddImage("./wall.png", xcoordinate, ycoordinate);
+    //            }
+    //            else
+    //            {
+    //                myfoxDraw.AddImage("./floor.png", xcoordinate, ycoordinate);
+    //            }
+    //            xcoordinate += j * 50;
+    //        }
+    //        ycoordinate += i * 50;
+    //    }
+    //}
 }
+

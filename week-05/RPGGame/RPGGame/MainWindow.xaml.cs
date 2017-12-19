@@ -20,11 +20,15 @@ namespace RPGGame
     {
         public MainWindow()
         {
+            InitializeComponent();
             //FoxDraw foxDraw = new FoxDraw(canvas);
             Map mymap = new Map(canvas);
 
-            mymap.CreateMap();
+            mymap.GenerateMap();
+
+
         }
+
         private void WindowKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Left)
