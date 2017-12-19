@@ -69,7 +69,7 @@ namespace aircraft_carrier
             if (SumHealthPoint > 0)
             {
                 Console.WriteLine("HP: " + SumHealthPoint + ", Aircraft count: " + aircraftsOfCarrier.Count + ", Ammo Storage: "
-                    + CurrentAmmo + ", Total Damage: " );
+                    + CurrentAmmo + ", Total Damage: ");
             }
             else
             {
