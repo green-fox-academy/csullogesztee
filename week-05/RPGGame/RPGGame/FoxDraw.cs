@@ -10,26 +10,43 @@ namespace GreenFox
 {
     public class FoxDraw
     {
-        private const int TILEWIDTH = 50;
-        private const int TILEHEIGHT = 50;
 
-        private Canvas Canvas { get; set; }
+        private const int TileSize = 50;
+        public Canvas Canvas { get; set; }
 
+        public List<Image> HeroImages { get; set; }
+        public List<Image> Tiles { get; set; }
 
         public FoxDraw(Canvas canvas)
         {
             Canvas = canvas;
+            HeroImages = new List<Image>();
         }
 
-        public void AddImage(string source, double x, double y)
+        public void AddHeroImage(string source, double x, double y)
         {
             var image = new Image()
             {
-                Width = TILEWIDTH,
-                Height = TILEHEIGHT,
+                Width = TileSize,
+                Height = TileSize,
                 Source = new BitmapImage(new Uri(source, UriKind.Relative))
             };
 
+            HeroImages.Add(image);
+            Canvas.Children.Add(image);
+            SetPosition(image, x, y);
+        }
+
+        public void AddTilesImage(string source, double x, double y)
+        {
+            var image = new Image()
+            {
+                Width = TileSize,
+                Height = TileSize,
+                Source = new BitmapImage(new Uri(source, UriKind.Relative))
+            };
+
+            Tiles.Add(image);
             Canvas.Children.Add(image);
             SetPosition(image, x, y);
         }
@@ -44,6 +61,22 @@ namespace GreenFox
         {
             Canvas.SetLeft(uIElement, x);
             Canvas.SetTop(uIElement, y);
+        }
+
+        public double GetLeft(UIElement uIElement)
+        {
+            return Canvas.GetLeft(uIElement);
+        }
+
+        public double GetTop(UIElement uIElement)
+        {
+            return Canvas.GetTop(uIElement);
+        }
+
+        public void ClearCanvas()
+        {
+            Canvas.Children.Clear();
+
         }
     }
 }
