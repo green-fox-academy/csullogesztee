@@ -20,18 +20,16 @@ namespace GreenFox
                 char[] word2arr = word2.ToCharArray();
                 Array.Sort(word1arr);
                 Array.Sort(word2arr);
-                foreach (char letter1 in word1arr)
+                for (int i = 0; i < word1arr.Length; i++)
                 {
-                    foreach (char letter2 in word2arr)
+                    if (word1arr[i] == word2arr[i])
                     {
-                        if (letter1 == letter2)
-                        {
-                            solution = true;
-                        }
-                        else
-                        {
-                            solution = false;
-                        }
+                        solution = true;
+                    }
+                    if (word1arr[i] != word2arr[i])
+                    {
+                        solution = false;
+                        break;
                     }
                 }
             }

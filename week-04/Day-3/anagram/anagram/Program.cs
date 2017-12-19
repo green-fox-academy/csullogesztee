@@ -23,25 +23,23 @@ namespace Anagram
     {
         public static bool AnagramChecker(string text1, string text2)
         {
-            bool solution = false;
+            bool solution = true;
             if (text1.Length == text2.Length)
             {
                 char[] text1arr = text1.ToCharArray();
                 char[] text2arr = text2.ToCharArray();
                 Array.Sort(text1arr);
                 Array.Sort(text2arr);
-                foreach (char letter1 in text1arr)
+                for (int i = 0; i < text1.Length; i++)
                 {
-                    foreach (char letter2 in text2arr)
+                    if (text1arr[i] == text2arr[i])
                     {
-                        if (letter1 == letter2)
-                        {
-                            solution =  true;
-                        }
-                        else
-                        {
-                            solution = false;
-                        }
+                        solution = true;
+                    }
+                    if (text1arr[i] != text2arr[i])
+                    {
+                        solution = false;
+                        break;
                     }
                 }
             }

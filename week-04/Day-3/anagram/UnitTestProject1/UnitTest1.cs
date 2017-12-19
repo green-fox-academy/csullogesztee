@@ -32,5 +32,17 @@ namespace UnitTestAnagram
 
             Assert.AreEqual(expected, output);
         }
+        [Test]
+        public void TestMethod3()
+        {
+            var anagramcheck = new AnagramCheck();
+            string input1 = "aaabddd";
+            string input2 = "aaacddd";
+
+            bool expected = false;
+            bool output = AnagramCheck.AnagramChecker(input1, input2);
+
+            Assert.AreEqual(expected, output);
+        }
     }
 }
