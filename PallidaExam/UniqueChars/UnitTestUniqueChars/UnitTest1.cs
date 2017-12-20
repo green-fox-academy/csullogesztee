@@ -13,10 +13,10 @@ namespace UnitTestUniqueChars
         {
             var unique = new Unique();
 
-            string text = "something";
+            string text = "apple";
 
-            char expected = 'e';
-            char output = Unique.UniqueCharacters(text)[3];
+            char expected = 'a';
+            char output = Unique.UniqueCharacters(text)[0];
 
             Assert.AreEqual(expected, output);
         }
@@ -29,7 +29,7 @@ namespace UnitTestUniqueChars
             string text = "othertext";
 
             char expected = 'h';
-            char output = Unique.UniqueCharacters(text)[2];
+            char output = Unique.UniqueCharacters(text)[1];
 
             Assert.AreEqual(expected, output);
         }
@@ -39,7 +39,7 @@ namespace UnitTestUniqueChars
         {
             var unique = new Unique();
 
-            string text = "Anothertext";
+            string text = "Anothervariant";
 
             char expected = 'A';
             char output = Unique.UniqueCharacters(text)[0];

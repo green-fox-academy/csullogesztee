@@ -28,20 +28,37 @@ namespace UniqueChars
         }
 
     }
-        public class Unique
+    public class Unique
+    {
+        public static List<char> UniqueCharacters(string addedtext)
         {
-            public static List<char> UniqueCharacters(string addedtext)
+            char[] characters = addedtext.ToCharArray();
+
+            List<char> charactersOfText = new List<char>();
+
+            Dictionary<char, int> NumberOfCharacters = new Dictionary<char, int>();
+            NumberOfCharacters.Add(characters[0], 1);
+
+            for (int i = 1; i < characters.Length; i++)
             {
-                List<char> charactersOfText = new List<char>();
-
-                char[] characters = addedtext.ToCharArray();
-
-                foreach (char character in characters)
+                if (NumberOfCharacters.ContainsKey(characters[i]))
                 {
-                    charactersOfText.Add(character);
+                    NumberOfCharacters[characters[i]]++;
                 }
-
-                return charactersOfText;
+                else
+                {
+                    NumberOfCharacters.Add(characters[i], 1);
+                }
             }
+            foreach (KeyValuePair<char, int> element in NumberOfCharacters)
+            {
+                if (element.Value == 1)
+                {
+                    charactersOfText.Add(element.Key);
+                }
+            }
+
+            return charactersOfText;
         }
+    }
 }
