@@ -10,130 +10,137 @@ namespace CAB
     {
         static void Main(string[] args)
         {
-            Random random = new Random();
-
-            int originalNumber = random.Next(1000, 10000);
-            char[] examined = Convert.ToString(originalNumber).ToCharArray();
-            char[] yournumber;
-            int lineCounter = 0;
-
-            string result = "[cow][cow][cow][cow]";
-
-            do
-            {
-                Console.WriteLine("Add your four-digit solution!");
-                yournumber = Console.ReadLine().ToCharArray();
-                lineCounter++;
-
-                Console.WriteLine(lineCounter + ". " + GameLogic(examined, yournumber));
-            }
-            while (GameLogic(examined, yournumber) != result);
-
+            TheGame.Game();
             Console.ReadLine();
 
         }
 
-        public static string GameLogic(char[] NumberOfComputer, char[] NumberOfPlayer)
+        public class TheGame
         {
-            string first = "";
-            string second = "";
-            string third = "";
-            string fourth = "";
-
-            List<char> NumberOfComputerList = new List<char>();
-            foreach (char number in NumberOfComputer)
+            public static void Game()
             {
-                NumberOfComputerList.Add(number);
+
+                Random random = new Random();
+                int originalNumber = random.Next(1000, 10000);
+
+                char[] examined = Convert.ToString(originalNumber).ToCharArray();
+                char[] yournumber;
+                int lineCounter = 0;
+
+                string result = "[cow][cow][cow][cow]";
+
+                do
+                {
+                    Console.WriteLine("Add your four-digit solution!");
+                    yournumber = Console.ReadLine().ToCharArray();
+                    lineCounter++;
+
+                    Console.WriteLine(lineCounter + ". " + GameLogic(examined, yournumber));
+                }
+                while (GameLogic(examined, yournumber) != result);
             }
 
-            for (int i = 0; i < NumberOfComputer.Length; i++)
+            public static string GameLogic(char[] NumberOfComputer, char[] NumberOfPlayer)
             {
-                if (i == 0)
+                string first = "";
+                string second = "";
+                string third = "";
+                string fourth = "";
+
+                List<char> NumberOfComputerList = new List<char>();
+                foreach (char number in NumberOfComputer)
                 {
-                    if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
+                    NumberOfComputerList.Add(number);
+                }
+
+                for (int i = 0; i < NumberOfComputer.Length; i++)
+                {
+                    if (i == 0)
                     {
-                        if (NumberOfPlayer[i] == NumberOfComputer[i])
+                        if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
                         {
-                            first = "[cow]";
+                            if (NumberOfPlayer[i] == NumberOfComputer[i])
+                            {
+                                first = "[cow]";
+                            }
+                            else
+                            {
+                                first = "[bull]";
+                            }
+                            NumberOfComputerList.Remove(NumberOfPlayer[i]);
                         }
                         else
                         {
-                            first = "[bull]";
+                            first = "[ ]";
                         }
-                        NumberOfComputerList.Remove(NumberOfPlayer[i]);
                     }
-                    else
+                    if (i == 1)
                     {
-                        first = "[ ]";
-                    }
-                }
-                if (i == 1)
-                {
-                    if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
-                    {
-                        if (NumberOfPlayer[i] == NumberOfComputer[i])
+                        if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
                         {
-                            second = "[cow]";
+                            if (NumberOfPlayer[i] == NumberOfComputer[i])
+                            {
+                                second = "[cow]";
+                            }
+                            else
+                            {
+                                second = "[bull]";
+                            }
+                            NumberOfComputerList.Remove(NumberOfPlayer[i]);
                         }
                         else
                         {
-                            second = "[bull]";
+                            second = "[ ]";
                         }
-                        NumberOfComputerList.Remove(NumberOfPlayer[i]);
                     }
-                    else
+                    if (i == 2)
                     {
-                        second = "[ ]";
-                    }
-                }
-                if (i == 2)
-                {
-                    if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
-                    {
-                        if (NumberOfPlayer[i] == NumberOfComputer[i])
+                        if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
                         {
-                            third = "[cow]";
+                            if (NumberOfPlayer[i] == NumberOfComputer[i])
+                            {
+                                third = "[cow]";
+                            }
+                            else
+                            {
+                                third = "[bull]";
+                            }
+                            NumberOfComputerList.Remove(NumberOfPlayer[i]);
                         }
                         else
                         {
-                            third = "[bull]";
+                            third = "[ ]";
                         }
-                        NumberOfComputerList.Remove(NumberOfPlayer[i]);
                     }
-                    else
+                    if (i == 3)
                     {
-                        third = "[ ]";
-                    }
-                }
-                if (i == 3)
-                {
-                    if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
-                    {
-                        if (NumberOfPlayer[i] == NumberOfComputer[i])
+                        if (NumberOfComputerList.Contains(NumberOfPlayer[i]))
                         {
-                            fourth = "[cow]";
+                            if (NumberOfPlayer[i] == NumberOfComputer[i])
+                            {
+                                fourth = "[cow]";
+                            }
+                            else
+                            {
+                                fourth = "[bull]";
+                            }
+                            NumberOfComputerList.Remove(NumberOfPlayer[i]);
                         }
                         else
                         {
-                            fourth = "[bull]";
+                            fourth = "[ ]";
                         }
-                        NumberOfComputerList.Remove(NumberOfPlayer[i]);
-                    }
-                    else
-                    {
-                        fourth = "[ ]";
                     }
                 }
+
+                StringBuilder currentline = new StringBuilder();
+                currentline.Append(first);
+                currentline.Append(second);
+                currentline.Append(third);
+                currentline.Append(fourth);
+
+                return Convert.ToString(currentline);
             }
-
-            StringBuilder currentline = new StringBuilder();
-            currentline.Append(first);
-            currentline.Append(second);
-            currentline.Append(third);
-            currentline.Append(fourth);
-
-
-            return Convert.ToString(currentline);
         }
     }
 }
