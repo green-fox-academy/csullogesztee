@@ -12,12 +12,17 @@ namespace Doubled
             string pathFrom = @"C:\Users\Esztee\greenfox\csullogesztee\week-03\day-1\Doubled\Doubled\duplicated-chars.txt";
             string pathTo = @"C:\Users\Esztee\greenfox\csullogesztee\week-03\day-1\Doubled\Doubled\single-chars.txt";
 
+            string[] content = File.ReadAllLines(pathFrom);
+            List<string> newContentList = new List<string>();
 
-            Examiner(pathFrom, pathTo);
+            for (int j = 0; j < content.Length; j++)
+            {
+                newContentList.Add(Examiner(content[j]));
+            }
+            File.WriteAllLines(pathTo, newContentList.ToArray());
         }
-        static void Examiner(string source, string target)
+        static string Examiner(string content)
         {
-            string content = File.ReadAllText(source);
             char[] charactersOfContent = content.ToCharArray();
 
             List<char> SelectedContent = new List<char>();
@@ -33,8 +38,7 @@ namespace Doubled
             {
                 newContent.Append(element);
             }
-
-            File.WriteAllText(target, Convert.ToString(newContent));
+            return Convert.ToString(newContent);
         }
     }
 }
