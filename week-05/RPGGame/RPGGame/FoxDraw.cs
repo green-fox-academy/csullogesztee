@@ -10,43 +10,27 @@ namespace GreenFox
 {
     public class FoxDraw
     {
+        private const int TILEWIDTH = 50;
+        private const int TILEHEIGHT = 50;
 
-        private const int TileSize = 50;
-        public Canvas Canvas { get; set; }
-
-        public List<Image> HeroImages { get; set; }
-        public List<Image> Tiles { get; set; }
+        private Canvas Canvas { get; set; }
+        private SolidColorBrush LineColor { get; set; } = SystemColors.WindowFrameBrush;
+        private SolidColorBrush ShapeColor { get; set; } = new SolidColorBrush(Colors.DarkGreen);
 
         public FoxDraw(Canvas canvas)
         {
             Canvas = canvas;
-            HeroImages = new List<Image>();
         }
 
-        public void AddHeroImage(string source, double x, double y)
+         public void AddImage(string source, double x, double y)
         {
             var image = new Image()
             {
-                Width = TileSize,
-                Height = TileSize,
+                Width = TILEWIDTH,
+                Height = TILEHEIGHT,
                 Source = new BitmapImage(new Uri(source, UriKind.Relative))
             };
 
-            HeroImages.Add(image);
-            Canvas.Children.Add(image);
-            SetPosition(image, x, y);
-        }
-
-        public void AddTilesImage(string source, double x, double y)
-        {
-            var image = new Image()
-            {
-                Width = TileSize,
-                Height = TileSize,
-                Source = new BitmapImage(new Uri(source, UriKind.Relative))
-            };
-
-            Tiles.Add(image);
             Canvas.Children.Add(image);
             SetPosition(image, x, y);
         }
@@ -61,22 +45,6 @@ namespace GreenFox
         {
             Canvas.SetLeft(uIElement, x);
             Canvas.SetTop(uIElement, y);
-        }
-
-        public double GetLeft(UIElement uIElement)
-        {
-            return Canvas.GetLeft(uIElement);
-        }
-
-        public double GetTop(UIElement uIElement)
-        {
-            return Canvas.GetTop(uIElement);
-        }
-
-        public void ClearCanvas()
-        {
-            Canvas.Children.Clear();
-
         }
     }
 }
