@@ -18,6 +18,8 @@ namespace RPGGame
 {
     public partial class MainWindow : Window
     {
+        public int Counter = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -48,6 +50,8 @@ namespace RPGGame
             {
 
             }
+
+            Counter++;
         }
     }
 }
