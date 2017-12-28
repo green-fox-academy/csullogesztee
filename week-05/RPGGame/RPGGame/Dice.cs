@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace RPGGame
 {
-    class Dice
+    public class Dice
     {
+        Random dice = new Random();
+        public int DicedNumber { get; set; }
+
+        public int Throw()
+        {
+            return DicedNumber = dice.Next(1,7);
+        }
     }
 }

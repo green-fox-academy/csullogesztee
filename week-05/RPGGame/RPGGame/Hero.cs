@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GreenFox;
 
 namespace RPGGame
 {
     public class Hero : Characters
     {
-        private int HeroX = 0;
-        private int HeroY = 0;
-
-        private FoxDraw foxDraw;
-
-        
+        public Hero(Map map) : base(map)
+        {
+            MaxHealthPoint = 20 + 3 * D6;
+            DefendPoint = 2 * D6;
+            StrikePoint = 5 + D6;
+        }
     }
 }

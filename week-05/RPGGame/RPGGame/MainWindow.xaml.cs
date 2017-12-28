@@ -21,7 +21,6 @@ namespace RPGGame
         public MainWindow()
         {
             InitializeComponent();
-            //FoxDraw foxDraw = new FoxDraw(canvas);
             Map mymap = new Map(canvas);
 
             mymap.GenerateMap();
