@@ -24,15 +24,9 @@ namespace RPGGame
         public int StrikePoint { get; set; }
         public int Level { get; set; } = 1;
 
-        public Characters(FoxDraw foxDraw)
-        {
-            D6 = dice.Throw();
-            myfoxDraw = foxDraw;
-        }
-
         public Characters()
         {
-
+            D6 = dice.Throw();
         }
 
         List<Characters> ListOfCharacters = new List<Characters>();
@@ -59,25 +53,28 @@ namespace RPGGame
             }
         }
 
-        public void AddImages()
+        public void AddImages(FoxDraw foxDraw)
         {
-            foreach(Characters character in ListOfCharacters)
+            foreach (Characters character in ListOfCharacters)
             {
-                if(Type == "Hero")
+                if (Type == "Hero")
                 {
-                    myfoxDraw.AddImage("./hero-down.png", XCoordinate, YCoordinate);
+                    foxDraw.AddImage("./hero-down.png", XCoordinate, YCoordinate + 50);
                 }
 
                 if (Type == "Boss")
                 {
-                    myfoxDraw.AddImage("./boss.png", XCoordinate, YCoordinate);
+                    foxDraw.AddImage("./boss.png", XCoordinate, YCoordinate + 100);
                 }
 
                 if (Type == "Skeleton")
                 {
-                    myfoxDraw.AddImage("./skeleton.png", XCoordinate, YCoordinate);
+                    foxDraw.AddImage("./skeleton.png", XCoordinate, YCoordinate + 150);
                 }
             }
+            foxDraw.AddImage("./skeleton.png", XCoordinate+100, YCoordinate);
+            foxDraw.AddImage("./boss.png", XCoordinate+50, YCoordinate);
+            foxDraw.AddImage("./hero-down.png", XCoordinate, YCoordinate);
         }
 
     }

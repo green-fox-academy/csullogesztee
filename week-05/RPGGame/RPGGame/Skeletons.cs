@@ -11,7 +11,7 @@ namespace RPGGame
     {
         public bool Key { get; set; }
 
-        public Skeletons(bool haveKey, FoxDraw foxDraw) : base(foxDraw)
+        public Skeletons(bool haveKey) : base()
         {
             Type = "Skeleton";
             MaxHealthPoint = 2 * Level * D6;

@@ -30,13 +30,13 @@ namespace RPGGame
             mymap.GenerateMap();
 
             Characters mycharacters = new Characters();
-            mycharacters.AddCharacter(new Hero(myfoxDraw));
-            mycharacters.AddCharacter(new Boss(myfoxDraw));
-            mycharacters.AddCharacter(new Skeletons(true, myfoxDraw));
-            mycharacters.AddCharacter(new Skeletons(false, myfoxDraw));
-            mycharacters.AddCharacter(new Skeletons(false, myfoxDraw));
+            mycharacters.AddCharacter(new Hero());
+            mycharacters.AddCharacter(new Boss());
+            mycharacters.AddCharacter(new Skeletons(true));
+            mycharacters.AddCharacter(new Skeletons(false));
+            mycharacters.AddCharacter(new Skeletons(false));
 
-            mycharacters.AddImages();
+            mycharacters.AddImages(myfoxDraw);
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)

@@ -9,7 +9,7 @@ namespace RPGGame
 {
     class Boss : Characters
     {
-        public Boss(FoxDraw foxDraw) : base(foxDraw)
+        public Boss() : base()
         {
             Type = "Boss";
             MaxHealthPoint = (2 * Level + 1) * D6;
