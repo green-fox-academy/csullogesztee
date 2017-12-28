@@ -14,13 +14,13 @@ namespace RPGGame
         private int MapWidth = 10;
         private int MapHeigth = 10;
         private int WallCount = 25;
-        Random random = new Random();
+        //Random random = new Random();
 
         public FoxDraw myfoxDraw { get; set; }
 
-        public Map(Canvas canvas)
+        public Map(FoxDraw foxDraw)
         {
-            myfoxDraw = new FoxDraw(canvas);
+            myfoxDraw = foxDraw;
         }
 
         public int[,] GenerateMap()

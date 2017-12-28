@@ -19,15 +19,24 @@ namespace RPGGame
     public partial class MainWindow : Window
     {
         public int Counter = 0;
+        public FoxDraw myfoxDraw { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
-            Map mymap = new Map(canvas);
+            myfoxDraw = new FoxDraw(canvas);
 
+            Map mymap = new Map(myfoxDraw);
             mymap.GenerateMap();
 
+            Characters mycharacters = new Characters();
+            mycharacters.AddCharacter(new Hero(myfoxDraw));
+            mycharacters.AddCharacter(new Boss(myfoxDraw));
+            mycharacters.AddCharacter(new Skeletons(true, myfoxDraw));
+            mycharacters.AddCharacter(new Skeletons(false, myfoxDraw));
+            mycharacters.AddCharacter(new Skeletons(false, myfoxDraw));
 
+            mycharacters.AddImages();
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs e)

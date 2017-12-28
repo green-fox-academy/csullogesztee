@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GreenFox;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace RPGGame
 {
     public class Hero : Characters
     {
-        public Hero(Map map) : base(map)
+        public Hero(FoxDraw foxDraw) : base(foxDraw)
         {
             Type = "Hero";
             MaxHealthPoint = 20 + 3 * D6;

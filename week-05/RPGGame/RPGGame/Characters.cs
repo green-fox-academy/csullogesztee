@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using GreenFox;
 
 namespace RPGGame
@@ -12,6 +13,7 @@ namespace RPGGame
         Dice dice = new Dice();
         public int D6 { get; set; }
 
+        public FoxDraw myfoxDraw { get; set; }
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
 
@@ -22,30 +24,61 @@ namespace RPGGame
         public int StrikePoint { get; set; }
         public int Level { get; set; } = 1;
 
-        public Characters(Map map)
+        public Characters(FoxDraw foxDraw)
         {
             D6 = dice.Throw();
+            myfoxDraw = foxDraw;
         }
 
-        public void LevelUp(Characters character)
+        public Characters()
         {
-            if (Type == "Hero")
-            {
-                MaxHealthPoint += D6;
-                DefendPoint += D6;
-                StrikePoint += D6;
-            }
-            else
-            {
-                Level++;
-            }
+
         }
 
-        List<Characters> Enemies = new List<Characters>();
+        List<Characters> ListOfCharacters = new List<Characters>();
 
-        public void AddEnemies(Characters enemy)
+        public void AddCharacter(Characters character)
         {
-            Enemies.Add(enemy);
+            ListOfCharacters.Add(character);
         }
+
+        public void LevelUp()
+        {
+            foreach (Characters Character in ListOfCharacters)
+            {
+                if (Type == "Hero")
+                {
+                    MaxHealthPoint += D6;
+                    DefendPoint += D6;
+                    StrikePoint += D6;
+                }
+                else
+                {
+                    Level++;
+                }
+            }
+        }
+
+        public void AddImages()
+        {
+            foreach(Characters character in ListOfCharacters)
+            {
+                if(Type == "Hero")
+                {
+                    myfoxDraw.AddImage("./hero-down.png", XCoordinate, YCoordinate);
+                }
+
+                if (Type == "Boss")
+                {
+                    myfoxDraw.AddImage("./boss.png", XCoordinate, YCoordinate);
+                }
+
+                if (Type == "Skeleton")
+                {
+                    myfoxDraw.AddImage("./skeleton.png", XCoordinate, YCoordinate);
+                }
+            }
+        }
+
     }
 }
