@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using GreenFox;
@@ -32,7 +33,9 @@ namespace RPGGame
             D6 = dice.Throw();
 
             XCoor = random.Next(0, 10);
+            Thread.Sleep(5);
             YCoor = random.Next(0, 10);
+            Thread.Sleep(5);
 
             while (map.GenerateMap()[XCoor, YCoor] != 0)
             {
