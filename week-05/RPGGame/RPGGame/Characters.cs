@@ -10,12 +10,15 @@ namespace RPGGame
 {
     public class Characters
     {
+        Random random = new Random();
         Dice dice = new Dice();
         public int D6 { get; set; }
 
         public FoxDraw myfoxDraw { get; set; }
         public int XCoordinate { get; set; }
         public int YCoordinate { get; set; }
+        public int XCoor { get; set; }
+        public int YCoor { get; set; }
 
         public string Type { get; set; }
         public int MaxHealthPoint { get; set; }
@@ -24,9 +27,21 @@ namespace RPGGame
         public int StrikePoint { get; set; }
         public int Level { get; set; } = 1;
 
-        public Characters()
+        public Characters(Map map)
         {
             D6 = dice.Throw();
+
+            XCoor = random.Next(0, 10);
+            YCoor = random.Next(0, 10);
+
+            while (map.GenerateMap()[XCoor, YCoor] != 0)
+            {
+            XCoor = random.Next(0, 10);
+            YCoor = random.Next(0, 10);
+            }
+
+            XCoordinate = XCoor * 50;
+            YCoordinate = YCoor * 50;
         }
 
         List<Characters> ListOfCharacters = new List<Characters>();
@@ -57,24 +72,21 @@ namespace RPGGame
         {
             foreach (Characters character in ListOfCharacters)
             {
-                if (Type == "Hero")
+                if (character.Type == "Hero")
                 {
-                    foxDraw.AddImage("./hero-down.png", XCoordinate, YCoordinate + 50);
+                    foxDraw.AddImage("./hero-down.png", character.XCoordinate, character.YCoordinate);
                 }
 
-                if (Type == "Boss")
+                if (character.Type == "Boss")
                 {
-                    foxDraw.AddImage("./boss.png", XCoordinate, YCoordinate + 100);
+                    foxDraw.AddImage("./boss.png", character.XCoordinate, character.YCoordinate);
                 }
 
-                if (Type == "Skeleton")
+                if (character.Type == "Skeleton")
                 {
-                    foxDraw.AddImage("./skeleton.png", XCoordinate, YCoordinate + 150);
+                    foxDraw.AddImage("./skeleton.png", character.XCoordinate, character.YCoordinate);
                 }
             }
-            foxDraw.AddImage("./skeleton.png", XCoordinate+100, YCoordinate);
-            foxDraw.AddImage("./boss.png", XCoordinate+50, YCoordinate);
-            foxDraw.AddImage("./hero-down.png", XCoordinate, YCoordinate);
         }
 
     }

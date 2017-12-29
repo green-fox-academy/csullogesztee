@@ -18,9 +18,9 @@ namespace DiagonalMatrix
             int[,] matrix = new int[4, 4]
             {
                 {1, 0, 0, 0},
-                { 1, 0, 0, 0},
-                { 1, 0, 0, 0},
-                { 1, 0, 0, 0}
+                { 0, 1, 0, 0},
+                { 0, 0, 1, 0},
+                { 0, 0, 0, 1}
             };
 
             for (int i = 0; i < matrix.GetLength(0); i++)

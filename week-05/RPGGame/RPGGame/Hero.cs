@@ -9,7 +9,7 @@ namespace RPGGame
 {
     public class Hero : Characters
     {
-        public Hero() : base()
+        public Hero(Map map) : base(map)
         {
             Type = "Hero";
             MaxHealthPoint = 20 + 3 * D6;

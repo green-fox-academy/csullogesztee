@@ -11,7 +11,7 @@ namespace RPGGame
     {
         public bool Key { get; set; }
 
-        public Skeletons(bool haveKey) : base()
+        public Skeletons(bool haveKey, Map map) : base(map)
         {
             Type = "Skeleton";
             MaxHealthPoint = 2 * Level * D6;
@@ -19,9 +19,6 @@ namespace RPGGame
             DefendPoint = Level / 2 * D6;
             StrikePoint = Level * D6;
             Key = haveKey;
-
-            XCoordinate = 150;
-            YCoordinate = 150;
         }
 
     }

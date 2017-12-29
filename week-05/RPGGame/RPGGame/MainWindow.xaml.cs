@@ -29,12 +29,12 @@ namespace RPGGame
             Map mymap = new Map(myfoxDraw);
             mymap.GenerateMap();
 
-            Characters mycharacters = new Characters();
-            mycharacters.AddCharacter(new Hero());
-            mycharacters.AddCharacter(new Boss());
-            mycharacters.AddCharacter(new Skeletons(true));
-            mycharacters.AddCharacter(new Skeletons(false));
-            mycharacters.AddCharacter(new Skeletons(false));
+            Characters mycharacters = new Characters(mymap);
+            mycharacters.AddCharacter(new Hero(mymap));
+            mycharacters.AddCharacter(new Boss(mymap));
+            mycharacters.AddCharacter(new Skeletons(true, mymap));
+            mycharacters.AddCharacter(new Skeletons(false, mymap));
+            mycharacters.AddCharacter(new Skeletons(false, mymap));
 
             mycharacters.AddImages(myfoxDraw);
         }
