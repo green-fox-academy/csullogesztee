@@ -32,22 +32,27 @@ namespace RPGGame
         {
             D6 = dice.Throw();
 
-            XCoor = random.Next(0, 10);
-            Thread.Sleep(5);
-            YCoor = random.Next(0, 10);
-            Thread.Sleep(5);
-
-            while (map.GenerateMap()[XCoor, YCoor] != 0)
-            {
-            XCoor = random.Next(0, 10);
-            YCoor = random.Next(0, 10);
-            }
+            CoordinateCreator(map);
 
             XCoordinate = XCoor * 50;
             YCoordinate = YCoor * 50;
         }
 
-        List<Characters> ListOfCharacters = new List<Characters>();
+        public List<Characters> ListOfCharacters = new List<Characters>();
+
+        public void CoordinateCreator(Map map)
+        {
+            XCoor = random.Next(0, 10);
+            Thread.Sleep(5);
+            YCoor = random.Next(0, 11);
+            Thread.Sleep(5);
+            int[,] table = map.GenerateMap();
+            //while (table[XCoor, YCoor] == 1)
+            //{
+            //    XCoor = random.Next(0, 10);
+            //    YCoor = random.Next(0, 11);
+            //}
+        }
 
         public void AddCharacter(Characters character)
         {

@@ -56,7 +56,6 @@
     </ApplicationDefinition>
     <Compile Include="Battle.cs" />
     <Compile Include="Dice.cs" />
-    <Compile Include="Moves.cs" />
     <Compile Include="Skeletons.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

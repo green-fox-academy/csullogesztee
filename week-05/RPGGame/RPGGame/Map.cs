@@ -12,7 +12,7 @@ namespace RPGGame
     public class Map
     {
         private int MapWidth = 10;
-        private int MapHeigth = 10;
+        private int MapHeigth = 11;
         private int WallCount = 25;
         //Random random = new Random();
 

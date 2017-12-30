@@ -18,8 +18,9 @@ namespace RPGGame
 {
     public partial class MainWindow : Window
     {
-        public int Counter = 0;
-        public FoxDraw myfoxDraw { get; set; }
+        int Counter = 0;
+        FoxDraw myfoxDraw;
+        Hero hero;
 
         public MainWindow()
         {
@@ -30,7 +31,8 @@ namespace RPGGame
             mymap.GenerateMap();
 
             Characters mycharacters = new Characters(mymap);
-            mycharacters.AddCharacter(new Hero(mymap));
+            hero = new Hero(mymap);
+            mycharacters.AddCharacter(hero);
             mycharacters.AddCharacter(new Boss(mymap));
             mycharacters.AddCharacter(new Skeletons(true, mymap));
             mycharacters.AddCharacter(new Skeletons(false, mymap));
@@ -43,21 +45,21 @@ namespace RPGGame
         {
             if (e.Key == Key.Left)
             {
-
+                hero.HeroLeft(myfoxDraw);
             }
 
             if (e.Key == Key.Right)
             {
-
+                hero.HeroRight(myfoxDraw);
             }
             if (e.Key == Key.Up)
             {
-
+                hero.HeroUp(myfoxDraw);
             }
 
             if (e.Key == Key.Down)
             {
-
+                hero.HeroDown(myfoxDraw);
             }
 
             Counter++;

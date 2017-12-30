@@ -14,12 +14,12 @@ namespace GreenFox
         private const int TILEHEIGHT = 50;
 
         private Canvas Canvas { get; set; }
-        private SolidColorBrush LineColor { get; set; } = SystemColors.WindowFrameBrush;
-        private SolidColorBrush ShapeColor { get; set; } = new SolidColorBrush(Colors.DarkGreen);
+        public List<Image> CharactersList { get; set; }
 
         public FoxDraw(Canvas canvas)
         {
             Canvas = canvas;
+            CharactersList = new List<Image>();
         }
 
          public void AddImage(string source, double x, double y)
@@ -30,7 +30,7 @@ namespace GreenFox
                 Height = TILEHEIGHT,
                 Source = new BitmapImage(new Uri(source, UriKind.Relative))
             };
-
+            CharactersList.Add(image);
             Canvas.Children.Add(image);
             SetPosition(image, x, y);
         }

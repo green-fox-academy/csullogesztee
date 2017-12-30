@@ -19,5 +19,30 @@ namespace RPGGame
             XCoordinate = 0;
             YCoordinate = 0;
         }
+
+        public void HeroUp(FoxDraw foxDraw)
+        {
+            YCoordinate -= 50;
+            foxDraw.SetPosition(foxDraw.CharactersList[0], XCoordinate, YCoordinate);
+        }
+
+        public void HeroDown(FoxDraw foxDraw)
+        {
+            YCoordinate += 50;
+            foxDraw.SetPosition(foxDraw.CharactersList[0], XCoordinate, YCoordinate);
+        }
+
+        public void HeroLeft(FoxDraw foxDraw)
+        {
+            XCoordinate -= 50;
+            foxDraw.SetPosition(foxDraw.CharactersList[0], XCoordinate, YCoordinate);
+        }
+
+        public void HeroRight(FoxDraw foxDraw)
+        {
+            XCoordinate += 50;
+            foxDraw.SetPosition(foxDraw.CharactersList[0], XCoordinate, YCoordinate);
+        }
+
     }
 }
