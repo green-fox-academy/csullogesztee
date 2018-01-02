@@ -16,7 +16,16 @@ namespace Domino
             // Create a function to write the dominous to the console in the following format
             // eg: [2, 4], [4, 3], [3, 5] ...
             var myorderedList = OrderDominoes(dominoes);
+
+            Console.WriteLine("Play domino:");
             foreach (Domino item in myorderedList)
+            {
+                Console.WriteLine("[" + item.GetValues()[0] + " , " + item.GetValues()[1] + "]");
+            }
+
+            dominoes.Sort();
+            Console.WriteLine("Sort of the dominoes:");
+            foreach (Domino item in dominoes)
             {
                 Console.WriteLine("[" + item.GetValues()[0] + " , " + item.GetValues()[1] + "]");
             }
