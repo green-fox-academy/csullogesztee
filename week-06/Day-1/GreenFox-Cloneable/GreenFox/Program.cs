@@ -18,6 +18,9 @@ namespace GreenFox
             Student johnTheClone = john.Clone() as Student;
             people.Add(johnTheClone);
 
+            Student johnTheClone2 = (Student)john.Clone2();
+            people.Add(johnTheClone2);
+
             foreach (Person person in people)
             {
                 person.Introduce();

@@ -42,5 +42,10 @@ namespace GreenFox
         {
             return new Student(Name, Age, Gender, PreviousOrganization);
         }
+
+        public Object Clone2()
+        {
+            return this;
+        }
     }
 }
