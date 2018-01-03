@@ -17,8 +17,7 @@ namespace exercise9
             Console.WriteLine(mytext);
 
             Console.ReadKey();
-            
-            //StringBuilder text = Array.ForEach(characters, letter => text.Append(letter.ToString()));
+
         }
     }
 }
