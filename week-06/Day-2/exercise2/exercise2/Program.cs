@@ -16,12 +16,11 @@ namespace exercise2
                              where Math.Abs(n) % 2 == 1
                              orderby n
                              select n;
-            double average = oddNumbers.Average();
 
             var oddNumbers2 = numbers.Where(m => (Math.Abs(m) % 2 == 1)).OrderBy(m => m).Average();
 
             Console.WriteLine("With query syntax:");
-            Console.WriteLine("The average of our odd numbers is: " + average);
+            Console.WriteLine("The average of our odd numbers is: " + oddNumbers.Average());
             Console.WriteLine("With method syntax:");
             Console.WriteLine("The average of our odd numbers is: " + oddNumbers2);
 
