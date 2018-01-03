@@ -17,7 +17,7 @@ namespace exercise3
                                   orderby n
                                   select n;
 
-            var positiveNumbers2 = numbers.Where(m => (m > 0)).OrderBy(m => m);
+            var positiveNumbers2 = numbers.Where(m => (m > 0)).OrderBy(m => m).Select(m => Math.Pow(m, 2));
 
             foreach (var number in positiveNumbers)
             {
@@ -26,7 +26,7 @@ namespace exercise3
 
             foreach (var number in positiveNumbers2)
             {
-                Console.WriteLine(Math.Pow(number, 2));
+                Console.WriteLine(number);
             }
 
             Console.ReadKey();
