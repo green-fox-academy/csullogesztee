@@ -17,7 +17,16 @@ namespace exercise1
                               orderby n
                               select n;
 
+            var evenNumbers2 = numbers.Where(m => (m % 2 == 0)).OrderBy(m => m);
+
+            Console.WriteLine("Query Syntax:");
             foreach (var evenNumber in evenNumbers)
+            {
+                Console.WriteLine(evenNumber);
+            }
+
+            Console.WriteLine("Method Syntax:");
+            foreach (var evenNumber in evenNumbers2)
             {
                 Console.WriteLine(evenNumber);
             }
