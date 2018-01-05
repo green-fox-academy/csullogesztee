@@ -28,10 +28,10 @@ namespace SantaClaus
             var santaBag = new SantaBag();
 
             var santaFactory = new SantaFactory();
-           // santaBag.Add(santaFactory.Produce("doll", "pink"));
+            santaBag.Add(santaFactory.Produce("doll", "pink"));
             santaBag.Add(santaFactory.Produce("ball", "blue", 3));
             santaBag.Add(santaFactory.Produce("ball", "yellow", 1));
-           // santaBag.Add(santaFactory.Produce("rope", 22));
+            santaBag.Add(santaFactory.Produce("rope", 22));
 
             // The output should be "The factory's balance is: 140";
             Console.WriteLine("The factory's balance is: {0}", santaFactory.GetBalance());

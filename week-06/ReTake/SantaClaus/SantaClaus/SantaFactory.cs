@@ -23,25 +23,39 @@ namespace SantaClaus
             Toys createdToy = new Toys();
             if (Balance > 0)
             {
-
-                if (type == "rope")
-                {
-                    createdToy = new JumpingRope(size);
-                    Balance -= createdToy.Cost;
-                }
-                else if (type == "doll")
-                {
-                    createdToy = new Doll(color);
-                    Balance -= createdToy.Cost;
-
-                }
-                else if (type == "ball")
+                if (type == "ball")
                 {
                     createdToy = new DottedBall(color, size);
                     Balance -= createdToy.Cost;
                 }
             }
+            return createdToy;
+        }
+        public Toys Produce(string type, int size)
+        {
+            Toys createdToy = new Toys();
+            if (Balance > 0)
+            {
+                if (type == "rope")
+                {
+                    createdToy = new JumpingRope(size);
+                    Balance -= createdToy.Cost;
+                }
+            }
 
+            return createdToy;
+        }
+        public Toys Produce(string type, string color)
+        {
+            Toys createdToy = new Toys();
+            if (Balance > 0)
+            {
+                if (type == "doll")
+                {
+                    createdToy = new Doll(color);
+                    Balance -= createdToy.Cost;
+                }
+            }
             return createdToy;
         }
 
