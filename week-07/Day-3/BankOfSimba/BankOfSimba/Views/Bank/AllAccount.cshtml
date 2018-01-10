@@ -10,9 +10,12 @@
             <th>Balance</th>
             <th>AnimalType</th>
         </tr>
+    @{int counter = 0; }
     @foreach (var account in Model.AccountList)
     {
+        counter++;
         <tr>
+            <td>@counter</td>
             <td>@account.Name</td>
             <td>@account.Balance</td>
             <td>@account.AnimalType</td>
