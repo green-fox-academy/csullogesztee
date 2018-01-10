@@ -17,10 +17,11 @@ namespace BankOfSimba.ViewModels
 
         private void AddCharacters()
         {
-            AccountList.Add(new BankAccount("Simba", 2000, "Lion"));
-            AccountList.Add(new BankAccount("Nala", 50, "Lion"));
-            AccountList.Add(new BankAccount("Zazu", 100, "Kakadu"));
-            AccountList.Add(new BankAccount("Rafiki", 500, "Monkey"));
+            AccountList.Add(new BankAccount("Simba", 2000, "Lion", "good", "king"));
+            AccountList.Add(new BankAccount("Nala", 50, "Lion", "good"));
+            AccountList.Add(new BankAccount("Zazu", 100, "Kakadu", "good"));
+            AccountList.Add(new BankAccount("Rafiki", 500, "Monkey", "good"));
+            AccountList.Add(new BankAccount("Zordon", 1500, "Lion", "bad"));
         }
     }
 }
