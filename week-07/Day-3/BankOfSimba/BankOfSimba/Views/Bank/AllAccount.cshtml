@@ -6,21 +6,37 @@
 <body>
     <table style="width:100%">
         <tr>
+            <th>Number</th>
             <th>Name</th>
             <th>Balance</th>
             <th>AnimalType</th>
+            <th>THE KING</th>
         </tr>
-    @{int counter = 0; }
-    @foreach (var account in Model.AccountList)
-    {
-        counter++;
-        <tr>
-            <td>@counter</td>
-            <td>@account.Name</td>
-            <td>@account.Balance</td>
-            <td>@account.AnimalType</td>
-        </tr>
-    }
+        @{int counter = 0; }
+        @foreach (var account in Model.AccountList)
+        {
+            counter++;
+            <tr>
+                <td>@counter</td>
+                <td>@account.Name</td>
+                <td>@account.Balance</td>
+                <td>@account.AnimalType</td>
+                <td>
+                    @{if (@account.Name == "Simba")
+                        {
+                            <span style="color:red">KING</span>
+                        }
+                        else
+                        { 
+                            @:servant
+                        }
+                    }
+                </td>
+
+
+
+            </tr>
+        }
     </table>
 </body>
 </html>
