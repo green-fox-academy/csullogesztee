@@ -8,9 +8,17 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BankOfSimba.Controllers
 {
-    [Route ("")]
+    [Route("")]
     public class BankController : Controller
     {
+        static AccountsViewModel accounts = new AccountsViewModel();
+
+        [Route("")]
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         [Route ("Simba")]
         public IActionResult Simba()
         {
@@ -18,11 +26,26 @@ namespace BankOfSimba.Controllers
             return View(account);
         }
 
-        [Route("AllAccount")]
+
+        [HttpGet("AllAccount")]
         public IActionResult AllAccount()
         {
-            AccountsViewModel accounts = new AccountsViewModel();
             return View(accounts);
         }
+
+        [HttpGet("add")]
+        public IActionResult ShowForm()
+        {
+            return View("Add");
+        }
+
+        [HttpPost("add")]
+        public IActionResult AddCharacter(BankAccount bankAccount)
+        {
+            accounts.AccountList.Add(bankAccount);
+            return RedirectToAction("AllAccount");
+        }
+
+
     }
 }

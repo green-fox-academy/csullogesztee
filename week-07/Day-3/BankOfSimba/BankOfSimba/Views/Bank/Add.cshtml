@@ -1,0 +1,28 @@
+﻿@model BankOfSimba.ViewModels.AccountsViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add new Character</title>
+</head>
+<body>
+    <h1>Add new Character</h1>
+
+    <form action="/add" method="post">
+        Name:
+        <input type="text" name="Name" value="">
+        <br />
+        Balance:
+        <input type="number" name="Balance" value="">
+        <br />
+        AnimalType:
+        <input type="text" name="AnimalType" value="">
+        <br />
+        Title:
+        <input type="text" name="Title" value="">
+        <br />
+        Side:
+        <input type="text" name="Side" value="">
+        <br />
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

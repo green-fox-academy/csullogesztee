@@ -4,7 +4,7 @@
     <title>Bank of Simba</title>
 </head>
 <body>
-    <table style="width:100%">
+    <table style="width:100%, auto; border:2px solid black">
         <tr>
             <th>Number</th>
             <th>Name</th>
@@ -17,17 +17,17 @@
         @foreach (var account in Model.AccountList)
         {
             counter++;
-        <tr>
-            <td>@counter</td>
-            <td>@account.Name</td>
-            <td>@account.Balance</td>
-            <td>@account.AnimalType</td>
-            <td @{if (account.Title == "THE KING") { @: style="color:red"
-                } }>
-                @account.Title
-            </td>
-            <td>@account.Side</td>
-        </tr>
+            <tr>
+                <td>@counter</td>
+                <td>@account.Name</td>
+                <td>@account.Balance</td>
+                <td>@account.AnimalType</td>
+                <td @{if (account.Title == "THE KING") { @: style="color:red"
+                    } }>
+                    @account.Title
+                </td>
+                <td>@account.Side</td>
+            </tr>
         }
     </table>
 </body>

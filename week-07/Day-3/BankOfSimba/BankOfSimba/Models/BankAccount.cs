@@ -46,5 +46,8 @@ namespace BankOfSimba.Models
                 Title = "THE KING";
             }
         }
+
+        public BankAccount()
+        { }
     }
 }
