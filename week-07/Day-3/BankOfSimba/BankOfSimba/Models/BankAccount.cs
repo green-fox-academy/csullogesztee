@@ -8,13 +8,13 @@ namespace BankOfSimba.Models
     public class BankAccount
     {
         public string Name { get; set; }
-        public int Balance { get; set; }
+        public string Balance { get; set; }
         public string AnimalType { get; set; }
 
-        public BankAccount(string name, int balance, string type)
+        public BankAccount(string name, double balance, string type)
         {
             Name = name;
-            Balance = balance;
+            Balance = balance.ToString(".00") + " Zebra";
             AnimalType = type;
         }
     }
