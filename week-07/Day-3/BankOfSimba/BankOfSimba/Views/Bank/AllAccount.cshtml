@@ -1,0 +1,23 @@
+﻿@model BankOfSimba.ViewModels.AccountsViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bank of Simba</title>
+</head>
+<body>
+    <table style="width:100%">
+        <tr>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>AnimalType</th>
+        </tr>
+    @foreach (var account in Model.AccountList)
+    {
+        <tr>
+            <td>@account.Name</td>
+            <td>@account.Balance</td>
+            <td>@account.AnimalType</td>
+        </tr>
+    }
+    </table>
+</body>
+</html>
