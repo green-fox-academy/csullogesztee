@@ -10,7 +10,7 @@ namespace GreetSomeone.Controllers
     [Route("")]
     public class HomeController : Controller
     {
-        public Greeting Greeting { get; set; }
+        Greeting Greeting;
 
         public HomeController(Greeting greeting)
         {
