@@ -1,0 +1,14 @@
+﻿body {
+    background-image: url("Disney_Dreams_Collection_VII_The_Lion_King.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+th, td {
+    border: 1px solid black;
+}
+th {
+    background-color: blue;
+}
+td {
+    background-color:aquamarine;
+}
