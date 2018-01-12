@@ -10,8 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Views\Home\" />
+    <None Include="Views\Home\Index.cshtml" />
   </ItemGroup>
 
 </Project>
