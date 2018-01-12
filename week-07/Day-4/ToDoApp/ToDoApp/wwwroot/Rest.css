@@ -1,0 +1,15 @@
+﻿body {
+    background-image:url(./Images/STO_mire-jo-a-palmafa-szirup_c34e0e14_529951168f4904.71705396.jpg);
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:cover;
+    height:100%;
+}
+
+h1 {
+    font-stretch:expanded;
+    font-size:250px;
+    text-align:center;
+    vertical-align:central;
+    padding-top:100px;
+}

@@ -3,55 +3,60 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Index</title>
+    <link rel="stylesheet" type="text/css" href="~/Index.css">
 </head>
 <body>
-    <table style="width:100%, auto;" align="center">
-        <tr>
-            <th>Index</th>
-            <th>Complete</th>
-            <th>Exercise</th>
-            <th>Urgent</th>
-        </tr>
-        @{
-            @foreach (var todo in Model.ListOfToDos)
-            {
-                <tr>
-                    <td>@todo.Key</td>
-                    <td>@todo.Value.Complete</td>
-                    <td>@todo.Value.Exercise</td>
-                    <td>@todo.Value.Urgent</td>
-                </tr>
+    @*<iframe src="http://free.timeanddate.com/clock/i62clugd/n50/szw110/szh110/hoc09f/hbw0/hfc09f/cf100/hnce1ead6/fas30/fdi66/mqc000/mql15/mqw4/mqd98/mhc000/mhl15/mhw4/mhd98/mmc000/mml10/mmw1/mmd98/hhs2/hms2/hsv0" frameborder="0" width="110" height="110"></iframe>*@
+    <div id="table">
+        <table style="width:100%, auto;" align="center">
+            <tr>
+                <th>Index</th>
+                <th>Complete</th>
+                <th>Exercise</th>
+                <th>Urgent</th>
+            </tr>
+            @{
+                @foreach (var todo in Model.ListOfToDos)
+                {
+                    <tr>
+                        <td>@todo.Key</td>
+                        <td>@todo.Value.Complete</td>
+                        <td>@todo.Value.Exercise</td>
+                        <td>@todo.Value.Urgent</td>
+                    </tr>
+                }
             }
-        }
-    </table>
+        </table>
+    </div>
 
-    <h2>The exercise is complete</h2>
-    <form action="Complete" method="post">
-        <p>Index</p>
-        <input type="number" name="index" value="">
-        <br />
-        <input type="submit" value="Submit">
-    </form>
+    <div id="form">
+        <h2>The exercise is complete</h2>
+        <form action="Complete" method="post">
+            Index:
+            <input type="number" name="index" value="">
+            <br />
+            <input type="submit" value="Complete">
+        </form>
 
-    <h2>I want to add a new exercise</h2>
-    <form action="Add" method="post">
-        Exercise:
-        <input type="text" name="Exercise" value="">
-        <br />
-        Urgent:
-        <input type="text" name="Urgent" value="">
-        <br />
-        <input type="submit" value="Submit">
-    </form>
+        <h2>I want to add a new exercise</h2>
+        <form action="Add" method="post">
+            Exercise:
+            <input type="text" name="Exercise" value="">
+            <br />
+            Urgent:
+            <input type="text" name="Urgent" value="">
+            <br />
+            <input type="submit" value="Add">
+        </form>
 
-    <h2>I don't want to do this exercise</h2>
-    <form action="Delete" method="post">
-        <p>Index</p>
-        <input type="number" name="index" value="">
-        <br />
-        <input type="submit" value="Submit">
-    </form>
-
+        <h2>I don't want to do this exercise</h2>
+        <form action="Delete" method="post">
+            Index:
+            <input type="number" name="index" value="">
+            <br />
+            <input type="submit" value="Delete">
+        </form>
+    </div>
 </body>
 </html>

@@ -1,0 +1,56 @@
+﻿body {
+    background-image: url(./Images/teendok-691-463.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-size: 15px;
+    color:blue;
+    font-weight:900;
+}
+
+div {
+    width:100%;
+    height:350px;
+    padding-bottom:100px;
+}
+
+#form {
+    column-count: 3;
+    vertical-align: bottom;
+    background-color: #F4F3BB;
+    height:150px;
+    padding-bottom:0px;
+    margin-bottom:0px;
+}
+
+form {
+    font-family:'Times New Roman', Times, serif;
+    text-align:center;
+}
+
+h2 {
+    text-align:center;
+}
+
+table {
+    /*background-color: #EDE799;*/
+    vertical-align: top;
+    color:aqua;
+    text-align:center;
+}
+
+th {
+    border: 2px solid black;
+    height:10px;
+    width:200px;
+    font-size: 30px;
+    background-color: darkblue;
+}
+
+td {
+    border: 1px solid black;
+    height:10px;
+    width:100px;
+    font-size: 20px;
+    background-color: cornflowerblue;
+}

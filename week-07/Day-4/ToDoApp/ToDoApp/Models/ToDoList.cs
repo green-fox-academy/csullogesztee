@@ -16,14 +16,7 @@ namespace ToDoApp.Models
 
         public void AddTodo(Todo todo)
         {
-            if (ListOfToDos.Count == 0)
-            {
-                ListOfToDos.Add(1, todo);
-            }
-            else
-            {
                 ListOfToDos.Add((ListOfToDos.Count + 1), todo);
-            }
         }
 
         public void Ready(int number)
