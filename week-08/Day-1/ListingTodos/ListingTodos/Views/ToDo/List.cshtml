@@ -5,18 +5,24 @@
 </head>
 <body>
     <h1>Todos for today</h1>
-    <ul>
-        @{foreach (var Todo in Model)
+    <table style="width:100%, auto;">
+        <tr>
+            <th style="border: 2px solid black;">ID</th>
+            <th style="border: 2px solid black;">Action</th>
+            <th style="border: 2px solid black;">Done</th>
+            <th style="border: 2px solid black;">Urgent</th>
+        </tr>
+        @{
+            foreach (var todo in Model)
             {
-                <li>@Todo.Title</li>
+                <tr>
+                    <td style="border: 1px solid black;">@todo.Id</td>
+                    <td style="border: 1px solid black;">@todo.Title</td>
+                    <td style="border: 1px solid black;">@todo.IsDone</td>
+                    <td style="border: 1px solid black;">@todo.IsUrgent</td>
+                </tr>
             }
-
         }
-
-        <li>Start the day</li>
-        <li>Finish H2 workshop1</li>
-        <li>Finish JPA workshop2</li>
-        <li>Create a CRUD project</li>
-    </ul>
+    </table>
 </body>
 </html>
