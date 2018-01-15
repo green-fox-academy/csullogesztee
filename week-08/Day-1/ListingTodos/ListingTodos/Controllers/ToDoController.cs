@@ -20,13 +20,13 @@ namespace ListingTodos.Controllers
             this.todoRepository = todoRepository;
         }
 
-        [Route("todo")]
-        public IActionResult FilterToDo([FromQuery] bool isActive)
-        {
-            //http://localhost:53454/todo/?isActive=true
-            var ActiveToDos = todoRepository.ListOfToDos().Where(t => t.IsDone != isActive).ToList();
-            return View("List", ActiveToDos);
-        }
+        //[Route("todo")]
+        //public IActionResult FilterToDo([FromQuery] bool isActive)
+        //{
+        //    //http://localhost:53454/todo/?isActive=true
+        //    var ActiveToDos = todoRepository.ListOfToDos().Where(t => t.IsDone != isActive).ToList();
+        //    return View("List", ActiveToDos);
+        //}
 
         [Route("")]
         [HttpGet("list")]
@@ -65,6 +65,27 @@ namespace ListingTodos.Controllers
         public IActionResult Add()
         {
             return View();
+        }
+
+        [HttpGet("delete/{id}")]
+        public IActionResult Delete(long id)
+        {
+            todoRepository.DeleteToDo(id);
+            return RedirectToAction("list");
+        }
+
+        [HttpPost("edit/{id}")]
+        public IActionResult Edit(ToDo toDo, long id)
+        {
+            todoRepository.Edit(toDo, id);
+            return RedirectToAction("list");
+        }
+
+        [HttpGet("edit/{id}")]
+        public IActionResult Edit(long id)
+        {
+            var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
+            return View(currentTodo);
         }
     }
 }

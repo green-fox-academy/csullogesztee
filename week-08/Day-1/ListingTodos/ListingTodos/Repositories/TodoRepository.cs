@@ -33,5 +33,26 @@ namespace ListingTodos.Repositories
             toDoContext.Add(toDo);
             toDoContext.SaveChanges();
         }
+
+        public void DeleteToDo(long id)
+        {
+            foreach (var item in toDoContext.ToDos)
+            {
+                if (item.Id == id)
+                    toDoContext.Remove(item);
+            }
+            toDoContext.SaveChanges();
+        }
+
+        public void Edit(ToDo toDo, long id)
+        {
+                var toDoToUpdate = toDoContext.ToDos.Where(t => t.Id == id).FirstOrDefault();
+
+                toDoToUpdate.Title = toDo.Title;
+                toDoToUpdate.IsDone = toDo.IsDone;
+                toDoToUpdate.IsUrgent = toDo.IsUrgent;
+
+                toDoContext.SaveChanges();
+        }
     }
 }
