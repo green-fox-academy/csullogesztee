@@ -29,24 +29,42 @@ namespace ListingTodos.Controllers
         }
 
         [Route("")]
-        [Route("list")]
+        [HttpGet("list")]
         public IActionResult List()
         {
             return View(todoRepository.ListOfToDos());
         }
 
-        [Route("add")]
-        public IActionResult AddToDo([FromQuery] string title, [FromQuery] bool isDone)
+        //[Route("add")]
+        //public IActionResult AddToDo([FromQuery] string title, [FromQuery] bool isDone)
+        //{
+        //    //http://localhost:53454/add/?title=swim&isDone=true
+        //    ToDo newToDo = new ToDo()
+        //    {
+        //        Title = title,
+        //        IsDone = isDone
+        //    };
+
+        //    todoRepository.AddNewTodo(newToDo);
+        //    return RedirectToAction("list");
+        //}
+
+        [HttpPost("add")]
+        public IActionResult Add(string title)
         {
-            //http://localhost:53454/add/?title=swim&isDone=true
             ToDo newToDo = new ToDo()
             {
-                Title = title,
-                IsDone = isDone
+                Title = title
             };
 
             todoRepository.AddNewTodo(newToDo);
             return RedirectToAction("list");
+        }
+
+        [HttpGet("add")]
+        public IActionResult Add()
+        {
+            return View();
         }
     }
 }
