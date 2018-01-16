@@ -1,0 +1,28 @@
+﻿@model ListingTodos.Models.ToDo
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@Model.Id ToDo</title>
+</head>
+<body>
+    <h1>The @Model.Id ToDo is:</h1>
+    <table style="width:100%, auto;">
+        <tr>
+            <th style="border: 2px solid black;">ID</th>
+            <th style="border: 2px solid black;">Action</th>
+            <th style="border: 2px solid black;">Done</th>
+            <th style="border: 2px solid black;">Urgent</th>
+        </tr>
+        <tr>
+            <td style="border: 1px solid black;">@Model.Id</td>
+            <td style="border: 1px solid black;">@Model.Title</td>
+            <td style="border: 1px solid black;">@Model.IsDone</td>
+            <td style="border: 1px solid black;">@Model.IsUrgent</td>
+            <td style="border: 1px solid black;"><a href="/delete/@Model.Id">Delete</a></td>
+            <td style="border: 1px solid black;"><a href="edit/@Model.Id">Edit</a></td>
+        </tr>
+    </table>
+    <nav>
+        <a href="/">Return to list</a> |
+    </nav>
+</body>
+</html>

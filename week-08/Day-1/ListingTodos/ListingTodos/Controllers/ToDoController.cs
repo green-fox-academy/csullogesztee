@@ -87,5 +87,12 @@ namespace ListingTodos.Controllers
             var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
             return View(currentTodo);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult Todo(long id)
+        {
+            var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
+            return View(currentTodo);
+        }
     }
 }
