@@ -11,5 +11,6 @@ namespace ListingTodos.Models
         public string Title { get; set; }
         public bool IsUrgent { get; set; } = false;
         public bool IsDone { get; set; } = false;
+        public string Date { get; set; } = DateTime.Now.ToString("dd/MM/yyyy");
     }
 }
