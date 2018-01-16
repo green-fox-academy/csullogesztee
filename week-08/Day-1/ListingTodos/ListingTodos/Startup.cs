@@ -27,7 +27,7 @@ namespace ListingTodos
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseStaticFiles();
             app.UseMvc();
         }
     }

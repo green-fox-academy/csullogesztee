@@ -2,29 +2,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>@Model.Id ToDo</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>The @Model.Id ToDo is:</h1>
-    <table style="width:100%, auto;">
+    <h1 align="center">The @Model.Id ToDo is:</h1>
+    <table class="table" style="text-align:center; width:90%;" align="center">
         <tr>
             <th style="border: 2px solid black;">ID</th>
             <th style="border: 2px solid black;">Date</th>
             <th style="border: 2px solid black;">Action</th>
             <th style="border: 2px solid black;">Done</th>
             <th style="border: 2px solid black;">Urgent</th>
+            <th style="border: 2px solid black;">Delete</th>
+            <th style="border: 2px solid black;">Edit</th>
         </tr>
         <tr>
             <td style="border: 1px solid black;">@Model.Id</td>
             <td style="border: 1px solid black;">@Model.Date</td>
             <td style="border: 1px solid black;">@Model.Title</td>
-            <td style="border: 1px solid black;">@Model.IsDone</td>
-            <td style="border: 1px solid black;">@Model.IsUrgent</td>
-            <td style="border: 1px solid black;"><a href="/delete/@Model.Id">Delete</a></td>
-            <td style="border: 1px solid black;"><a href="edit/@Model.Id">Edit</a></td>
+            <td style="border: 1px solid black;">
+                @{if (@Model.IsDone)
+                    {
+                        <p>&#10004</p>
+                    }
+                    else
+                    {
+                        <p>&#10008</p>
+                    }
+                }
+            </td>
+            <td style="border: 1px solid black;">
+                @{if (@Model.IsUrgent)
+                    {
+                        <p>&#10004</p>
+                    }
+                    else
+                    {
+                        <p>&#10008</p>
+                    }
+                }
+            </td>
+            <td style="border: 1px solid black;"><a href="/delete/@Model.Id" class="btn btn-info btn-lg" role="button" style="background-color:red">Delete</a></td>
+            <td style="border: 1px solid black;"><a href="edit/@Model.Id" class="btn btn-info btn-lg" role="button" style="background-color:orange">Edit</a></td>
         </tr>
     </table>
-    <nav>
-        <a href="/">Return to list</a> |
-    </nav>
+    <center>
+        <nav>
+            <a href="/" class="btn btn-info btn-lg" role="button">Return to list</a>
+        </nav>
+    </center>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
