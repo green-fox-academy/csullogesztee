@@ -33,9 +33,32 @@ namespace ListingTodos.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<long?>("UserId");
+
                     b.HasKey("Id");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("ToDos");
+                });
+
+            modelBuilder.Entity("ListingTodos.Models.User", b =>
+                {
+                    b.Property<long>("UserId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ListingTodos.Models.ToDo", b =>
+                {
+                    b.HasOne("ListingTodos.Models.User", "User")
+                        .WithMany("ToDos")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

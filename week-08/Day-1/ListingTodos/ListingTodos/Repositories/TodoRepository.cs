@@ -30,7 +30,7 @@ namespace ListingTodos.Repositories
 
         public void AddNewTodo(ToDo toDo)
         {
-            toDoContext.Add(toDo);
+            toDoContext.ToDos.Add(toDo);
             toDoContext.SaveChanges();
         }
 
@@ -46,13 +46,31 @@ namespace ListingTodos.Repositories
 
         public void Edit(ToDo toDo, long id)
         {
-                var toDoToUpdate = toDoContext.ToDos.Where(t => t.Id == id).FirstOrDefault();
+            var toDoToUpdate = toDoContext.ToDos.Where(t => t.Id == id).FirstOrDefault();
 
-                toDoToUpdate.Title = toDo.Title;
-                toDoToUpdate.IsDone = toDo.IsDone;
-                toDoToUpdate.IsUrgent = toDo.IsUrgent;
+            toDoToUpdate.Title = toDo.Title;
+            toDoToUpdate.IsDone = toDo.IsDone;
+            toDoToUpdate.IsUrgent = toDo.IsUrgent;
 
-                toDoContext.SaveChanges();
+            toDoContext.SaveChanges();
+        }
+
+        public List<User> ListOfToUsers()
+        {
+            List<User> ListOfUsers = new List<User>();
+
+            foreach (var user in toDoContext.Users)
+            {
+                ListOfUsers.Add(user);
+            }
+
+            return ListOfUsers;
+        }
+
+        public void AddNewUser(User user)
+        {
+            toDoContext.Users.Add(user);
+            toDoContext.SaveChanges();
         }
     }
 }

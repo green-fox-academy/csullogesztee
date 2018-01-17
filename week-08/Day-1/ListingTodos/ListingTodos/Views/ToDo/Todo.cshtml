@@ -22,24 +22,24 @@
             <td style="border: 1px solid black;">@Model.Title</td>
             <td style="border: 1px solid black;">
                 @{if (@Model.IsDone)
-                    {
-                        <p>&#10004</p>
-                    }
-                    else
-                    {
-                        <p>&#10008</p>
-                    }
+            {
+                <p>&#10004</p>
+    }
+    else
+    {
+        <p>&#10008</p>
+}
                 }
             </td>
             <td style="border: 1px solid black;">
                 @{if (@Model.IsUrgent)
-                    {
-                        <p>&#10004</p>
-                    }
-                    else
-                    {
-                        <p>&#10008</p>
-                    }
+            {
+                <p>&#10004</p>
+    }
+    else
+    {
+        <p>&#10008</p>
+}
                 }
             </td>
             <td style="border: 1px solid black;"><a href="/delete/@Model.Id" class="btn btn-info btn-lg" role="button" style="background-color:red">Delete</a></td>

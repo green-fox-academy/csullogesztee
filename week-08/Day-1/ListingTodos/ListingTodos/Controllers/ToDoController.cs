@@ -50,11 +50,14 @@ namespace ListingTodos.Controllers
         //}
 
         [HttpPost("add")]
-        public IActionResult Add(string title)
+        public IActionResult Add(string title, string username)
         {
+            //string name = Request.Form["username"];
+            var currentUser = todoRepository.toDoContext.Users.FirstOrDefault(x => x.Name == username);
             ToDo newToDo = new ToDo()
             {
-                Title = title
+                Title = title,
+                User = currentUser
             };
 
             todoRepository.AddNewTodo(newToDo);
@@ -64,7 +67,7 @@ namespace ListingTodos.Controllers
         [HttpGet("add")]
         public IActionResult Add()
         {
-            return View();
+            return View(todoRepository.ListOfToUsers());
         }
 
         [HttpGet("delete/{id}")]
@@ -93,6 +96,30 @@ namespace ListingTodos.Controllers
         {
             var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
             return View(currentTodo);
+        }
+
+        [HttpGet("userlist")]
+        public IActionResult UserList()
+        {
+            return View(todoRepository.ListOfToUsers());
+        }
+
+        [HttpPost("adduser")]
+        public IActionResult AddUser(string name)
+        {
+            User newUser = new User()
+            {
+                Name = name,
+            };
+
+            todoRepository.AddNewUser(newUser);
+            return RedirectToAction("userlist");
+        }
+
+        [HttpGet("adduser")]
+        public IActionResult AddUser()
+        {
+            return View();
         }
     }
 }

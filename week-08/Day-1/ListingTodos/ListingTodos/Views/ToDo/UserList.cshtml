@@ -1,0 +1,26 @@
+﻿@model System.Collections.Generic.List<ListingTodos.Models.User>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Users</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>User Id</th>
+                <th>User Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @{foreach (var user in Model)
+                    {
+                        <td>@user.UserId</td>
+                        <td>@user.Name</td>
+                    }
+                }
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
