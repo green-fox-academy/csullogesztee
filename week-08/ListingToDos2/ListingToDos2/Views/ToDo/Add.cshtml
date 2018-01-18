@@ -1,0 +1,30 @@
+﻿@model System.Collections.Generic.List<ListingTodos2.Models.User>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Add</title>
+</head>
+<body>
+    <h1>Add new todo</h1>
+    <form action="Add" method="post" id="addnewtodo">
+        Exercise:
+        <input type="text" name="title" value="">
+        <p>Select Creator</p>
+        <select name="username">
+            @{foreach (var user in Model)
+                {
+                    <option value="@user.Name">@user.Name</option>
+                }
+            }
+        </select>
+        <p>Select Assignee</p>
+        <select name="assigneename">
+            @{foreach (var user in Model)
+                {
+                    <option value="@user.Name">@user.Name</option>
+                }
+            }
+        </select>
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>

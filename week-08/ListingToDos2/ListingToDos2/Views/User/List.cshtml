@@ -1,0 +1,31 @@
+﻿@model System.Collections.Generic.List<ListingTodos2.Models.User>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List of ToDos</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Phone Number</td>
+                <td>Number of Todos</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Name</td>
+                        <td>@user.Email</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@user.ToDos.Count()</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

@@ -12,14 +12,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                @{foreach (var user in Model)
-                    {
+            @{foreach (var user in Model)
+                {
+                    <tr>
                         <td>@user.UserId</td>
                         <td>@user.Name</td>
-                    }
+                    </tr>
                 }
-            </tr>
+            }
         </tbody>
     </table>
 </body>

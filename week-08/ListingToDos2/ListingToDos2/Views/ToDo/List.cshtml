@@ -1,0 +1,35 @@
+﻿@model System.Collections.Generic.List<ListingTodos2.Models.ToDo>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>List of ToDos</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Creator</td>
+                <td>Title</td>
+                <td>IsUrgent</td>
+                <td>IsDone</td>
+                <td>Assignee</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach(var todo in Model)
+                {
+            <tr>
+                <td>@todo.Date</td>
+                <td>@todo.Creator.Name</td>
+                <td>@todo.Title</td>
+                <td>@todo.IsUrgent</td>
+                <td>@todo.IsDone</td>
+                <td>@todo.Assignee.Name</td>
+            </tr>
+                }
+             }
+        </tbody>
+    </table>
+</body>
+</html>
