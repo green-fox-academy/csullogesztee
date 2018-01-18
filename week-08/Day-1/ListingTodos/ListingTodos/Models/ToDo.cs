@@ -14,6 +14,7 @@ namespace ListingTodos.Models
         public bool IsUrgent { get; set; } = false;
         public bool IsDone { get; set; } = false;
         public string Date { get; set; } = DateTime.Now.ToString("dd/MM/yyyy");
-        public User User { get; set; }
+        public User Creator { get; set; }
+        public User Assignee { get; set; }
     }
 }

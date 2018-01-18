@@ -11,6 +11,7 @@ namespace ListingTodos.Models
         [Key]
         public long UserId { get; set; }
         public string Name { get; set; }
+        public IList<ToDo> CreatedToDos { get; set; } = new List<ToDo>();
         public IList<ToDo> ToDos { get; set; } = new List<ToDo>();
     }
 }

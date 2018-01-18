@@ -1,15 +1,17 @@
-﻿@model ListingTodos.Models.ToDo
+﻿@model ListingTodos.ViewModels.TodoViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>@Model.Id ToDo</title>
+    <title>@Model.IdOfTodo ToDo</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <h1 align="center">The @Model.Id ToDo is:</h1>
+    <h1 align="center">The @Model.IdOfTodo ToDo is:</h1>
     <table class="table" style="text-align:center; width:90%;" align="center">
         <tr>
             <th style="border: 2px solid black;">ID</th>
             <th style="border: 2px solid black;">Date</th>
+            <th style="border: 2px solid black;">User</th>
+            <th style="border: 2px solid black;">Assignee</th>
             <th style="border: 2px solid black;">Action</th>
             <th style="border: 2px solid black;">Done</th>
             <th style="border: 2px solid black;">Urgent</th>
@@ -17,33 +19,61 @@
             <th style="border: 2px solid black;">Edit</th>
         </tr>
         <tr>
-            <td style="border: 1px solid black;">@Model.Id</td>
-            <td style="border: 1px solid black;">@Model.Date</td>
-            <td style="border: 1px solid black;">@Model.Title</td>
+            <td style="border: 1px solid black;">@Model.OneToDo(Model.IdOfTodo).Id</td>
+            <td style="border: 1px solid black;">@Model.OneToDo(Model.IdOfTodo).Date</td>
             <td style="border: 1px solid black;">
-                @{if (@Model.IsDone)
-            {
-                <p>&#10004</p>
-    }
-    else
-    {
-        <p>&#10008</p>
-}
+                @{string GetTheCreatorName()
+                    {
+                        string userName = null;
+                        foreach (var user in Model.userList)
+                        {
+                            if (Model.OneToDo(Model.IdOfTodo).Creator == user)
+                                userName = user.Name;
+                        }
+                        return userName;
+                    }
+                }
+                @GetTheCreatorName()
+            </td>
+            <td style="border: 1px solid black;">
+                @{string GetTheAssigneeName()
+                    {
+                        string userName = null;
+                        foreach (var user in Model.userList)
+                        {
+                            if (Model.OneToDo(Model.IdOfTodo).Assignee == user)
+                                userName = user.Name;
+                        }
+                        return userName;
+                    }
+                }
+                @GetTheAssigneeName()
+            </td>
+            <td style="border: 1px solid black;">@Model.OneToDo(Model.IdOfTodo).Title</td>
+            <td style="border: 1px solid black;">
+                @{if (@Model.OneToDo(Model.IdOfTodo).IsDone)
+                    {
+                        <p>&#10004</p>
+                    }
+                    else
+                    {
+                        <p>&#10008</p>
+                    }
                 }
             </td>
             <td style="border: 1px solid black;">
-                @{if (@Model.IsUrgent)
-            {
-                <p>&#10004</p>
-    }
-    else
-    {
-        <p>&#10008</p>
-}
+                @{if (@Model.OneToDo(Model.IdOfTodo).IsUrgent)
+                    {
+                        <p>&#10004</p>
+                    }
+                    else
+                    {
+                        <p>&#10008</p>
+                    }
                 }
             </td>
-            <td style="border: 1px solid black;"><a href="/delete/@Model.Id" class="btn btn-info btn-lg" role="button" style="background-color:red">Delete</a></td>
-            <td style="border: 1px solid black;"><a href="edit/@Model.Id" class="btn btn-info btn-lg" role="button" style="background-color:orange">Edit</a></td>
+            <td style="border: 1px solid black;"><a href="/delete/@Model.OneToDo(Model.IdOfTodo).Id" class="btn btn-info btn-lg" role="button" style="background-color:red">Delete</a></td>
+            <td style="border: 1px solid black;"><a href="edit/@Model.OneToDo(Model.IdOfTodo).Id" class="btn btn-info btn-lg" role="button" style="background-color:orange">Edit</a></td>
         </tr>
     </table>
     <center>

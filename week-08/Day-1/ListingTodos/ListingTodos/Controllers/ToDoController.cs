@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ListingTodos.Models;
 using ListingTodos.Repositories;
+using ListingTodos.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,10 +15,12 @@ namespace ListingTodos.Controllers
     public class ToDoController : Controller
     {
         public TodoRepository todoRepository;
+        public TodoViewModel todoViewModel;
 
-        public ToDoController(TodoRepository todoRepository)
+        public ToDoController(TodoRepository todoRepository, TodoViewModel todoViewModel)
         {
             this.todoRepository = todoRepository;
+            this.todoViewModel = todoViewModel;
         }
 
         //[Route("todo")]
@@ -32,7 +35,9 @@ namespace ListingTodos.Controllers
         [HttpGet("list")]
         public IActionResult List()
         {
-            return View(todoRepository.ListOfToDos());
+            todoViewModel.userList = todoRepository.ListOfToUsers();
+            todoViewModel.todoList = todoRepository.ListOfToDos();
+            return View(todoViewModel);
         }
 
         //[Route("add")]
@@ -50,14 +55,16 @@ namespace ListingTodos.Controllers
         //}
 
         [HttpPost("add")]
-        public IActionResult Add(string title, string username)
+        public IActionResult Add(string title, string username, string assigneename)
         {
             //string name = Request.Form["username"];
-            var currentUser = todoRepository.toDoContext.Users.FirstOrDefault(x => x.Name == username);
+            var currentAssignee = todoRepository.toDoContext.Users.FirstOrDefault(x => x.Name == assigneename);
+            var currentCreator = todoRepository.toDoContext.Users.FirstOrDefault(x => x.Name == username);
             ToDo newToDo = new ToDo()
             {
                 Title = title,
-                User = currentUser
+                Creator = currentCreator,
+                Assignee = currentAssignee
             };
 
             todoRepository.AddNewTodo(newToDo);
@@ -78,8 +85,10 @@ namespace ListingTodos.Controllers
         }
 
         [HttpPost("edit/{id}")]
-        public IActionResult Edit(ToDo toDo, long id)
+        public IActionResult Edit(ToDo toDo, long id, long assigneeid)
         {
+            var currentAssignee = todoRepository.toDoContext.Users.FirstOrDefault(x => x.UserId == assigneeid);
+            toDo.Assignee = currentAssignee;
             todoRepository.Edit(toDo, id);
             return RedirectToAction("list");
         }
@@ -87,15 +96,21 @@ namespace ListingTodos.Controllers
         [HttpGet("edit/{id}")]
         public IActionResult Edit(long id)
         {
-            var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
-            return View(currentTodo);
+            //var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
+            todoViewModel.userList = todoRepository.ListOfToUsers();
+            todoViewModel.todoList = todoRepository.ListOfToDos();
+            todoViewModel.IdOfTodo = id;
+            return View(todoViewModel);
         }
 
         [HttpGet("{id}")]
         public IActionResult Todo(long id)
         {
-            var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
-            return View(currentTodo);
+            //var currentTodo = todoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
+            todoViewModel.userList = todoRepository.ListOfToUsers();
+            todoViewModel.todoList = todoRepository.ListOfToDos();
+            todoViewModel.IdOfTodo = id;
+            return View(todoViewModel);
         }
 
         [HttpGet("userlist")]

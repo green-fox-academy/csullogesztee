@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ListingTodos.Entities;
 using ListingTodos.Repositories;
+using ListingTodos.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -18,6 +19,7 @@ namespace ListingTodos
         {
             services.AddMvc();
             services.AddScoped<TodoRepository>();
+            services.AddScoped<TodoViewModel>();
             services.AddDbContext<ToDoContext>(options => options.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB; Initial Catalog = master; Integrated Security = True; Connect Timeout = 30; Encrypt = False; TrustServerCertificate = True; ApplicationIntent = ReadWrite; MultiSubnetFailover = False"));
         }
 

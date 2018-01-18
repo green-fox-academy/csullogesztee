@@ -51,6 +51,7 @@ namespace ListingTodos.Repositories
             toDoToUpdate.Title = toDo.Title;
             toDoToUpdate.IsDone = toDo.IsDone;
             toDoToUpdate.IsUrgent = toDo.IsUrgent;
+            toDoToUpdate.Assignee = toDo.Assignee;
 
             toDoContext.SaveChanges();
         }

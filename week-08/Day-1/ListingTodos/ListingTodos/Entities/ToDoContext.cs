@@ -13,14 +13,19 @@ namespace ListingTodos.Entities
         {
         }
 
-        public DbSet<ToDo> ToDos { get; set;}
-        public DbSet<User> Users { get; set;}
+        public DbSet<ToDo> ToDos { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
+                .HasMany(x => x.CreatedToDos)
+                .WithOne(x => x.Creator)
+                .HasPrincipalKey(x => x.UserId);
+
+            modelBuilder.Entity<User>()
                 .HasMany(x => x.ToDos)
-                .WithOne(x => x.User)
+                .WithOne(x => x.Assignee)
                 .HasPrincipalKey(x => x.UserId);
         }
 

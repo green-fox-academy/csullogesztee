@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.List<ListingTodos.Models.ToDo>
+﻿@model ListingTodos.ViewModels.TodoViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>ToDo CRUD App</title>
@@ -15,7 +15,8 @@
             <tr>
                 <th style="border: 2px solid black;">ID</th>
                 <th style="border: 2px solid black;">Date</th>
-                <th style="border: 2px solid black;">User</th>
+                <th style="border: 2px solid black;">Creator</th>
+                <th style="border: 2px solid black;">Assignee</th>
                 <th style="border: 2px solid black;">Action</th>
                 <th style="border: 2px solid black;">Done</th>
                 <th style="border: 2px solid black;">Urgent</th>
@@ -25,38 +26,65 @@
         </thead>
         <tbody>
             @{
-                foreach (var todo in Model)
+                foreach (var todo in Model.todoList)
                 {
-            <tr>
-                <td style="border: 1px solid black;">@todo.Id</td>
-                <td style="border: 1px solid black;">@todo.Date</td>
-                <td style="border: 1px solid black;">@todo.User</td>
-                <td style="border: 1px solid black;"><a href="/@todo.Id">@todo.Title</a></td>
-                <td style="border: 1px solid black;">
-                    @{if (@todo.IsDone)
-            {
-                <p>&#10004</p>
-}
-else
-{
-            <p>&#10008</p>
-}
-                    }
-                </td>
-                <td style="border: 1px solid black;">
-                    @{if (@todo.IsUrgent)
-            {
-                <p>&#10004</p>
-}
-else
-{
-            <p>&#10008</p>
-}
-                    }
-                </td>
-                <td style="border: 1px solid black;"><a href="/delete/@todo.Id" class="btn btn-info btn-lg" role="button" style="background-color:red">Delete</a></td>
-                <td style="border: 1px solid black;"><a href="edit/@todo.Id" class="btn btn-info btn-lg" role="button" style="background-color:orange">Edit</a></td>
-            </tr>
+                    <tr>
+                        <td style="border: 1px solid black;">@todo.Id</td>
+                        <td style="border: 1px solid black;">@todo.Date</td>
+                        <td style="border: 1px solid black;">
+                            @{string GetTheCreatorName()
+                                {
+                                    string userName = null;
+                                    foreach (var user in Model.userList)
+                                    {
+                                        if (todo.Creator == user)
+                                            userName = user.Name;
+                                    }
+                                    return userName;
+                                }
+                            }
+                            @GetTheCreatorName()
+                        </td>
+                        <td style="border: 1px solid black;">
+                            @{string GetTheAssigneeName()
+                                {
+                                    string userName = null;
+                                    foreach (var user in Model.userList)
+                                    {
+                                        if (todo.Assignee == user)
+                                            userName = user.Name;
+                                    }
+                                    return userName;
+                                }
+                            }
+                            @GetTheAssigneeName()
+                        </td>
+                        <td style="border: 1px solid black;"><a href="/@todo.Id">@todo.Title</a></td>
+                        <td style="border: 1px solid black;">
+                            @{if (@todo.IsDone)
+                                {
+                                    <p>&#10004</p>
+                                }
+                                else
+                                {
+                                    <p>&#10008</p>
+                                }
+                            }
+                        </td>
+                        <td style="border: 1px solid black;">
+                            @{if (@todo.IsUrgent)
+                                {
+                                    <p>&#10004</p>
+                                }
+                                else
+                                {
+                                    <p>&#10008</p>
+                                }
+                            }
+                        </td>
+                        <td style="border: 1px solid black;"><a href="/delete/@todo.Id" class="btn btn-info btn-lg" role="button" style="background-color:red">Delete</a></td>
+                        <td style="border: 1px solid black;"><a href="edit/@todo.Id" class="btn btn-info btn-lg" role="button" style="background-color:orange">Edit</a></td>
+                    </tr>
                 }
             }
         </tbody>

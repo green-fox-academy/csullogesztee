@@ -1,16 +1,25 @@
-﻿@model ListingTodos.Models.ToDo
+﻿@model ListingTodos.ViewModels.TodoViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Edit</title>
 </head>
 <body>
-    <form action="/edit/@Model.Id" method="post">
+    <form action="/edit/@Model.IdOfTodo" method="post">
         Title:
-        <input type="text" name="title" value="@Model.Title" /><br>
+        <input type="text" name="title" value="@Model.OneToDo(Model.IdOfTodo).Title" /><br>
         Is Urgent:
-        <input type="checkbox" name="isUrgent" value="true" checked="@Model.IsUrgent" /><br>
+        <input type="checkbox" name="isUrgent" value="true" checked="@Model.OneToDo(Model.IdOfTodo).IsUrgent" /><br>
         Is Done:
-        <input type="checkbox" name="isDone" value="true" checked="@Model.IsDone" /><br>
+        <input type="checkbox" name="isDone" value="true" checked="@Model.OneToDo(Model.IdOfTodo).IsDone" /><br>
+        <p>Select Assignee</p>
+        <select name="assigneeid">
+            @{foreach (var user in Model.userList)
+                {
+                    <option value="@user.UserId">@user.Name</option>
+                }
+            }
+        </select>
+        </br>
         <input type="submit" name="name" value="Send" />
     </form>
 </body>
