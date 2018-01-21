@@ -1,0 +1,32 @@
+﻿@model ListingToDos2.ViewModels.ToDoUserViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit</title>
+</head>
+<body>
+    <nav>
+        <a href="/todo/list">ToDos</a> |
+        <a href="/todo/add">Add new ToDo</a> |
+        <a href="/user/list">Users</a> |
+        <a href="/user/add">Add new User</a> |
+    </nav>
+    <form action="/todo/edit/@Model.ToDoId" method="post">
+        Title:
+        <input type="text" name="title" value="@Model.GetOneToDo().Title" /><br>
+        Is Urgent:
+        <input type="checkbox" name="isUrgent" value="true" checked="@Model.GetOneToDo().IsUrgent" /><br>
+        Is Done:
+        <input type="checkbox" name="isDone" value="true" checked="@Model.GetOneToDo().IsDone" /><br>
+        <p>Select Assignee</p>
+        <select name="assigneeid">
+            @{foreach (var user in Model.UserList)
+                {
+                    <option value="@user.UserId">@user.Name</option>
+                }
+            }
+        </select>
+        </br>
+        <input type="submit" name="name" value="Send" />
+    </form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿@model TheReddit.ViewModels.RedditViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>The Reddit</title>
+</head>
+<body>
+    <h1>Posts</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>SCORE</td>
+                <td>Actions</td>
+                <td>Content</td>
+                <td>Date Of Creation</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>All Posts</td></tr>
+            @{
+                foreach (var post in Model.allPost)
+                {
+                    <tr>
+                        <td>@post.Score</td>
+                        <td>
+                            <a href="/posts/increase/@post.PostId" class="btn btn-info btn-lg" role="button">+</a>
+                            <a href="posts/decrease/@post.PostId" class="btn btn-info btn-lg" role="button">-</a>
+                        </td>
+                        <td>@post.Content</td>
+                        <td>@post.Date</td>
+                    </tr>
+                }
+                <tr><td>Top10</td></tr>
+                foreach (var post in Model.top10)
+                {
+                    <tr>
+                        <td>@post.Score</td>
+                        <td>
+                            <a href="/posts/increase/@post.PostId" class="btn btn-info btn-lg" role="button">+</a>
+                            <a href="posts/decrease/@post.PostId" class="btn btn-info btn-lg" role="button">-</a>
+                        </td>
+                        <td>@post.Content</td>
+                        <td>@post.Date</td>
+                    </tr>
+                }
+                <tr><td>Others</td></tr>
+                foreach (var post in Model.otherPosts)
+                {
+                    <tr>
+                        <td>@post.Score</td>
+                        <td>
+                            <a href="/posts/increase/@post.PostId" class="btn btn-info btn-lg" role="button">+</a>
+                            <a href="posts/decrease/@post.PostId" class="btn btn-info btn-lg" role="button">-</a>
+                        </td>
+                        <td>@post.Content</td>
+                        <td>@post.Date</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

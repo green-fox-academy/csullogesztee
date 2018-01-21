@@ -4,6 +4,11 @@
     <title>List of ToDos</title>
 </head>
 <body>
+    <nav>
+        <a href="/todo/add">Add new ToDo</a> |
+        <a href="/todo/list">ToDos</a> |
+        <a href="/user/add">Add new User</a> |
+    </nav>
     <table>
         <thead>
             <tr>
@@ -11,6 +16,8 @@
                 <td>Email</td>
                 <td>Phone Number</td>
                 <td>Number of Todos</td>
+                <th>Delete</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +29,8 @@
                         <td>@user.Email</td>
                         <td>@user.PhoneNumber</td>
                         <td>@user.ToDos.Count()</td>
+                        <td><a href="/user/delete/@user.UserId" class="btn btn-info btn-lg" role="button">Delete</a></td>
+                        <td><a href="/user/edit/@user.UserId" class="btn btn-info btn-lg" role="button">Edit</a></td>
                     </tr>
                 }
             }

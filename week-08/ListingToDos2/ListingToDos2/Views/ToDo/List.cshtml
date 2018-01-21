@@ -4,6 +4,11 @@
     <title>List of ToDos</title>
 </head>
 <body>
+    <nav>
+        <a href="/todo/add">Add new ToDo</a> |
+        <a href="/user/list">Users</a> |
+        <a href="/user/add">Add new User</a> |
+    </nav>
     <table>
         <thead>
             <tr>
@@ -13,22 +18,26 @@
                 <td>IsUrgent</td>
                 <td>IsDone</td>
                 <td>Assignee</td>
+                <th>Delete</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
             @{
-                foreach(var todo in Model)
+                foreach (var todo in Model)
                 {
-            <tr>
-                <td>@todo.Date</td>
-                <td>@todo.Creator.Name</td>
-                <td>@todo.Title</td>
-                <td>@todo.IsUrgent</td>
-                <td>@todo.IsDone</td>
-                <td>@todo.Assignee.Name</td>
-            </tr>
+                    <tr>
+                        <td>@todo.Date</td>
+                        <td>@todo.Creator.Name</td>
+                        <td>@todo.Title</td>
+                        <td>@todo.IsUrgent</td>
+                        <td>@todo.IsDone</td>
+                        <td>@todo.Assignee.Name</td>
+                        <td><a href="/todo/delete/@todo.Id" class="btn btn-info btn-lg" role="button">Delete</a></td>
+                        <td><a href="/todo/edit/@todo.Id" class="btn btn-info btn-lg" role="button">Edit</a></td>
+                    </tr>
                 }
-             }
+            }
         </tbody>
     </table>
 </body>

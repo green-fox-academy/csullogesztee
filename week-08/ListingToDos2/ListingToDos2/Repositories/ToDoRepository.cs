@@ -32,7 +32,7 @@ namespace ListingToDos2.Repositories
             toDoContext.SaveChanges();
         }
 
-        public void Edit(ToDo toDo, long id)
+        public void EditToDo(ToDo toDo, long id)
         {
             var toDoToUpdate = toDoContext.ToDos.Where(t => t.Id == id).FirstOrDefault();
 

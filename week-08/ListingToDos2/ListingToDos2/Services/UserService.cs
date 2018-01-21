@@ -1,5 +1,6 @@
 ﻿using ListingTodos2.Models;
 using ListingToDos2.Repositories;
+using ListingToDos2.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace ListingToDos2.Services
     public class UserService
     {
         public UserRepository userRepository;
+        public ToDoUserViewModel toDoUserViewModel;
 
-        public UserService(UserRepository userRepository)
+        public UserService(UserRepository userRepository, ToDoUserViewModel toDoUserViewModel)
         {
-            this.userRepository = userRepository;    
+            this.userRepository = userRepository;
+            this.toDoUserViewModel = toDoUserViewModel;
         }
 
         public List<User> ListOfToUsers()
@@ -40,9 +43,17 @@ namespace ListingToDos2.Services
             return newUser;
         }
 
-        public User GetTheUser(string name)
+        public User GetTheUserWithName(string name)
         {
-            return userRepository.toDoContext.Users.FirstOrDefault(x => x.Name == name);
+            var currentUser = userRepository.toDoContext.Users.FirstOrDefault(x => x.Name == name);
+            return currentUser == null ? CreateNewUser("N/A", "N/A", 0) : currentUser;
         }
+
+        public User GetTheUserWithId(long id)
+        {
+            var currentUser = userRepository.toDoContext.Users.FirstOrDefault(x => x.UserId == id);
+            return currentUser == null ? CreateNewUser("N/A", "N/A", 0) : currentUser;
+        }
+        
     }
 }

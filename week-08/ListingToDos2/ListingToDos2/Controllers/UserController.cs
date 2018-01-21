@@ -11,11 +11,15 @@ namespace ListingToDos2.Controllers
     [Route("/user")]
     public class UserController : Controller
     {
-        public UserService userService;
+        private UserService userService;
+        private ToDoService toDoService;
 
-        public UserController(UserService userService)
+        public UserController(UserService userService, ToDoService toDoService)
         {
             this.userService = userService;
+            this.toDoService = toDoService;
+            userService.toDoUserViewModel.ToDoList = toDoService.ListOfToDos();
+            userService.toDoUserViewModel.UserList = userService.ListOfToUsers();
         }
 
         [HttpGet("/user/list")]
@@ -36,6 +40,27 @@ namespace ListingToDos2.Controllers
         public IActionResult Add()
         {
             return View();
+        }
+
+        [HttpGet("/user/delete/{id}")]
+        public IActionResult Delete(long id)
+        {
+            userService.userRepository.DeleteUser(id);
+            return RedirectToAction("list");
+        }
+
+        [HttpPost("/user/edit/{id}")]
+        public IActionResult Edit(User user, long id)
+        {
+            userService.userRepository.EditUser(user, id);
+            return RedirectToAction("list");
+        }
+
+        [HttpGet("/user/edit/{id}")]
+        public IActionResult Edit(long id)
+        {
+            toDoService.toDoUserViewModel.UserId = id;
+            return View(toDoService.toDoUserViewModel);
         }
     }
 }

@@ -12,13 +12,15 @@ namespace ListingToDos2.Controllers
     [Route("/todo")]
     public class ToDoController : Controller
     {
-        public ToDoService toDoService;
-        public UserService userService;
+        private ToDoService toDoService;
+        private UserService userService;
 
         public ToDoController(ToDoService toDoService, UserService userService)
         {
             this.toDoService = toDoService;
             this.userService = userService;
+            toDoService.toDoUserViewModel.ToDoList = toDoService.ListOfToDos();
+            toDoService.toDoUserViewModel.UserList = userService.ListOfToUsers();
         }
 
         [Route("")]
@@ -31,9 +33,10 @@ namespace ListingToDos2.Controllers
         [HttpPost("/todo/add")]
         public IActionResult Add(string title, string username, string assigneename)
         {
+            var currentCreator = userService.GetTheUserWithName(username);
+            var currentAssignee = userService.GetTheUserWithName(assigneename);
             toDoService.toDoRepository.AddNewTodo(toDoService.
-                CreateNewToDo(title, userService.GetTheUser(username), 
-                userService.GetTheUser(assigneename)));
+                CreateNewToDo(title, currentCreator, currentAssignee));
             return RedirectToAction("list");
         }
 
@@ -41,6 +44,29 @@ namespace ListingToDos2.Controllers
         public IActionResult Add()
         {
             return View(userService.ListOfToUsers());
+        }
+
+        [HttpGet("/todo/delete/{id}")]
+        public IActionResult Delete(long id)
+        {
+            toDoService.toDoRepository.DeleteToDo(id);
+            return RedirectToAction("list");
+        }
+
+        [HttpPost("/todo/edit/{id}")]
+        public IActionResult Edit(ToDo toDo, long id, long assigneeid)
+        {
+            var currentAssignee = userService.GetTheUserWithId(assigneeid);
+            toDo.Assignee = currentAssignee;
+            toDoService.toDoRepository.EditToDo(toDo, id);
+            return RedirectToAction("list");
+        }
+
+        [HttpGet("/todo/edit/{id}")]
+        public IActionResult Edit(long id)
+        {
+            toDoService.toDoUserViewModel.ToDoId = id;
+            return View(toDoService.toDoUserViewModel);
         }
     }
 }

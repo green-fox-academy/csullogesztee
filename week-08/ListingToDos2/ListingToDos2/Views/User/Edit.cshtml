@@ -1,0 +1,21 @@
+﻿@model ListingToDos2.ViewModels.ToDoUserViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit</title>
+</head>
+<body>
+    <nav>
+        <a href="/todo/list">ToDos</a> |
+        <a href="/todo/add">Add new ToDo</a> |
+        <a href="/user/list">Users</a> |
+        <a href="/user/add">Add new User</a> |
+    </nav>
+    <form action="/user/edit/@Model.UserId" method="post">
+        Name:
+        <input type="text" name="name" value="@Model.GetOneUser().Name" /><br>
+        <input type="text" name="email" value="@Model.GetOneUser().Email" /><br>
+        <input type="number" name="phoneNumber" value="@Model.GetOneUser().PhoneNumber" /><br>
+        <input type="submit" name="name" value="Send" />
+    </form>
+</body>
+</html>
