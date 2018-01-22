@@ -11,5 +11,6 @@ namespace TheReddit.Models
         public int Score { get; set; }
         public string Date { get; set; } = DateTime.Now.ToString("dd/MM/yyyy");
         public string Content { get; set; }
+        public User User { get; set; }
     }
 }
