@@ -83,5 +83,38 @@ namespace Frontend.Controllers
             }
             return NotFound();
         }
+
+        [HttpPost("arrays")]
+        public IActionResult Arrays([FromBody] NumbersArray numbers)
+        {
+            if (numbers.What.Equals("sum"))
+            {
+                int result = 0;
+                foreach (var number in numbers.Numbers)
+                {
+                    result += number;
+                }
+                return Json(new { result = result });
+            }
+            if (numbers.What.Equals("multiply"))
+            {
+                int result = 1;
+                foreach (var number in numbers.Numbers)
+                {
+                    result *= number;
+                }
+                return Json(new { result = result });
+            }
+            if (numbers.What.Equals("double"))
+            {
+                int[] result = new int[4];
+                for (int i = 0; i < result.Length; i++)
+                {
+                    result[i] = numbers.Numbers[i] * 2;
+                }
+                return Json(new { result = result });
+            }
+            return Json(new { error = "Please provide what to do with the numbers!" });
+        }
     }
 }
