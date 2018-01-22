@@ -25,7 +25,7 @@ namespace Frontend.Controllers
             {
                 return Json(new { error = "Please provide an input!" });
             }
-            return Json(new { received = input, result = input * 2});
+            return Json(new { received = input, result = input * 2 });
         }
 
         [HttpGet("greeter")]
@@ -39,8 +39,19 @@ namespace Frontend.Controllers
             {
                 return Json(new { error = "Please provide a title!" });
             }
-            return Json(new { welcome_message = string.Format("Oh, hi there {0}, my dear {1}!", name, title )});
+            return Json(new { welcome_message = string.Format("Oh, hi there {0}, my dear {1}!", name, title) });
         }
 
+        [HttpGet("appenda/{appendable}")]
+        public IActionResult Greeter(string appendable)
+        {
+            return Json(new { appended = appendable + "a" });
+        }
+
+        [HttpGet("appenda")]
+        public IActionResult Greeter()
+        {
+            return NotFound();
+        }
     }
 }
