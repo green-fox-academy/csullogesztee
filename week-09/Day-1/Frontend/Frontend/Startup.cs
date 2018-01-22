@@ -27,9 +27,10 @@ namespace Frontend
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseMvc();
+ 
             app.UseStaticFiles();
             app.UseDefaultFiles();
+            app.UseMvc();
         }
     }
 }

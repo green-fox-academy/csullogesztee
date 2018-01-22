@@ -1,6 +1,4 @@
-﻿/**
- * Created by aze on 2017.05.09..
- */
+﻿
 window.baseUrl = "http://localhost:12345/api";
 $("#server_change").on("submit", function (e) {
     e.preventDefault();

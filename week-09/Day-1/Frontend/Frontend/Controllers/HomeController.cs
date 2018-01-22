@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Frontend.Controllers
 {
-    [Route("")]
+    [Route("api")]
     public class HomeController : Controller
     {
         [Route("")]
@@ -16,5 +16,17 @@ namespace Frontend.Controllers
         {
             return File("index.html", "text/html");
         }
+
+
+        [HttpGet("doubling")]
+        public IActionResult Doubling(int? input)
+        {
+            if (input == null)
+            {
+                return Json(new { error = "Please provide an input!" });
+            }
+            return Json(new { received = input, result = input * 2});
+        }
+
     }
 }
