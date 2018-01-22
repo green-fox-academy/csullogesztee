@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Frontend.Entities;
 using Frontend.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,10 +13,19 @@ namespace Frontend.Controllers
     [Route("api")]
     public class HomeController : Controller
     {
+        public LogContext logContext;
+
+        public HomeController(LogContext logContext)
+        {
+            this.logContext = logContext;
+        }
 
         [Route("")]
         public IActionResult Index()
         {
+            logContext.Logs.Add(new Log() { EndPoint = "", Data = ""});
+            logContext.SaveChanges();
+
             return File("index.html", "text/html");
         }
 
@@ -23,6 +33,10 @@ namespace Frontend.Controllers
         [HttpGet("doubling")]
         public IActionResult Doubling(int? input)
         {
+
+            logContext.Logs.Add(new Log() { EndPoint = "doubling", Data = $"{input}" });
+            logContext.SaveChanges();
+
             if (input == null)
             {
                 return Json(new { error = "Please provide an input!" });
@@ -33,6 +47,10 @@ namespace Frontend.Controllers
         [HttpGet("greeter")]
         public IActionResult Greeter(string name, string title)
         {
+
+            logContext.Logs.Add(new Log() { EndPoint = "greeter", Data = $"{name}, {title}" } );
+            logContext.SaveChanges();
+
             if (name == null)
             {
                 return Json(new { error = "Please provide a name!" });
@@ -47,6 +65,9 @@ namespace Frontend.Controllers
         [HttpGet("appenda/{appendable}")]
         public IActionResult Greeter(string appendable)
         {
+            logContext.Logs.Add(new Log() { EndPoint = "appenda", Data = $"{appendable}" });
+            logContext.SaveChanges();
+
             return Json(new { appended = appendable + "a" });
         }
 
@@ -59,6 +80,10 @@ namespace Frontend.Controllers
         [HttpPost("dountil/{what}")]
         public IActionResult DoUntil([FromBody] Until item, [FromRoute]string what)
         {
+
+            logContext.Logs.Add(new Log() { EndPoint = "dountil", Data = $"{item.ToString()}, {what}" });
+            logContext.SaveChanges();
+
             if (item.until == null)
             {
                 return Json(new { error = "Please provide a number!" });
@@ -87,6 +112,10 @@ namespace Frontend.Controllers
         [HttpPost("arrays")]
         public IActionResult Arrays([FromBody] NumbersArray numbers)
         {
+
+            logContext.Logs.Add(new Log() { EndPoint = "arrays", Data = $"{numbers.ToString()}" });
+            logContext.SaveChanges();
+
             if (numbers.What.Equals("sum"))
             {
                 int result = 0;
@@ -115,6 +144,15 @@ namespace Frontend.Controllers
                 return Json(new { result = result });
             }
             return Json(new { error = "Please provide what to do with the numbers!" });
+        }
+
+        [HttpGet("log")]
+        public IActionResult Log()
+        {
+            logContext.Logs.Add(new Log() { EndPoint = "log", Data = "" });
+            logContext.SaveChanges();
+
+            return Json(new { entries = logContext.Logs, entry_count = logContext.Logs.ToList().Count });
         }
     }
 }
