@@ -21,7 +21,6 @@ namespace TheReddit.Controllers
         [HttpGet("/posts")]
         public IActionResult Index()
         {
-            redditService.redditViewModel.allPost = redditService.AllPost();
             return View(redditService.redditViewModel);
         }
 

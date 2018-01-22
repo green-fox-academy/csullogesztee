@@ -17,6 +17,9 @@ namespace TheReddit.Services
         {
             this.redditRepository = redditRepository;
             this.redditViewModel = redditViewModel;
+            redditViewModel.allPost = AllPost();
+            redditViewModel.Top10();
+            redditViewModel.OtherPosts();
         }
 
         public Post CreatePost(string content)

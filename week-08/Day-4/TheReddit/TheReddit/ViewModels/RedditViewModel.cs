@@ -16,9 +16,12 @@ namespace TheReddit.ViewModels
         {
             var sortedList = allPost.OrderBy(p => p.Score).ToList();
 
-            for (int i = 0; i < 10; i++)
+            if (allPost.Count() <= 10)
             {
-                top10.Add(sortedList[i]);
+                for (int i = 0; i < allPost.Count(); i++)
+                {
+                    top10.Add(sortedList[i]);
+                }
             }
             return top10;
         }
@@ -27,9 +30,12 @@ namespace TheReddit.ViewModels
         {
             var sortedList = allPost.OrderBy(p => p.Score).ToList();
 
-            for (int i = 10; i < allPost.Count(); i++)
+            if (allPost.Count() > 10)
             {
-                otherPosts.Add(sortedList[i]);
+                for (int i = 10; i < allPost.Count(); i++)
+                {
+                    otherPosts.Add(sortedList[i]);
+                }
             }
             return otherPosts;
         }
