@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Frontend.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,6 +12,7 @@ namespace Frontend.Controllers
     [Route("api")]
     public class HomeController : Controller
     {
+
         [Route("")]
         public IActionResult Index()
         {
@@ -51,6 +53,34 @@ namespace Frontend.Controllers
         [HttpGet("appenda")]
         public IActionResult Greeter()
         {
+            return NotFound();
+        }
+
+        [HttpPost("dountil/{what}")]
+        public IActionResult DoUntil([FromBody] Until item, [FromRoute]string what)
+        {
+            if (item.until == null)
+            {
+                return Json(new { error = "Please provide a number!" });
+            }
+            if (what.Equals("sum"))
+            {
+                int result = 0;
+                for (int i = 0; i < item.until + 1; i++)
+                {
+                    result += i;
+                }
+                return Json(new { result = result });
+            }
+            if (what.Equals("factor"))
+            {
+                int result = 1;
+                for (int i = 1; i < item.until + 1; i++)
+                {
+                    result *= i;
+                }
+                return Json(new { result = result });
+            }
             return NotFound();
         }
     }
