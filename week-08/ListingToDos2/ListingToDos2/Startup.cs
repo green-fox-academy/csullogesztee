@@ -26,6 +26,7 @@ namespace ListingToDos2
             services.AddScoped<UserRepository>();
             services.AddScoped<ToDoService>();
             services.AddScoped<UserService>();
+            services.AddScoped<LoginService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

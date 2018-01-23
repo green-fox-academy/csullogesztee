@@ -1,0 +1,27 @@
+﻿@model ListingToDos2.ViewModels.ToDoUserViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@Model.GetOneUser().Name's ToDos</title>
+</head>
+<body>
+    <h1>@Model.GetOneUser().Name's ToDos</h1>
+    <table>
+        <thead>
+            <tr>
+                <td><h2>Title of ToDo</h2></td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @{
+                foreach (var todo in Model.GetOneUser().ToDos)
+                {
+                    <tr>
+                        <td>@todo.Title</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

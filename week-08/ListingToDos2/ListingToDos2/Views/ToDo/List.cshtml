@@ -29,10 +29,10 @@
                     <tr>
                         <td>@todo.Date</td>
                         <td>@todo.Creator.Name</td>
-                        <td>@todo.Title</td>
+                        <td><a href="/todo/@todo.Id">@todo.Title</a></td>
                         <td>@todo.IsUrgent</td>
                         <td>@todo.IsDone</td>
-                        <td>@todo.Assignee.Name</td>
+                        <td><a href="/user/@todo.Assignee.UserId">@todo.Assignee.Name</a></td>
                         <td><a href="/todo/delete/@todo.Id" class="btn btn-info btn-lg" role="button">Delete</a></td>
                         <td><a href="/todo/edit/@todo.Id" class="btn btn-info btn-lg" role="button">Edit</a></td>
                     </tr>

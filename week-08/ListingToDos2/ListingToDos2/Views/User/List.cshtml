@@ -25,7 +25,7 @@
                 foreach (var user in Model)
                 {
                     <tr>
-                        <td>@user.Name</td>
+                        <td><a href="/user/@user.UserId">@user.Name</a></td>
                         <td>@user.Email</td>
                         <td>@user.PhoneNumber</td>
                         <td>@user.ToDos.Count()</td>

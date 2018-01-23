@@ -62,5 +62,12 @@ namespace ListingToDos2.Controllers
             toDoService.toDoUserViewModel.UserId = id;
             return View(toDoService.toDoUserViewModel);
         }
+
+        [HttpGet("/user/{id}")]
+        public IActionResult User(long id)
+        {
+            toDoService.toDoUserViewModel.UserId = id;
+            return View(toDoService.toDoUserViewModel);
+        }
     }
 }

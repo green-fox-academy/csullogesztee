@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ListingToDos2.Controllers
 {
-    [Route("")]
     [Route("/todo")]
     public class ToDoController : Controller
     {
@@ -23,7 +22,6 @@ namespace ListingToDos2.Controllers
             toDoService.toDoUserViewModel.UserList = userService.ListOfToUsers();
         }
 
-        [Route("")]
         [HttpGet("/todo/list")]
         public IActionResult List()
         {
@@ -64,6 +62,13 @@ namespace ListingToDos2.Controllers
 
         [HttpGet("/todo/edit/{id}")]
         public IActionResult Edit(long id)
+        {
+            toDoService.toDoUserViewModel.ToDoId = id;
+            return View(toDoService.toDoUserViewModel);
+        }
+
+        [HttpGet("/todo/{id}")]
+        public IActionResult Todo(long id)
         {
             toDoService.toDoUserViewModel.ToDoId = id;
             return View(toDoService.toDoUserViewModel);

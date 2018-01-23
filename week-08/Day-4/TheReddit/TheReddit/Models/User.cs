@@ -8,6 +8,7 @@ namespace TheReddit.Models
     public class User
     {
         public long? UserId { get; set; }
+        public string Name { get; set; }
         public IList<Post> PostsOfTheUser { get; set; } = new List<Post>();
     }
 }
