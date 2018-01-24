@@ -47,5 +47,27 @@ namespace ListingToDos2.Services
         {
             return toDoRepository.toDoContext.ToDos.FirstOrDefault(x => x.Id == id);
         }
+
+        //public List<ToDo> FilteredToDos(string TypeOfSearch, string SearchedText)
+        //{
+        //    List<ToDo> filteredList = ListOfToDos();
+        //    if (TypeOfSearch == "assignee")
+        //    {
+        //        filteredList = ListOfToDos().Where(x => x.Assignee.Name == SearchedText).Select(x => x).ToList();
+        //    }
+        //    if (TypeOfSearch == "creator")
+        //    {
+        //        filteredList = ListOfToDos().Where(x => x.Creator.Name == SearchedText).Select(x => x).ToList();
+        //    }
+        //    if (TypeOfSearch == "title")
+        //    {
+        //        filteredList = ListOfToDos().Where(x => x.Title == SearchedText).Select(x => x).ToList();
+        //    }
+        //    if (TypeOfSearch == "date")
+        //    {
+        //        filteredList = ListOfToDos().Where(x => x.Date == SearchedText).Select(x => x).ToList();
+        //    }
+        //    return filteredList;
+        //}
     }
 }

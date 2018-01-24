@@ -80,6 +80,7 @@ namespace ListingToDos2.Controllers
             toDoService.toDoUserViewModel.SearchedText = text;
             toDoService.toDoUserViewModel.TypeOfSearch = type;
             toDoService.toDoUserViewModel.FilteredToDos();
+            //toDoService.FilteredToDos(type, text);
             return RedirectToAction("list");
         }
     }
