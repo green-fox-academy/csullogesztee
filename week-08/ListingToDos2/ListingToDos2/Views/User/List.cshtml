@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.List<ListingTodos2.Models.User>
+﻿@model ListingToDos2.ViewModels.ToDoUserViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>List of ToDos</title>
@@ -22,7 +22,7 @@
         </thead>
         <tbody>
             @{
-                foreach (var user in Model)
+                foreach (var user in Model.UserList)
                 {
                     <tr>
                         <td><a href="/user/@user.UserId">@user.Name</a></td>

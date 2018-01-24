@@ -25,7 +25,7 @@ namespace ListingToDos2.Controllers
         [HttpGet("/user/list")]
         public IActionResult List()
         {
-            return View(userService.ListOfToUsers());
+            return View(userService.toDoUserViewModel);
         }
 
         [HttpPost("/user/add")]

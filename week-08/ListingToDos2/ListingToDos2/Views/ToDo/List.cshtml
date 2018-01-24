@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.List<ListingTodos2.Models.ToDo>
+﻿@model ListingToDos2.ViewModels.ToDoUserViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>List of ToDos</title>
@@ -9,6 +9,17 @@
         <a href="/user/list">Users</a> |
         <a href="/user/add">Add new User</a> |
     </nav>
+    <form action="Search" method="post">
+        Search:
+        <input type="text" name="text" value="">
+        <select name="type">
+            <option value="assignee">Assignee</option>
+            <option value="creator">Creator</option>
+            <option value="title">Title</option>
+            <option value="date">Date</option>
+        </select>
+        <input type="submit" value="Search">
+    </form>
     <table>
         <thead>
             <tr>
@@ -24,7 +35,7 @@
         </thead>
         <tbody>
             @{
-                foreach (var todo in Model)
+                foreach (var todo in Model.FilteredToDos())
                 {
                     <tr>
                         <td>@todo.Date</td>
