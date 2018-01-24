@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using System.Net;
 using System.Net.Http;
@@ -7,12 +7,12 @@ using Xunit;
 
 namespace IAmGroot.IntegrationTests
 {
-    public class GuardianTests
+    public class YonduTests
     {
         private HttpClient Client;
         private TestServer Server;
 
-        public GuardianTests()
+        public YonduTests()
         {
             //arrange
             Server = new TestServer(new WebHostBuilder().UseStartup<Startup>());
@@ -20,41 +20,41 @@ namespace IAmGroot.IntegrationTests
         }
 
         [Fact]
-        public async Task GrootEmptyShouldReturnOkStatus()
+        public async Task YonduEmptyShouldReturnOkStatus()
         {
             //act
-            var response = await Client.GetAsync("/groot");
+            var response = await Client.GetAsync("/yondu");
 
             //assert
             Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
         }
 
         [Fact]
-        public async Task GrootWithMessageShouldReturnOkStatus()
+        public async Task YonduWithMessageShouldReturnOkStatus()
         {
             //act
-            var response = await Client.GetAsync("/groot?message=somemessage");
+            var response = await Client.GetAsync("/yondu?distance=100.0&time=10.0");
 
             //assert
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
 
         [Fact]
-        public async Task GrootEmptyReturnCreatedStatus()
+        public async Task YonduEmptyReturnCreatedStatus()
         {
-            var response = await Client.GetAsync("/groot");
+            var response = await Client.GetAsync("/yondu");
 
             string json = await response.Content.ReadAsStringAsync();
             Assert.Equal("{\"error\":\"I am Groot!\"}", json);
         }
 
         [Fact]
-        public async Task GrootWithMessageReturnCreatedStatus()
+        public async Task YonduWithMessageReturnCreatedStatus()
         {
-            var response = await Client.GetAsync("/groot?message=somemessage");
+            var response = await Client.GetAsync("/yondu?distance=100.0&time=10.0");
 
             string json = await response.Content.ReadAsStringAsync();
-            Assert.Equal("{\"received\":\"somemessage\",\"translated\":\"I am Groot!\"}", json);
+            Assert.Equal("{\"distance\":100.0,\"time\":10.0,\"speed\":10.0}", json);
         }
     }
 }
