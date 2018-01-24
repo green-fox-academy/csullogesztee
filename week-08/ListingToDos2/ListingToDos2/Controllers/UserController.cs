@@ -17,9 +17,7 @@ namespace ListingToDos2.Controllers
         public UserController(UserService userService, ToDoService toDoService)
         {
             this.userService = userService;
-            this.toDoService = toDoService;
-            userService.toDoUserViewModel.ToDoList = toDoService.ListOfToDos();
-            userService.toDoUserViewModel.UserList = userService.ListOfToUsers();
+            this.toDoService = toDoService;          
         }
 
         [HttpGet("/user/list")]

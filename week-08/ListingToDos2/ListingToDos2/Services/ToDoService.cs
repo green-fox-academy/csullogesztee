@@ -18,6 +18,7 @@ namespace ListingToDos2.Services
         {
             this.toDoRepository = toDoRepository;
             this.toDoUserViewModel = toDoUserViewModel;
+            toDoUserViewModel.ToDoList = ListOfToDos();
         }
 
         public List<ToDo> ListOfToDos()

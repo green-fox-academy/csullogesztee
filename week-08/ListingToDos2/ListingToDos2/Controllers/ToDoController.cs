@@ -18,8 +18,6 @@ namespace ListingToDos2.Controllers
         {
             this.toDoService = toDoService;
             this.userService = userService;
-            toDoService.toDoUserViewModel.ToDoList = toDoService.ListOfToDos();
-            toDoService.toDoUserViewModel.UserList = userService.ListOfToUsers();
         }
 
         [HttpGet("/todo/list")]
@@ -78,7 +76,7 @@ namespace ListingToDos2.Controllers
         public IActionResult Search(string type, string text)
         {
             toDoService.toDoUserViewModel.ToDoList = toDoService.FilteredToDos(type, text);
-            return RedirectToAction("list");
+            return View(toDoService.toDoUserViewModel);
         }
     }
 }
