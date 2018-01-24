@@ -50,7 +50,8 @@ namespace IAmGroot.Controllers
         public IActionResult Fill(string caliber, int amount)
         {
             cargoService.Fill(caliber, amount);
-            return RedirectToAction("rocket");
+            return caliber == null && amount == 0 ? (IActionResult)BadRequest(new { error = "I am Groot!" }) 
+                : RedirectToAction("rocket");
         }
     }
 }

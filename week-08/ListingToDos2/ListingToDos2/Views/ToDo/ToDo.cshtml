@@ -25,14 +25,14 @@
         </thead>
         <tbody>
                     <tr>
-                        <td>@Model.GetOneToDo().Date</td>
-                        <td>@Model.GetOneToDo().Creator.Name</td>
-                        <td>@Model.GetOneToDo().Title</td>
-                        <td>@Model.GetOneToDo().IsUrgent</td>
-                        <td>@Model.GetOneToDo().IsDone</td>
-                        <td>@Model.GetOneToDo().Assignee.Name</td>
-                        <td><a href="/todo/delete/@Model.GetOneToDo().Id" class="btn btn-info btn-lg" role="button">Delete</a></td>
-                        <td><a href="/todo/edit/@Model.GetOneToDo().Id" class="btn btn-info btn-lg" role="button">Edit</a></td>
+                        <td>@Model.OneToDo.Date</td>
+                        <td>@Model.OneToDo.Creator.Name</td>
+                        <td>@Model.OneToDo.Title</td>
+                        <td>@Model.OneToDo.IsUrgent</td>
+                        <td>@Model.OneToDo.IsDone</td>
+                        <td>@Model.OneToDo.Assignee.Name</td>
+                        <td><a href="/todo/delete/@Model.OneToDo.Id" class="btn btn-info btn-lg" role="button">Delete</a></td>
+                        <td><a href="/todo/edit/@Model.OneToDo.Id" class="btn btn-info btn-lg" role="button">Edit</a></td>
                     </tr>
 
         </tbody>

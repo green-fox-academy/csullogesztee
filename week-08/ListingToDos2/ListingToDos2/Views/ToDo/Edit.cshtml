@@ -10,13 +10,13 @@
         <a href="/user/list">Users</a> |
         <a href="/user/add">Add new User</a> |
     </nav>
-    <form action="/todo/edit/@Model.ToDoId" method="post">
+    <form action="/todo/edit/@Model.OneToDo.Id" method="post">
         Title:
-        <input type="text" name="title" value="@Model.GetOneToDo().Title" /><br>
+        <input type="text" name="title" value="@Model.OneToDo.Title" /><br>
         Is Urgent:
-        <input type="checkbox" name="isUrgent" value="true" checked="@Model.GetOneToDo().IsUrgent" /><br>
+        <input type="checkbox" name="isUrgent" value="true" checked="@Model.OneToDo.IsUrgent" /><br>
         Is Done:
-        <input type="checkbox" name="isDone" value="true" checked="@Model.GetOneToDo().IsDone" /><br>
+        <input type="checkbox" name="isDone" value="true" checked="@Model.OneToDo.IsDone" /><br>
         <p>Select Assignee</p>
         <select name="assigneeid">
             @{foreach (var user in Model.UserList)

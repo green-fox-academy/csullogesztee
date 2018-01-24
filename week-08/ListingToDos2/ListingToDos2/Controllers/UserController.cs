@@ -59,14 +59,14 @@ namespace ListingToDos2.Controllers
         [HttpGet("/user/edit/{id}")]
         public IActionResult Edit(long id)
         {
-            toDoService.toDoUserViewModel.UserId = id;
+            userService.toDoUserViewModel.OneUser = userService.GetTheUserWithId(id);
             return View(toDoService.toDoUserViewModel);
         }
 
         [HttpGet("/user/{id}")]
         public IActionResult User(long id)
         {
-            toDoService.toDoUserViewModel.UserId = id;
+            userService.toDoUserViewModel.OneUser = userService.GetTheUserWithId(id);
             return View(toDoService.toDoUserViewModel);
         }
     }

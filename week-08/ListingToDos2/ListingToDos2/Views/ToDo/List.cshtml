@@ -35,7 +35,7 @@
         </thead>
         <tbody>
             @{
-                foreach (var todo in Model.FilteredToDos())
+                foreach (var todo in Model.ToDoList)
                 {
                     <tr>
                         <td>@todo.Date</td>

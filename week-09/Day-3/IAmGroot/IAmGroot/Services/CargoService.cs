@@ -45,11 +45,19 @@ namespace IAmGroot.Services
             {
                 cargo.ShipStatus = percentage.ToString() + "%";
             }
+            if (percentage == 100)
+            {
+                cargo.ShipStatus = "full";
+            }
+            if (percentage > 100)
+            {
+                cargo.ShipStatus = "overloaded";
+            }
         }
 
         public void Ready()
         {
-            cargo.Ready = cargo.CargoCurrent > cargo.CargoMax;
+            cargo.Ready = cargo.CargoCurrent == cargo.CargoMax;
         }
 
         public void GetResult()

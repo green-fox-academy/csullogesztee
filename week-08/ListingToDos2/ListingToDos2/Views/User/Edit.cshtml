@@ -10,11 +10,11 @@
         <a href="/user/list">Users</a> |
         <a href="/user/add">Add new User</a> |
     </nav>
-    <form action="/user/edit/@Model.UserId" method="post">
+    <form action="/user/edit/@Model.OneUser.UserId" method="post">
         Name:
-        <input type="text" name="name" value="@Model.GetOneUser().Name" /><br>
-        <input type="text" name="email" value="@Model.GetOneUser().Email" /><br>
-        <input type="number" name="phoneNumber" value="@Model.GetOneUser().PhoneNumber" /><br>
+        <input type="text" name="name" value="@Model.OneUser.Name" /><br>
+        <input type="text" name="email" value="@Model.OneUser.Email" /><br>
+        <input type="number" name="phoneNumber" value="@Model.OneUser.PhoneNumber" /><br>
         <input type="submit" name="name" value="Send" />
     </form>
 </body>

@@ -63,24 +63,21 @@ namespace ListingToDos2.Controllers
         [HttpGet("/todo/edit/{id}")]
         public IActionResult Edit(long id)
         {
-            toDoService.toDoUserViewModel.ToDoId = id;
+            toDoService.toDoUserViewModel.OneToDo = toDoService.GetOneTodo(id);
             return View(toDoService.toDoUserViewModel);
         }
 
         [HttpGet("/todo/{id}")]
         public IActionResult Todo(long id)
         {
-            toDoService.toDoUserViewModel.ToDoId = id;
+            toDoService.toDoUserViewModel.OneToDo = toDoService.GetOneTodo(id);
             return View(toDoService.toDoUserViewModel);
         }
 
         [HttpPost("/todo/search")]
         public IActionResult Search(string type, string text)
         {
-            toDoService.toDoUserViewModel.SearchedText = text;
-            toDoService.toDoUserViewModel.TypeOfSearch = type;
-            toDoService.toDoUserViewModel.FilteredToDos();
-            //toDoService.FilteredToDos(type, text);
+            toDoService.toDoUserViewModel.ToDoList = toDoService.FilteredToDos(type, text);
             return RedirectToAction("list");
         }
     }
