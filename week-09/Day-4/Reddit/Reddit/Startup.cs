@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Reddit.Entities;
+using Reddit.Repositories;
+using Reddit.Services;
 
 namespace Reddit
 {
@@ -28,6 +30,8 @@ namespace Reddit
         {
             services.AddMvc();
             services.AddDbContext<RedditContext>(options => options.UseSqlServer(Configuration["RedditConnectionString"]));
+            services.AddScoped<RedditRepository>();
+            services.AddScoped<RedditService>();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
