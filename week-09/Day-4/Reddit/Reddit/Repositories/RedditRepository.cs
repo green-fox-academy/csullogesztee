@@ -34,5 +34,24 @@ namespace Reddit.Repositories
 
             return Post;
         }
+
+        public bool ValidId(long id)
+        {
+            return redditContext.Reddit.Where(x => x.Id == id).Count() > 0;
+        }
+
+        public void UpVote(long id)
+        {
+            var post = redditContext.Reddit.FirstOrDefault(x => x.Id == id);
+            post.Score++;
+            redditContext.SaveChanges();
+        }
+
+        public void DownVote(long id)
+        {
+            var post = redditContext.Reddit.FirstOrDefault(x => x.Id == id);
+            post.Score--;
+            redditContext.SaveChanges();
+        }
     }
 }
