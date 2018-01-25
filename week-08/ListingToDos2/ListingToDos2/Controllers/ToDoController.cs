@@ -23,7 +23,7 @@ namespace ListingToDos2.Controllers
         [HttpGet("/todo/list")]
         public IActionResult List(string type, string text)
         {
-            toDoService.toDoUserViewModel.ToDoList = toDoService.FilteredToDos(type, text);
+            //toDoService.toDoUserViewModel.ToDoList = toDoService.FilteredToDos(type, text);
             return View(toDoService.toDoUserViewModel);
         }
 
@@ -76,8 +76,9 @@ namespace ListingToDos2.Controllers
         [HttpPost("/todo/search")]
         public IActionResult Search(string type, string text)
         {
-            
-            return RedirectToAction("list", new { type = type, text = text });
+            toDoService.toDoUserViewModel.ToDoList = toDoService.FilteredToDos(type, text);
+            return text == null ? RedirectToAction("list") : (IActionResult)View("List", toDoService.toDoUserViewModel);
+            //return RedirectToAction("list", new { type = type, text = text });
             //return View(toDoService.toDoUserViewModel);
         }
     }
