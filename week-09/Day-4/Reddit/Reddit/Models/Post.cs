@@ -10,7 +10,7 @@ namespace Reddit.Models
         public long? Id { get; set; }
         public string Title { get; set; }
         public string Url { get; set; }
-        public int Timestamp { get; set; }
+        public string Timestamp { get; set; } = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
         public int Score { get; set; }
     }
 }
