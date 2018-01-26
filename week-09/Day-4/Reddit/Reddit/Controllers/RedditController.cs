@@ -21,26 +21,26 @@ namespace Reddit.Controllers
         [HttpGet("posts")]
         public IActionResult Posts()
         {
-            return Json(new { posts = redditService.redditRepository.GetPosts() });
+            return Json(new { posts = redditService.ListOfPosts() });
         }
 
         [HttpPost("posts")]
         public IActionResult AddPost(PostCreator postCreator)
         {
-            Post newPost = redditService.redditRepository.AddPost(postCreator);
+            Post newPost = redditService.CreatePost(postCreator);
             return Json(newPost);
         }
 
         [HttpPut("/posts/{id}/upvote")]
         public IActionResult UpVote(long id)
         {
-            if (!redditService.redditRepository.ValidId(id))
+            if (!redditService.IdValidation(id))
             {
                 return BadRequest();
             }
             else
             {
-                redditService.redditRepository.UpVote(id);
+                redditService.VoteUp(id);
                 return Ok();
             }
         }
@@ -48,13 +48,13 @@ namespace Reddit.Controllers
         [HttpPut("/posts/{id}/downvote")]
         public IActionResult DownVote(long id)
         {
-            if (!redditService.redditRepository.ValidId(id))
+            if (!redditService.IdValidation(id))
             {
                 return BadRequest();
             }
             else
             {
-                redditService.redditRepository.DownVote(id);
+                redditService.VoteDown(id);
                 return Ok();
             }
         }

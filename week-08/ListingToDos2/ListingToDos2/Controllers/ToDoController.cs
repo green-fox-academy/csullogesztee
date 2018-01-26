@@ -77,9 +77,9 @@ namespace ListingToDos2.Controllers
         public IActionResult Search(string type, string text)
         {
             toDoService.toDoUserViewModel.ToDoList = toDoService.FilteredToDos(type, text);
-            return text == null ? RedirectToAction("list") : (IActionResult)View("List", toDoService.toDoUserViewModel);
+            //return text == null ? RedirectToAction("list") : (IActionResult)View("List", toDoService.toDoUserViewModel);
             //return RedirectToAction("list", new { type = type, text = text });
-            //return View(toDoService.toDoUserViewModel);
+            return View(toDoService.toDoUserViewModel);
         }
     }
 }
