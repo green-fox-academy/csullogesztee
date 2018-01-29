@@ -1,0 +1,54 @@
+﻿@model List<PallidaOrientation.Models.Clothes>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <h1>Greenfox Fashion Web Store</h1>
+    <form action="/shoppingplanner/summary" method="post">
+        <select name="name">
+            <option>Select item name</option>
+            @{ foreach (var name in Model.Select(x => x.ItemName).Distinct())
+                {
+                    <option value="@name">@name</option>
+                }
+            }
+        </select>
+        <select name="size">
+            <option>Select item size</option>
+            @{ foreach (var size in Model.Select(x => x.Size).Distinct())
+                {
+                    <option value="@size">@size</option>
+                }
+            }
+        </select>
+        <input type="number" name="amount" />
+        <input type="submit" />
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Item name</td>
+                <td>Manufacturer</td>
+                <td>Category</td>
+                <td>Size</td>
+                <td>Unit Price</td>
+            </tr>
+        </thead>
+        <tbody>
+        <tbody>
+            @{ foreach (var clothes in Model)
+                {
+                    <tr>
+                        <td>@clothes.ItemName</td>
+                        <td>@clothes.Manufacturer</td>
+                        <td>@clothes.Category</td>
+                        <td>@clothes.Size</td>
+                        <td>@clothes.UnitPrize</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

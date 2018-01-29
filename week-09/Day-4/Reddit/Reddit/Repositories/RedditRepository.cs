@@ -23,16 +23,27 @@ namespace Reddit.Repositories
 
         public Post AddPost(PostCreator postCreator)
         {
-            Post Post = new Post()
-            {
-                Title = postCreator.Title,
-                Url = postCreator.Url
-            };
+            var user = new User() { Name = postCreator.Owner };
 
-            redditContext.Reddit.Add(Post);
+            if(redditContext.Users.Any(x=> x.Name == postCreator.Owner))
+            {
+                user = redditContext.Users.First(x => x.Name == postCreator.Owner);
+            }
             redditContext.SaveChanges();
 
-            return Post;
+            Post post = new Post()
+            {
+                Title = postCreator.Title,
+                Url = postCreator.Url,
+                Owner = user
+            };
+
+            user.PostsOfTheUser.Add(post);
+
+            redditContext.Reddit.Add(post);
+            redditContext.SaveChanges();
+
+            return post;
         }
 
         public bool ValidId(long id)
@@ -40,18 +51,41 @@ namespace Reddit.Repositories
             return redditContext.Reddit.Where(x => x.Id == id).Count() > 0;
         }
 
-        public void UpVote(long id)
+        public User FindUser(string name)
         {
-            var post = redditContext.Reddit.FirstOrDefault(x => x.Id == id);
-            post.Score++;
-            redditContext.SaveChanges();
+            return redditContext.Users.FirstOrDefault(x => x.Name == name);
         }
 
-        public void DownVote(long id)
+        public void UpVote(long id, string userName)
         {
+            var user = FindUser(userName);
             var post = redditContext.Reddit.FirstOrDefault(x => x.Id == id);
-            post.Score--;
-            redditContext.SaveChanges();
+
+            if(!post.Likes.Any(x=>x.Name == userName))
+            {
+                post.Likes.Add(user);
+                post.Score++;
+                redditContext.SaveChanges();
+            }
+
+        }
+
+        public void DownVote(long id, string userName)
+        {
+            var user = FindUser(userName);
+            var post = redditContext.Reddit.FirstOrDefault(x => x.Id == id);
+
+            if (!post.Likes.Any(x => x.Name == userName))
+            {
+                post.Likes.Add(user);
+                post.Score--;
+                redditContext.SaveChanges();
+            }
+        }
+
+        public List<User> GetUser()
+        {
+            return redditContext.Users.ToList();
         }
     }
 }

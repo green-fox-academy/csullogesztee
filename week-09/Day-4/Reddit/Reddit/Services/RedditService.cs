@@ -21,9 +21,9 @@ namespace Reddit.Services
             return redditRepository.ValidId(id);
         }
 
-        public void VoteDown(long id)
+        public void VoteDown(long id, string name)
         {
-            redditRepository.DownVote(id);
+            redditRepository.DownVote(id,name);
         }
 
         public List<Post> ListOfPosts()
@@ -31,9 +31,9 @@ namespace Reddit.Services
             return redditRepository.GetPosts();
         }
 
-        public void VoteUp(long id)
+        public void VoteUp(long id, string name)
         {
-            redditRepository.UpVote(id);
+            redditRepository.UpVote(id, name);
         }
 
         public Post CreatePost(PostCreator postCreator)

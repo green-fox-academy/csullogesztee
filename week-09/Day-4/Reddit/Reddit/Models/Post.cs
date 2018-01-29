@@ -12,6 +12,7 @@ namespace Reddit.Models
         public string Url { get; set; }
         public string Timestamp { get; set; } = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
         public int Score { get; set; }
-        public User User { get; set; }
+        public User Owner { get; set; }
+        public IList<User> Likes { get; set; } = new List<User>();
     }
 }

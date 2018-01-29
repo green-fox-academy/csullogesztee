@@ -9,5 +9,6 @@ namespace Reddit.Models
     {
         public string Title { get; set; }
         public string Url { get; set; }
+        public string Owner { get; set; }
     }
 }

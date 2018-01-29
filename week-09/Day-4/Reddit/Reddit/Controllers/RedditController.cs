@@ -27,6 +27,14 @@ namespace Reddit.Controllers
         [HttpPost("posts")]
         public IActionResult AddPost(PostCreator postCreator)
         {
+            postCreator.Owner = Request.Headers["Owner"].FirstOrDefault();
+
+            if(string.IsNullOrEmpty(postCreator.Owner))
+            {
+                postCreator.Owner = "Anyád";
+               // postCreator.Owner = Request.Body["Owner"].FirstOrDefault();
+            }
+
             Post newPost = redditService.CreatePost(postCreator);
             return Json(newPost);
         }
@@ -40,7 +48,7 @@ namespace Reddit.Controllers
             }
             else
             {
-                redditService.VoteUp(id);
+                redditService.VoteUp(id, Request.Headers["Owner"].FirstOrDefault());
                 return Ok();
             }
         }
@@ -54,7 +62,7 @@ namespace Reddit.Controllers
             }
             else
             {
-                redditService.VoteDown(id);
+                redditService.VoteDown(id, Request.Headers["Owner"].FirstOrDefault());
                 return Ok();
             }
         }

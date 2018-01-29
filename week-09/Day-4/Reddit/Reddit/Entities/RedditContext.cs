@@ -20,7 +20,7 @@ namespace Reddit.Entities
         {
             modelBuilder.Entity<User>()
                 .HasMany(x => x.PostsOfTheUser)
-                .WithOne(x => x.User)
+                .WithOne(x => x.Owner)
                 .HasPrincipalKey(x => x.UserId);
         }
     }

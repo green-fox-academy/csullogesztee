@@ -11,9 +11,10 @@ using System;
 namespace Reddit.Migrations
 {
     [DbContext(typeof(RedditContext))]
-    partial class RedditContextModelSnapshot : ModelSnapshot
+    [Migration("20180126113009_addUsertoPost")]
+    partial class addUsertoPost
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,11 +50,7 @@ namespace Reddit.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<long?>("PostId");
-
                     b.HasKey("UserId");
-
-                    b.HasIndex("PostId");
 
                     b.ToTable("Users");
                 });
@@ -63,13 +60,6 @@ namespace Reddit.Migrations
                     b.HasOne("Reddit.Models.User", "Owner")
                         .WithMany("PostsOfTheUser")
                         .HasForeignKey("OwnerUserId");
-                });
-
-            modelBuilder.Entity("Reddit.Models.User", b =>
-                {
-                    b.HasOne("Reddit.Models.Post")
-                        .WithMany("Likes")
-                        .HasForeignKey("PostId");
                 });
 #pragma warning restore 612, 618
         }
