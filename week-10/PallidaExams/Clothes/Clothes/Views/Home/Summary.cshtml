@@ -1,0 +1,33 @@
+﻿@model ClothesMarket.Models.Summary
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Warehouse</title>
+</head>
+<body>
+    <h1>GreenFox Fashion Web Store</h1>
+    <h2>Summary</h2>
+    <table>
+        <thead>
+            <tr>
+                <td>Item Name</td>
+                <td>Manufacturer</td>
+                <td>Category</td>
+                <td>Size</td>
+                <td>Quantity</td>
+                <td>Total Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.ItemName</td>
+                <td>@Model.Manufacturer</td>
+                <td>@Model.Category</td>
+                <td>@Model.Size</td>
+                <td>@Model.Quantity</td>
+                <td>@Model.TotalPrice</td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/warehouse">Back to the main</a>
+</body>
+</html>
