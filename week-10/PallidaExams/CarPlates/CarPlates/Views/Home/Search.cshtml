@@ -1,0 +1,38 @@
+﻿@model List<CarPlates.Models.LicencePlate>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <form action="/search" method="get">
+        <input type="text" name="q" value="" />
+        <button type="submit">Search</button>
+    </form>
+    <a href="/search?police=1">Police cars only</a>
+    <a href="/search?diplomat=1">Diplomats only</a>
+    <table>
+        <thead>
+            <tr>
+                <td>Plate</td>
+                <td>CarBrand</td>
+                <td>CarModel</td>
+                <td>Color</td>
+                <td>Year</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{foreach (var plate in Model)
+                {
+                    <tr>
+                        <td>@plate.Plate</td>
+                        <td><a href="/search/@plate.CarBrand">@plate.CarBrand</a></td>
+                        <td>@plate.CarModel</td>
+                        <td>@plate.Color</td>
+                        <td>@plate.Year</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>
