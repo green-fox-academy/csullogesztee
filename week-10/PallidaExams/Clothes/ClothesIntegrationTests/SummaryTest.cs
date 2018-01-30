@@ -21,10 +21,25 @@ namespace ClothesIntegrationTests
         }
 
         [Fact]
+        public async Task WarehouseNotOk()
+        {
+            var response = await Client.GetAsync("warehouse/test");
+            Assert.Equal(HttpStatusCode.BadRequest, response.StatusCode);
+        }
+
+        [Fact]
         public async Task WarehouseOk()
         {
-            var response = await Client.GetAsync("warehouse/query");
+            var response = await Client.GetAsync("warehouse/test?like=Yes");
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task WarehouseLike()
+        {
+            var response = await Client.GetAsync("warehouse/test?like=Yes");
+            string json = await response.Content.ReadAsStringAsync();
+            Assert.Equal("{\"question\":\"Do you like testing?\",\"answer\":\"Yes\"}", json);
         }
     }
 }

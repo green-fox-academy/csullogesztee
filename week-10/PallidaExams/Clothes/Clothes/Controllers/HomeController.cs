@@ -39,7 +39,11 @@ namespace ClothesMarket.Controllers
         [HttpGet("warehouse/test")]
         public IActionResult Like(string like)
         {
-
+            if(like == null)
+            {
+                return BadRequest("Do you like testing?");
+            }
+            return Json(new { question = "Do you like testing?", answer = like});
         }
     }
 }
