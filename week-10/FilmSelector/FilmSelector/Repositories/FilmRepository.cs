@@ -16,7 +16,7 @@ namespace FilmSelector.Repositories
             this.selectorContext = selectorContext;
         }
 
-        public List<Film> AllSeries()
+        public List<Film> AllFilm()
         {
             return selectorContext.Films.ToList();
         }

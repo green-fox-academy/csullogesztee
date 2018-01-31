@@ -1,0 +1,42 @@
+﻿@model FilmSelector.ViewModels.ProgramViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <h1>All Films</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var film in Model.ListOfFilms)
+                {
+                    <tr>
+                        <td>@film.Title</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <h1>All Series</h1>
+    <table>
+        <thead>
+            <tr>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var series in Model.ListOfSeries)
+                {
+                    <tr>
+                        <td>@series</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

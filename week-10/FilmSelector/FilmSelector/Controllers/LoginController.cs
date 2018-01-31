@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FilmSelector.Controllers
 {
-    [Route("")]
+    [Route("login")]
     public class LoginController : Controller
     {
         private LoginService loginService;
@@ -27,7 +27,7 @@ namespace FilmSelector.Controllers
         public IActionResult Login(string name)
         {
             var id = loginService.userService.GetUserWithName(name).UserId;
-            return loginService.CheckUser(name) ? Redirect($"/user/{id}") : Redirect("/");
+            return loginService.CheckUser(name) ? Redirect($"/{id}/program") : Redirect("/");
         }
     }
 }
