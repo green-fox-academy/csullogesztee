@@ -1,13 +1,13 @@
-﻿@model Quiz.Models.Exercise
+﻿@model Quiz.ViewModels.QuizViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Quiz</title>
 </head>
 <body>
-    <p>@Model.Question</p>
-    <a href="/home/quiz/@Model.Id/1/Score">@Model.Answer1</a>
-    <a href="/home/quiz/@Model.Id/1/Score">@Model.Answer2</a>
-    <a href="/home/quiz/@Model.Id/1/Score">@Model.Answer3</a>
-    <a href="/home/quiz/@Model.Id/1/Score">@Model.Answer4</a>
+    <p>@Model.Question.Question</p>
+    <a href="/home/quiz/@Model.Question.Id/0/@Model.Score">@Model.Question.Answer1</a>
+    <a href="/home/quiz/@Model.Question.Id/1/@Model.Score">@Model.Question.Answer2</a>
+    <a href="/home/quiz/@Model.Question.Id/2/@Model.Score">@Model.Question.Answer3</a>
+    <a href="/home/quiz/@Model.Question.Id/3/@Model.Score">@Model.Question.Answer4</a>
 </body>
 </html>

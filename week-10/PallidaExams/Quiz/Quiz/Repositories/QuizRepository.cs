@@ -27,10 +27,20 @@ namespace Quiz.Repositories
             quizContext.SaveChanges();
         }
 
-        public Exercise RandomQuestion()
+        //public Exercise RandomQuestion()
+        //{
+        //    Random random = new Random();
+        //    return AllExercise()[Convert.ToInt16(random.Next(AllExercise().Count()))];
+        //}
+
+        //public bool IsThereAnyQuestion()
+        //{
+        //    return quizContext.Exercises.Count() > 0;
+        //}
+
+        public Exercise SearchQuestion(int id)
         {
-            Random random = new Random();
-            return AllExercise()[Convert.ToInt16(random.Next(AllExercise().Count()))];
+            return quizContext.Exercises.Single(x => x.Id == id);
         }
     }
 }

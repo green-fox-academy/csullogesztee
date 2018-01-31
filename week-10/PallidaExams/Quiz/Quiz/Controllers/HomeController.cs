@@ -26,9 +26,9 @@ namespace Quiz.Controllers
         }
 
         [HttpGet("home/{score}")]
-        public IActionResult Score()
+        public IActionResult Score(int score)
         {
-            return Ok();
+            return Json(score);
         }
 
         [HttpGet("home/question")]
@@ -47,7 +47,15 @@ namespace Quiz.Controllers
         [HttpGet("home/quiz")]
         public IActionResult Quiz()
         {
-            return View(quizService.GetQuestion());
+            return quizService.IsThereAnyQuestion() ? View(quizService.GenerateView()) : View("Index");
+        }
+
+        [HttpGet("home/quiz/{id}/{selected}/{score}")]
+        public IActionResult QuizWithParameters(int id, int selected, int score)
+        {
+            return quizService.CorrectAnswer(id, selected) ?
+                (ActionResult)View("Quiz", quizService.GenerateView(++score)) :
+                RedirectToAction("Score", score);
         }
     }
 }
