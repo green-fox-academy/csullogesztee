@@ -1,0 +1,44 @@
+﻿using FilmSelector.Entities;
+using FilmSelector.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace FilmSelector.Repositories
+{
+    public class UserRepository
+    {
+        private SelectorContext selectorContext;
+
+        public UserRepository(SelectorContext selectorContext)
+        {
+            this.selectorContext = selectorContext;
+        }
+
+        public List<User> AllUser()
+        {
+            return selectorContext.Users.ToList();
+        }
+
+        public void AddUser(string name)
+        {
+            User newUser = new User()
+            {
+                Name = name
+            };
+            selectorContext.Users.Add(newUser);
+            selectorContext.SaveChanges();
+        }
+
+        public User GetUserWithId(int UserId)
+        {
+            return selectorContext.Users.Single(x => x.UserId == UserId);
+        }
+
+        public User GetUserWithName(string UserName)
+        {
+            return selectorContext.Users.Single(x => x.Name == UserName);
+        }
+    }
+}

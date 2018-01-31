@@ -9,7 +9,8 @@ namespace FilmSelector.Models
     public class User
     {
         public int UserId { get; set; }
-        public int Name { get; set; }
-        public IList<Program> Programs { get; set; } = new List<Program>();
+        public string Name { get; set; }
+        public IList<Film> Films { get; set; } = new List<Film>();
+        public IList<Series> Series { get; set; } = new List<Series>();
     }
 }

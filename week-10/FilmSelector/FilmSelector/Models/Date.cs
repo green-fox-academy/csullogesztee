@@ -9,7 +9,8 @@ namespace FilmSelector.Models
     public class Date
     {
         [Key]
-        public DateTime Date { get; set; }
-        public Program DailyProgram { get; set; }
+        public DateTime When { get; set; }
+        public Film DailyFilm { get; set; }
+        public Series DailySeries { get; set; }
     }
 }
