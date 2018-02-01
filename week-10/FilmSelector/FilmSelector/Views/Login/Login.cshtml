@@ -1,0 +1,22 @@
+﻿@model List<FilmSelector.Models.User>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <select name="name">
+            <option>Select your name!</option>
+            @{ 
+                foreach(var user in Model)
+                {
+                    <option value="@user.Name">@user.Name</option>
+                }
+            }
+        </select>
+        <button type="submit">Login</button>
+    </form>
+    <a href="/user/add">Add a new user</a>
+</body>
+</html>

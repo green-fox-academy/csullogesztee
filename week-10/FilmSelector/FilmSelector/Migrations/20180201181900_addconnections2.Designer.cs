@@ -11,9 +11,10 @@ using System;
 namespace FilmSelector.Migrations
 {
     [DbContext(typeof(SelectorContext))]
-    partial class SelectorContextModelSnapshot : ModelSnapshot
+    [Migration("20180201181900_addconnections2")]
+    partial class addconnections2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,9 +108,11 @@ namespace FilmSelector.Migrations
 
                     b.Property<int>("Id");
 
+                    b.Property<int?>("FilmId");
+
                     b.HasKey("UserId", "Id");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("FilmId");
 
                     b.ToTable("UserFilm");
                 });
@@ -120,9 +123,11 @@ namespace FilmSelector.Migrations
 
                     b.Property<int>("Id");
 
+                    b.Property<int?>("SeriesId");
+
                     b.HasKey("UserId", "Id");
 
-                    b.HasIndex("Id");
+                    b.HasIndex("SeriesId");
 
                     b.ToTable("UserSeries");
                 });
@@ -142,8 +147,7 @@ namespace FilmSelector.Migrations
                 {
                     b.HasOne("FilmSelector.Models.Film", "Film")
                         .WithMany("Users")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FilmId");
 
                     b.HasOne("FilmSelector.Models.User", "User")
                         .WithMany("Films")
@@ -155,8 +159,7 @@ namespace FilmSelector.Migrations
                 {
                     b.HasOne("FilmSelector.Models.Series", "Series")
                         .WithMany("Users")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("SeriesId");
 
                     b.HasOne("FilmSelector.Models.User", "User")
                         .WithMany("Series")

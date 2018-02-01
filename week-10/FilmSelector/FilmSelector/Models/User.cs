@@ -10,7 +10,7 @@ namespace FilmSelector.Models
     {
         public int UserId { get; set; }
         public string Name { get; set; }
-        public IList<Film> Films { get; set; } = new List<Film>();
-        public IList<Series> Series { get; set; } = new List<Series>();
+        public IList<UserFilm> Films { get; set; }
+        public IList<UserSeries> Series { get; set; }
     }
 }

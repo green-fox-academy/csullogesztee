@@ -1,0 +1,44 @@
+﻿@model FilmSelector.Models.User
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>I want to watch</title>
+</head>
+<body>
+    <h1>My Films</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var film in Model.Films)
+                {
+                    <tr>
+                        <td><a href="@Model.UserId/program/film/@film.Film.Id">@film.Film.Title</a></td>
+                        <td><a href="" class="btn btn-info btn-lg" role="button">Watched</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <h1>My Series</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var series in Model.Series)
+                {
+            <tr>
+                <td><a href="@Model.UserId/program/series/@series.Series.Id">@series.Series.Title</a></td>
+                <td><a href="" class="btn btn-info btn-lg" role="button">Watched</a></td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

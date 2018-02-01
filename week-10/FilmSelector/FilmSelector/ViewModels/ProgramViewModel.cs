@@ -8,6 +8,7 @@ namespace FilmSelector.ViewModels
 {
     public class ProgramViewModel
     {
+        public int UserId { get; set; }
         public List<Film> ListOfFilms { get; set; }
         public List<Series> ListOfSeries { get; set; }
     }

@@ -5,7 +5,7 @@
 </head>
 <body>
     <h1>All Films</h1>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <td>Title</td>
@@ -22,7 +22,7 @@
         </tbody>
     </table>
     <h1>All Series</h1>
-    <table>
+    <table border="1">
         <thead>
             <tr>
                 <td>Title</td>
@@ -32,7 +32,7 @@
             @{ foreach (var series in Model.ListOfSeries)
                 {
                     <tr>
-                        <td>@series</td>
+                        <td>@series.Title</td>
                     </tr>
                 }
             }

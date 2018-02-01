@@ -11,9 +11,10 @@ using System;
 namespace FilmSelector.Migrations
 {
     [DbContext(typeof(SelectorContext))]
-    partial class SelectorContextModelSnapshot : ModelSnapshot
+    [Migration("20180201101802_TitleEdit")]
+    partial class TitleEdit
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +55,13 @@ namespace FilmSelector.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<int?>("UserId");
+
                     b.Property<int>("Year");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Films");
                 });
@@ -84,7 +89,11 @@ namespace FilmSelector.Migrations
 
                     b.Property<string>("Title");
 
+                    b.Property<int?>("UserId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Series");
                 });
@@ -101,32 +110,6 @@ namespace FilmSelector.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("FilmSelector.Models.UserFilm", b =>
-                {
-                    b.Property<int>("UserId");
-
-                    b.Property<int>("Id");
-
-                    b.HasKey("UserId", "Id");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("UserFilm");
-                });
-
-            modelBuilder.Entity("FilmSelector.Models.UserSeries", b =>
-                {
-                    b.Property<int>("UserId");
-
-                    b.Property<int>("Id");
-
-                    b.HasKey("UserId", "Id");
-
-                    b.HasIndex("Id");
-
-                    b.ToTable("UserSeries");
-                });
-
             modelBuilder.Entity("FilmSelector.Models.Date", b =>
                 {
                     b.HasOne("FilmSelector.Models.Film", "DailyFilm")
@@ -138,30 +121,18 @@ namespace FilmSelector.Migrations
                         .HasForeignKey("DailySeriesId");
                 });
 
-            modelBuilder.Entity("FilmSelector.Models.UserFilm", b =>
+            modelBuilder.Entity("FilmSelector.Models.Film", b =>
                 {
-                    b.HasOne("FilmSelector.Models.Film", "Film")
-                        .WithMany("Users")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("FilmSelector.Models.User", "User")
                         .WithMany("Films")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("FilmSelector.Models.UserSeries", b =>
+            modelBuilder.Entity("FilmSelector.Models.Series", b =>
                 {
-                    b.HasOne("FilmSelector.Models.Series", "Series")
-                        .WithMany("Users")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("FilmSelector.Models.User", "User")
                         .WithMany("Series")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

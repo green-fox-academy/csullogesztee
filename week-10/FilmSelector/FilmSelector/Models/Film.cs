@@ -13,7 +13,7 @@ namespace FilmSelector.Models
         public double IMdB { get; set; }
         public string About { get; set; }
         public string Link { get; set; }
-        public User User { get; set; }
+        public IList<UserFilm> Users { get; set; }
         public DateTime Date { get; set; }
         public bool Seen { get; set; } = false;
         public int Year { get; set; }

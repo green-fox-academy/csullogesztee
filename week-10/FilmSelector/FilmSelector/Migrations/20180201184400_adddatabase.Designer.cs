@@ -11,9 +11,10 @@ using System;
 namespace FilmSelector.Migrations
 {
     [DbContext(typeof(SelectorContext))]
-    partial class SelectorContextModelSnapshot : ModelSnapshot
+    [Migration("20180201184400_adddatabase")]
+    partial class adddatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

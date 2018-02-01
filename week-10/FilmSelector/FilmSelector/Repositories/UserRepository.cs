@@ -1,5 +1,6 @@
 ﻿using FilmSelector.Entities;
 using FilmSelector.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace FilmSelector.Repositories
 
         public List<User> AllUser()
         {
+            selectorContext.Films.Load();
+            selectorContext.Series.Load();
             return selectorContext.Users.ToList();
         }
 

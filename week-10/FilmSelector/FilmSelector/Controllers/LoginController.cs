@@ -7,20 +7,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FilmSelector.Controllers
 {
+    [Route("")]
     [Route("login")]
     public class LoginController : Controller
     {
         private LoginService loginService;
+        private UserService userService;
 
-        public LoginController(LoginService loginService)
+        public LoginController(LoginService loginService, UserService userService)
         {
             this.loginService = loginService;
+            this.userService = userService;
         }
 
         [HttpGet("")]
         public IActionResult Login()
         {
-            return View();
+            return View(userService.ListOfUsers());
         }
 
         [HttpPost("")]
