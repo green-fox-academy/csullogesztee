@@ -36,11 +36,21 @@ namespace FilmSelector.Repositories
 
         public User GetUserWithId(int UserId)
         {
+            selectorContext.UserFilm.Load();
+            selectorContext.UserSeries.Load();
+            selectorContext.Users.Load();
+            selectorContext.Films.Load();
+            selectorContext.Series.Load();
             return selectorContext.Users.Single(x => x.UserId == UserId);
         }
 
         public User GetUserWithName(string UserName)
         {
+            selectorContext.UserFilm.Load();
+            selectorContext.UserSeries.Load();
+            selectorContext.Users.Load();
+            selectorContext.Films.Load();
+            selectorContext.Series.Load();
             return selectorContext.Users.Single(x => x.Name == UserName);
         }
     }

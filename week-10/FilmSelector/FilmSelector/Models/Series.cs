@@ -10,7 +10,6 @@ namespace FilmSelector.Models
     {
         public int Id { get; set; }
         public string Title { get; set; }
-        public double IMdB { get; set; }
         public string About { get; set; }
         public string Link { get; set; }
         public IList<UserSeries> Users { get; set; }

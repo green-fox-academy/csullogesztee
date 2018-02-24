@@ -15,7 +15,7 @@
             @{ foreach (var film in Model.ListOfFilms)
                 {
                     <tr>
-                        <td>@film.Title</td>
+                        <td><a href="/@Model.UserId/program/onefilm/@film.Id">@film.Title</a></td>
                     </tr>
                 }
             }
@@ -32,11 +32,12 @@
             @{ foreach (var series in Model.ListOfSeries)
                 {
                     <tr>
-                        <td>@series.Title</td>
+                        <td><a href="/@Model.UserId/program/oneseries/@series.Id">@series.Title</a></td>
                     </tr>
                 }
             }
         </tbody>
     </table>
+    <a href="/user/@Model.UserId/mylist">My List</a>
 </body>
 </html>

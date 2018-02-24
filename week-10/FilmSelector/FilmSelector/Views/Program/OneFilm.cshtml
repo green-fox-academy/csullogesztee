@@ -1,17 +1,16 @@
-﻿@model FilmSelector.Models.Film
+﻿@model FilmSelector.ViewModels.FilmViewModel
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Film</title>
 </head>
 <body>
-    <h1>@Model.Title</h1>
-    <p>@Model.IMdB</p>
-    <p>@Model.Link</p>
-    <p>Users</p>
+    <h1>@Model.Film.Title</h1>
+    <a href="@Model.Film.Link">IMDb link</a>
+    <p>Want to watch:</p>
     @{ 
-        foreach(var user in Model.Users)
+        foreach(var user in Model.Film.Users)
         {
-            <p>@user.User.Name</p>
+            <a href="/user/@Model.MyId/otheruserlist/@user.User.UserId">@user.User.Name</a>
         }
     }
 </body>

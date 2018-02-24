@@ -19,9 +19,11 @@ namespace FilmSelector.Controllers
         }
 
         [HttpGet("")]
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
-            return View(programService.GenerateView());
+            var myView = programService.GenerateView();
+            myView.UserId = id;
+            return View(myView);
         }
 
         [HttpGet("add")]
@@ -37,17 +39,21 @@ namespace FilmSelector.Controllers
             return RedirectToAction("Index");
         }
 
-        [HttpGet("onefilm")]
-        public IActionResult OneFilm(int filmid)
+        [HttpGet("onefilm/{filmid}")]
+        public IActionResult OneFilm(int id, int filmid)
         {
-            var film = programService.GetOneFilm(1);
+            var film = programService.GenerateFilm();
+            film.Film = programService.GetOneFilm(filmid);
+            film.MyId = id;
             return View(film);
         }
 
-        [HttpGet("oneseries")]
-        public IActionResult OneSeries(int seriesid)
+        [HttpGet("oneseries/{seriesid}")]
+        public IActionResult OneSeries(int id, int seriesid)
         {
-            var series = programService.GetOneSeries(seriesid);
+            var series = programService.GenerateSeries();
+            series.Series = programService.GetOneSeries(seriesid);
+            series.MyId = id;
             return View(series);
         }
     }

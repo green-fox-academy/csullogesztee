@@ -44,6 +44,18 @@ namespace FilmSelector.Services
             }
         }
 
+        internal void UpdateProgram(string type, int programId)
+        {
+            if (type.Equals("film"))
+            {
+                filmRepository.UpdateFilm(programId);
+            }
+            if (type.Equals("series"))
+            {
+                seriesRepository.UpdateSeries(programId);
+            }
+        }
+
         public ProgramViewModel GenerateView()
         {
             ProgramViewModel view = new ProgramViewModel()
@@ -52,6 +64,21 @@ namespace FilmSelector.Services
                 ListOfSeries = AllSeries()
             };
             return view;
+        }
+
+        public OthersClassViewModel GenerateOtherView()
+        {
+            return new OthersClassViewModel();
+        }
+
+        public FilmViewModel GenerateFilm()
+        {
+            return new FilmViewModel();
+        }
+
+        public SeriesViewModel GenerateSeries()
+        {
+            return new SeriesViewModel();
         }
 
         public Film GetOneFilm(int id)

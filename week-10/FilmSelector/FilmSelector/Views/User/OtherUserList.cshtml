@@ -1,0 +1,45 @@
+﻿@model FilmSelector.ViewModels.OthersClassViewModel
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Other want to watch</title>
+</head>
+<body>
+    <h1>@Model.OtherUser.Name's Films</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var film in Model.OtherUser.Films)
+                {
+                    <tr>
+                        <td><a href="/@Model.MyId/program/onefilm/@film.Film.Id">@film.Film.Title</a></td>
+                        <td><p>I want to watch</p></td>              
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <h1>@Model.OtherUser.Name's Series</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Title</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ foreach (var series in Model.OtherUser.Series)
+                {
+            <tr>
+                <td><a href="/@Model.MyId/program/oneseries/@series.Series.Id">@series.Series.Title</a></td>
+                <td><p>I want to watch</p></td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <a href="/@Model.MyId/program">All Films</a>
+</body>
+</html>

@@ -28,7 +28,6 @@ namespace FilmSelector.Repositories
             Series newSeries = new Series()
             {
                 Title = seriesCreator.Title,
-                IMdB = seriesCreator.IMdB,
                 Link = seriesCreator.Link,
                 Users = new List<UserSeries>()
                 {
@@ -44,7 +43,16 @@ namespace FilmSelector.Repositories
 
         public Series GetSeriesWithId(int Id)
         {
+            selectorContext.UserSeries.Load();
+            selectorContext.Users.Load();
             return selectorContext.Series.Single(x => x.Id == Id);
+        }
+
+        internal void UpdateSeries(int programId)
+        {
+            var updatedSeries = GetSeriesWithId(programId);
+            updatedSeries.Seen = true;
+            selectorContext.SaveChanges();
         }
     }
 }

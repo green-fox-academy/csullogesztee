@@ -14,6 +14,8 @@ namespace FilmSelector.Entities
         public DbSet<Film> Films { get; set; }
         public DbSet<Series> Series { get; set; }
         public DbSet<Date> Dates { get; set; }
+        public DbSet<UserFilm> UserFilm { get; set; }
+        public DbSet<UserSeries> UserSeries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

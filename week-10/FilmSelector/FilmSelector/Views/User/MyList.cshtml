@@ -14,10 +14,10 @@
         <tbody>
             @{ foreach (var film in Model.Films)
                 {
-                    <tr>
-                        <td><a href="@Model.UserId/program/film/@film.Film.Id">@film.Film.Title</a></td>
-                        <td><a href="" class="btn btn-info btn-lg" role="button">Watched</a></td>
-                    </tr>
+            <tr>
+                <td><a href="/@Model.UserId/program/onefilm/@film.Film.Id">@film.Film.Title</a></td>
+                <td><a href="/user/@Model.UserId/watched/@film.Film.Id?type=film" role="button">Watched</a></td>
+            </tr>
                 }
             }
         </tbody>
@@ -33,12 +33,13 @@
             @{ foreach (var series in Model.Series)
                 {
             <tr>
-                <td><a href="@Model.UserId/program/series/@series.Series.Id">@series.Series.Title</a></td>
-                <td><a href="" class="btn btn-info btn-lg" role="button">Watched</a></td>
+                <td><a href="/@Model.UserId/program/oneseries/@series.Series.Id">@series.Series.Title</a></td>
+                <td><a href="/user/@Model.UserId/watched/@series.Series.Id">Watched</a></td>
             </tr>
                 }
             }
         </tbody>
     </table>
+    <a href="/@Model.UserId/program">All Films</a>
 </body>
 </html>

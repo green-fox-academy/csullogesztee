@@ -25,10 +25,10 @@ namespace FilmSelector.Repositories
 
         public void AddFilm(Creator filmCreator, User user)
         {
+            selectorContext.Users.Load();
             Film newFilm = new Film()
             {
                 Title = filmCreator.Title,
-                IMdB = filmCreator.IMdB,
                 Link = filmCreator.Link,
                 Users = new List<UserFilm>()
                 {
@@ -44,7 +44,16 @@ namespace FilmSelector.Repositories
 
         public Film GetFilmWithId(int Id)
         {
+            selectorContext.UserFilm.Load();
+            selectorContext.Users.Load();
             return selectorContext.Films.Single(x => x.Id == Id);
+        }
+
+        internal void UpdateFilm(int programId)
+        {
+            var updatedFilm = GetFilmWithId(programId);
+            updatedFilm.Seen = true;
+            selectorContext.SaveChanges();
         }
     }
 }

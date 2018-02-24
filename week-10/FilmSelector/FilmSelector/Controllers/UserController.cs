@@ -12,10 +12,12 @@ namespace FilmSelector.Controllers
     public class UserController : Controller
     {
         private UserService userService;
+        private ProgramService programService;
 
-        public UserController(UserService userService)
+        public UserController(UserService userService, ProgramService programService)
         {
             this.userService = userService;
+            this.programService = programService;
         }
 
         [HttpGet("add")]
@@ -36,6 +38,22 @@ namespace FilmSelector.Controllers
         {
             User user = userService.GetUserWithId(id);
             return View(user);
+        }
+
+        [HttpPost("{id}/watched/{programId}")]
+        public IActionResult Watched([FromQuery]string type, [FromRoute]int id, [FromRoute]int programId)
+        {
+            programService.UpdateProgram(type, programId);
+            return RedirectToAction("mylist", id);
+        }
+
+        [HttpGet("{id}/otheruserlist/{otheruserid}")]
+        public IActionResult OtherUserList(int id, int otherUserId)
+        {
+            var myView = programService.GenerateOtherView();
+            myView.MyId = id;
+            myView.OtherUser = userService.GetUserWithId(otherUserId);
+            return View(myView);
         }
     }
 }
