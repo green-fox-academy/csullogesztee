@@ -48,10 +48,21 @@ namespace FilmSelector.Repositories
             return selectorContext.Series.Single(x => x.Id == Id);
         }
 
-        internal void UpdateSeries(int programId)
+        public void UpdateSeries(int programId)
         {
             var updatedSeries = GetSeriesWithId(programId);
             updatedSeries.Seen = true;
+            selectorContext.SaveChanges();
+        }
+
+        public void AddOtherUser(int seriesId, int userId)
+        {
+            var currentSeries = GetSeriesWithId(seriesId);
+            var currentUser = selectorContext.Users.Single(u => u.UserId == userId);
+            var currentUserSeries = currentSeries.Users.Single(x => x.UserId == userId);
+
+            if (currentUserSeries == null)
+                currentSeries.Users.Add(new UserSeries() { User = currentUser});
             selectorContext.SaveChanges();
         }
     }

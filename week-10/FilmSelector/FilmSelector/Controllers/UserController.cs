@@ -40,7 +40,7 @@ namespace FilmSelector.Controllers
             return View(user);
         }
 
-        [HttpPost("{id}/watched/{programId}")]
+        [HttpGet("{id}/watched/{programId}")]
         public IActionResult Watched([FromQuery]string type, [FromRoute]int id, [FromRoute]int programId)
         {
             programService.UpdateProgram(type, programId);
@@ -54,6 +54,20 @@ namespace FilmSelector.Controllers
             myView.MyId = id;
             myView.OtherUser = userService.GetUserWithId(otherUserId);
             return View(myView);
+        }
+
+        [HttpGet("{id}/addmylist/{programId}")]
+        public IActionResult AddOtherUser(int programId, int id, [FromQuery]string type)
+        {
+            string abc = Request.QueryString.ToString();
+            programService.AddOtherUser(type, programId, id);
+            return RedirectToAction("mylist", id);
+        }
+
+        [HttpGet]
+        public IActionResult CommonList(int id, int otherUserId)
+        {
+            return View();
         }
     }
 }

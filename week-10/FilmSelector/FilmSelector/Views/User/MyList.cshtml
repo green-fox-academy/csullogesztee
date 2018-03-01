@@ -14,10 +14,20 @@
         <tbody>
             @{ foreach (var film in Model.Films)
                 {
-            <tr>
-                <td><a href="/@Model.UserId/program/onefilm/@film.Film.Id">@film.Film.Title</a></td>
-                <td><a href="/user/@Model.UserId/watched/@film.Film.Id?type=film" role="button">Watched</a></td>
-            </tr>
+                    <tr>
+                        <td><a href="/@Model.UserId/program/onefilm/@film.Film.Id">@film.Film.Title</a></td>
+                        <td>
+                            @{if (film.Film.Seen)
+                                {
+                                    <p>Seen</p>
+                                }
+                                else
+                                {
+                                    <a href="/user/@Model.UserId/watched/@film.Film.Id?type=film" role="button">Watched</a>
+                                }
+                            }
+                        </td>
+                    </tr>
                 }
             }
         </tbody>
@@ -32,10 +42,21 @@
         <tbody>
             @{ foreach (var series in Model.Series)
                 {
-            <tr>
-                <td><a href="/@Model.UserId/program/oneseries/@series.Series.Id">@series.Series.Title</a></td>
-                <td><a href="/user/@Model.UserId/watched/@series.Series.Id">Watched</a></td>
-            </tr>
+                    <tr>
+                        <td><a href="/@Model.UserId/program/oneseries/@series.Series.Id">@series.Series.Title</a></td>
+                        <td>
+                            @{
+                                if (series.Series.Seen)
+                                {
+                                    <p>Seen</p>
+                                }
+                                else
+                                {
+                                    <a href="/user/@Model.UserId/watched/@series.Series.Id">Watched</a>
+                                }
+                            }
+                        </td>
+                    </tr>
                 }
             }
         </tbody>

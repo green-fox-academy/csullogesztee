@@ -14,10 +14,10 @@
         <tbody>
             @{ foreach (var film in Model.OtherUser.Films)
                 {
-                    <tr>
-                        <td><a href="/@Model.MyId/program/onefilm/@film.Film.Id">@film.Film.Title</a></td>
-                        <td><p>I want to watch</p></td>              
-                    </tr>
+            <tr>
+                <td><a href="/@Model.MyId/program/onefilm/@film.Film.Id">@film.Film.Title</a></td>
+                <td><a href="/user/@Model.MyId/addmylist/@film.Film.Id?type=film">I want to watch</a></td>
+            </tr>
                 }
             }
         </tbody>
@@ -34,7 +34,7 @@
                 {
             <tr>
                 <td><a href="/@Model.MyId/program/oneseries/@series.Series.Id">@series.Series.Title</a></td>
-                <td><p>I want to watch</p></td>
+                <td><a href="/user/@Model.MyId/addmylist/@series.Series.Id?type=series">I want to watch</a></td>
             </tr>
                 }
             }

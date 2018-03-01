@@ -55,5 +55,16 @@ namespace FilmSelector.Repositories
             updatedFilm.Seen = true;
             selectorContext.SaveChanges();
         }
+
+        public void AddOtherUser(int filmId, int userId)
+        {
+            var currentFilm = GetFilmWithId(filmId);
+            var currentUser = selectorContext.Users.Single(u => u.UserId == userId);
+            var currentUserFilm = currentFilm.Users.Single(x => x.UserId == userId);
+
+            if(currentUserFilm == null)
+                currentFilm.Users.Add(new UserFilm() { User = currentUser });
+            selectorContext.SaveChanges();
+        }
     }
 }

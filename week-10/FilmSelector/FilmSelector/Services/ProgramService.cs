@@ -44,7 +44,7 @@ namespace FilmSelector.Services
             }
         }
 
-        internal void UpdateProgram(string type, int programId)
+        public void UpdateProgram(string type, int programId)
         {
             if (type.Equals("film"))
             {
@@ -53,6 +53,18 @@ namespace FilmSelector.Services
             if (type.Equals("series"))
             {
                 seriesRepository.UpdateSeries(programId);
+            }
+        }
+
+        public void AddOtherUser(string type, int programId, int userID)
+        {
+            if (type.Equals("film"))
+            {
+                filmRepository.AddOtherUser(programId, userID);
+            }
+            if (type.Equals("series"))
+            {
+                seriesRepository.AddOtherUser(programId, userID);
             }
         }
 
