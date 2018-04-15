@@ -32,7 +32,7 @@ namespace ErrorHandlingTrial.Services
 
         public Student SearchById(int id)
         {
-            if(StudentList.FirstOrDefault(x => x.Id == id) == null)
+            if(StudentList.Count < id)
             {
                 throw new HttpStatusCodeException(404, "sorry not found");
             }
